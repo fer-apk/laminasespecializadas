@@ -239,6 +239,40 @@
     border-top: 1px solid #23272A;
   }
   
+  .proyectos-main {
+    font-family: 'Montserrat', 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-size: 2.1rem;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    margin-bottom: 0.6rem;
+    color: #fff;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    line-height: 1.16;
+    border-bottom: 2px solid #1ebe5d;
+    display: inline-block;
+    padding-bottom: 0.18em;
+    animation: fadeInHero 1s cubic-bezier(0.4,0,0.2,1);
+  }
+  .proyectos-bienvenida {
+    margin: 0 auto 1.5rem auto;
+    max-width: 600px;
+    padding: 1.1rem 1.1rem 0.7rem 1.1rem;
+    background: rgba(24,26,27,0.78);
+    border-radius: 15px;
+    border: 1.5px solid #2C2F33;
+    box-shadow: 0 2px 18px rgba(0,0,0,0.10);
+    backdrop-filter: blur(1.5px);
+    animation: fadeInHero 1.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .proyectos-frase {
+    font-size: 1.08rem;
+    font-weight: 500;
+    color: #ECECEC;
+    margin-bottom: 0;
+    letter-spacing: 0.04em;
+    font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+    text-align: center;
+  }
   /* Responsive Design */
   @media (max-width: 768px) {
     .galeria {
