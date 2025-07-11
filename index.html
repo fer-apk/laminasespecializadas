@@ -80,7 +80,7 @@
       margin: 0 auto;
       max-width: 730px;
       padding: 1.5rem 1.2rem 1.2rem 1.2rem;
-      background: rgba(0, 0, 0, 0.82);
+      background: rgba(255, 255, 255, 0.82);
       border-radius: 20px;
       border: 1.5px solid #2C2F33;
       box-shadow: 0 4px 24px rgba(0,0,0,0.13);
@@ -90,7 +90,7 @@
     .bienvenida-frase {
       font-size: 1.18rem;
       font-weight: 500;
-      color: #ECECEC;
+      color: #102fb6;
       margin-bottom: 0.4em;
       letter-spacing: 0.05em;
       font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
@@ -98,7 +98,7 @@
     .bienvenida-detalle {
       font-size: 1.03rem;
       font-weight: 400;
-      color: #B0B0B0;
+      color: #1222b1;
       margin-bottom: 0;
       font-family: 'Montserrat', 'Poppins', Arial, sans-serif;
       line-height: 1.5;
@@ -607,7 +607,7 @@
 
 .lightbox-prev:hover,
 .lightbox-next:hover {
-  background: #1ebe5d;
+  background: #0003ad;
   transform: scale(1.1);
 }
 
@@ -1091,7 +1091,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 2.5vw 0.5rem 2vw;
-  background: rgba(35,39,42,0.97);
+  background: #001558; 
   border-radius: 0 0 20px 20px;
   box-shadow: 0 2px 18px rgba(30,190,93,0.08);
   margin-bottom: 1.1rem;
@@ -1200,7 +1200,6 @@ body {
       </div>
       <div class="navbar-links">
         <button class="navbar-btn" onclick="window.open('https://panelylamina.com/catalogo','_blank')">Catálogo</button>
-        <button class="navbar-btn" onclick="document.getElementById('proyectos-section').scrollIntoView({behavior: 'smooth'});">Proyectos</button>
         <button class="navbar-btn whatsapp" onclick="window.open('https://wa.me/523318088119','_blank')">Cotizar</button>
       </div>
     </nav>
@@ -1584,6 +1583,7 @@ body {
           </div>
         </div>
         
+
         <button class="carrusel-btn next" aria-label="Siguiente" style="position: absolute; right: -50px; top: 50%; transform: translateY(-50%); z-index: 10; background: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: #3f51b5; transition: all 0.3s ease;">&#8594;</button>
       </div>
       
@@ -1840,7 +1840,7 @@ function initCarrusel(containerId, slidesToShow = 3) {
   const nextBtn = container.querySelector('.carrusel-btn.next');
   let currentIndex = 0;
   let autoSlideInterval;
-  const slideDuration = 4000; // 4 segundos entre cada slide
+  const slideDuration = 3000; // 3 segundos entre cada slide
 
   // Clonar los slides para crear un efecto de bucle infinito
   const totalSlides = slides.length;
