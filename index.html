@@ -308,7 +308,7 @@
       color: #ffffff;
       text-shadow: 0 2px 12px rgba(0,0,0,0.15);
       line-height: 1.16;
-      border-bottom: 2px solid #1ebe5d;
+      border-bottom: 2px solid #000000;
       display: inline-block;
       padding-bottom: 0.18em;
       animation: fadeInHero 1s cubic-bezier(0.4,0,0.2,1);
@@ -317,7 +317,7 @@
       margin: 0 auto 1.5rem auto;
       max-width: 600px;
       padding: 1.1rem 1.1rem 0.7rem 1.1rem;
-      background: rgba(24,26,27,0.78);
+      background: rgb(255, 255, 255);
       border-radius: 15px;
       border: 1.5px solid #ffffff;
       box-shadow: 0 2px 18px rgba(0,0,0,0.10);
@@ -327,7 +327,7 @@
     .proyectos-frase {
       font-size: 1.08rem;
       font-weight: 500;
-      color: #000000;
+      color: #9c1616;
       margin-bottom: 0;
       letter-spacing: 0.04em;
       font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
@@ -1414,27 +1414,33 @@ body {
 
 
   <!-- PRODUCTOS -->
-  <section class="productos" style="padding: 4rem 1rem; background-color: #fff;">
+  <section class="productos" style="padding: 4rem 1rem; background-color: transparent;">
     <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
       <h2 style="color: #1a237e; font-size: 2.2rem; margin-bottom: 2.5rem; font-weight: 700;">Materiales Garantizados</h2>
       
       <div class="carrusel-container" id="carrusel-materiales" style="position: relative; max-width: 1200px; margin: 0 auto; overflow: hidden;">
         <button class="carrusel-btn prev" aria-label="Anterior" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(255,255,255,0.9); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #1a237e; transition: all 0.3s ease;">&#8592;</button>
         
-        <div class="carrusel-galeria" style="display: flex; transition: transform 0.5s ease; padding: 20px 0;">
-          <div class="carrusel-slide" style="min-width: 350px; margin: 0 15px; position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; height: 350px;">
-            <img src="images/producto1.webp" alt="Producto 1" style="width: 100%; height: 100%; object-fit: cover;">
-            <button class="ver-producto" onclick="window.open('https://panelylamina.com/catalogo','_blank')" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1a237e; color: white; border: 2px solid white; padding: 10px 25px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">Ver producto</button>
+        <div class="carrusel-galeria" style="display: flex; transition: transform 1s ease-in-out; padding: 20px 0;">
+          <div class="carrusel-slide" style="min-width: 350px; margin: 0 15px; position: relative; transition: transform 0.3s ease; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 450px;">
+            <div style="width: 100%; height: 380px; display: flex; align-items: center; justify-content: center; background: transparent;">
+              <img src="images/producto1.webp" alt="Producto 1" style="max-width: 100%; max-height: 100%; object-fit: contain; background: transparent;">
+            </div>
+            <button class="ver-producto" onclick="window.open('https://panelylamina.com/catalogo','_blank')" style="margin-top: 15px; background: #3f51b5; color: white; border: 2px solid #3f51b5; padding: 10px 30px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 1; box-shadow: 0 4px 15px rgba(63, 81, 181, 0.3);">Ver producto</button>
           </div>
           
-          <div class="carrusel-slide" style="min-width: 350px; margin: 0 15px; position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; height: 350px;">
-            <img src="images/producto2.webp" alt="Producto 2" style="width: 100%; height: 100%; object-fit: cover;">
-            <button class="ver-producto" onclick="window.open('https://panelylamina.com/catalogo','_blank')" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1a237e; color: white; border: 2px solid white; padding: 10px 25px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">Ver producto</button>
+          <div class="carrusel-slide" style="min-width: 350px; margin: 0 15px; position: relative; transition: transform 0.3s ease; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 450px;">
+            <div style="width: 100%; height: 380px; display: flex; align-items: center; justify-content: center; background: transparent;">
+              <img src="images/producto2.webp" alt="Producto 2" style="max-width: 100%; max-height: 100%; object-fit: contain; background: transparent;">
+            </div>
+            <button class="ver-producto" onclick="window.open('https://panelylamina.com/catalogo','_blank')" style="margin-top: 15px; background: #3f51b5; color: white; border: 2px solid #3f51b5; padding: 10px 30px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 1; box-shadow: 0 4px 15px rgba(63, 81, 181, 0.3);">Ver producto</button>
           </div>
           
-          <div class="carrusel-slide" style="min-width: 350px; margin: 0 15px; position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; height: 350px;">
-            <img src="images/producto3.webp" alt="Producto 3" style="width: 100%; height: 100%; object-fit: cover;">
-            <button class="ver-producto" onclick="window.open('https://panelylamina.com/catalogo','_blank')" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1a237e; color: white; border: 2px solid white; padding: 10px 25px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">Ver producto</button>
+          <div class="carrusel-slide" style="min-width: 350px; margin: 0 15px; position: relative; transition: transform 0.3s ease; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 450px;">
+            <div style="width: 100%; height: 380px; display: flex; align-items: center; justify-content: center; background: transparent;">
+              <img src="images/producto3.webp" alt="Producto 3" style="max-width: 100%; max-height: 100%; object-fit: contain; background: transparent;">
+            </div>
+            <button class="ver-producto" onclick="window.open('https://panelylamina.com/catalogo','_blank')" style="margin-top: 15px; background: #3f51b5; color: white; border: 2px solid #3f51b5; padding: 10px 30px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 1; box-shadow: 0 4px 15px rgba(63, 81, 181, 0.3);">Ver producto</button>
           </div>
           
           <!-- Agrega más slides según sea necesario -->
@@ -1453,22 +1459,19 @@ body {
         .carrusel-slide {
           position: relative;
           cursor: pointer;
+          background: transparent !important;
+          box-shadow: none !important;
+          padding: 20px 0;
         }
         
-        .carrusel-slide:hover .ver-producto {
-          opacity: 1;
-          transform: translate(-50%, -10px);
-        }
-        
-        .carrusel-slide:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        .carrusel-slide {
+          transform: none !important;
         }
         
         .ver-producto:hover {
-          background: white !important;
-          color: #1a237e !important;
-          box-shadow: 0 6px 20px rgba(26, 35, 126, 0.3);
+          background: #3f51b5 !important;
+          color: white !important;
+          box-shadow: 0 4px 15px rgba(63, 81, 181, 0.3) !important;
         }
         
         @media (max-width: 768px) {
@@ -1502,47 +1505,170 @@ body {
   </section>
 
   <!-- PROYECTOS -->
-  <section class="proyectos" id="proyectos-section">
-  <h2 class="proyectos-main">Proyectos</h2>
-  <div class="proyectos-bienvenida">
-    <p class="proyectos-frase">Especialistas en satisfacer las necesidades de toda la industria de la construcción.</p>
-  </div>
-  <div class="carrusel-container" id="carrusel-proyectos">
-    <button class="carrusel-btn prev" aria-label="Anterior">&#8592;</button>
-    <div class="carrusel-galeria">
-      <div class="carrusel-slide">
-        <img src="images/proyecto1.webp" alt="Proyecto 1">
+  <section class="proyectos" id="proyectos-section" style="padding: 5rem 1rem; background: #f5f7ff;">
+    <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+      <h2 class="proyectos-main" style="color: #1a237e; font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800; position: relative; display: inline-block;">
+        Nuestros Proyectos
+        <span style="display: block; width: 80px; height: 4px; background: #3f51b5; margin: 0.8rem auto 0; border-radius: 2px;"></span>
+      </h2>
+      
+      <div class="proyectos-bienvenida" style="max-width: 800px; margin: 0 auto 1.5rem auto;">
+        <p class="proyectos-frase" style="color: #213e5a; font-size: 1.2rem; line-height: 1.7; margin-bottom: 2rem;">
+          Transformamos espacios con soluciones innovadoras en paneles y láminas. Cada proyecto es una muestra de nuestro compromiso con la excelencia y la calidad en la construcción.
+        </p>
       </div>
-      <div class="carrusel-slide">
-        <img src="images/proyecto2.webp" alt="Proyecto 2">
+      
+      <div class="carrusel-container" id="carrusel-proyectos" style="position: relative; max-width: 1200px; margin: 0 auto;">
+        <button class="carrusel-btn prev" aria-label="Anterior" style="position: absolute; left: -50px; top: 50%; transform: translateY(-50%); z-index: 10; background: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: #1a237e; transition: all 0.3s ease;">&#8592;</button>
+        
+        <div class="carrusel-galeria" style="display: flex; transition: transform 0.5s ease; padding: 20px 0; gap: 20px;">
+          <div class="carrusel-slide" style="min-width: 360px; margin: 0 10px; position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.1); transition: all 0.4s ease; height: 400px;">
+            <img src="images/proyecto1.webp" alt="Proyecto 1" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <div class="proyecto-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 2rem;">
+              <div style="transform: translateY(30px); transition: transform 0.3s ease 0.1s;">
+                <h3 style="color: white; font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 600;">Proyecto Residencial</h3>
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-bottom: 1.2rem;">Solución en paneles aislantes para vivienda</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="carrusel-slide" style="min-width: 360px; margin: 0 10px; position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.1); transition: all 0.4s ease; height: 400px;">
+            <img src="images/proyecto2.webp" alt="Proyecto 2" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <div class="proyecto-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 2rem;">
+              <div style="transform: translateY(30px); transition: transform 0.3s ease 0.1s;">
+                <h3 style="color: white; font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 600;">Proyecto Comercial</h3>
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-bottom: 1.2rem;">Estructuras metálicas para locales comerciales</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Repetir para los demás proyectos -->
+          <div class="carrusel-slide" style="min-width: 360px; margin: 0 10px; position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.1); transition: all 0.4s ease; height: 400px;">
+            <img src="images/proyecto3.webp" alt="Proyecto 3" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <div class="proyecto-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 2rem;">
+              <div style="transform: translateY(30px); transition: transform 0.3s ease 0.1s;">
+                <h3 style="color: white; font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 600;">Proyecto Industrial</h3>
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-bottom: 1.2rem;">Naves industriales con paneles aislantes</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="carrusel-slide" style="min-width: 360px; margin: 0 10px; position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.1); transition: all 0.4s ease; height: 400px;">
+            <img src="images/proyecto4.webp" alt="Proyecto 4" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <div class="proyecto-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 2rem;">
+              <div style="transform: translateY(30px); transition: transform 0.3s ease 0.1s;">
+                <h3 style="color: white; font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 600;">Techumbres</h3>
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-bottom: 1.2rem;">Sistemas de techado con láminas térmicas</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="carrusel-slide" style="min-width: 360px; margin: 0 10px; position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.1); transition: all 0.4s ease; height: 400px;">
+            <img src="images/proyecto5.webp" alt="Proyecto 5" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <div class="proyecto-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 2rem;">
+              <div style="transform: translateY(30px); transition: transform 0.3s ease 0.1s;">
+                <h3 style="color: white; font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 600;">Fachadas</h3>
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-bottom: 1.2rem;">Sistemas de fachada con paneles aislantes</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="carrusel-slide" style="min-width: 360px; margin: 0 10px; position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.1); transition: all 0.4s ease; height: 400px;">
+            <img src="images/proyecto6.webp" alt="Proyecto 6" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <div class="proyecto-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 2rem;">
+              <div style="transform: translateY(30px); transition: transform 0.3s ease 0.1s;">
+                <h3 style="color: white; font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 600;">Interiores</h3>
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-bottom: 1.2rem;">Aislamiento acústico y térmico para interiores</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <button class="carrusel-btn next" aria-label="Siguiente" style="position: absolute; right: -50px; top: 50%; transform: translateY(-50%); z-index: 10; background: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: #3f51b5; transition: all 0.3s ease;">&#8594;</button>
       </div>
-      <div class="carrusel-slide">
-        <img src="images/proyecto3.webp" alt="Proyecto 3">
+      
+      <!-- Botón de WhatsApp -->
+      <div style="margin-top: 3rem; margin-bottom: 1rem;">
+        <a href="https://wa.me/523318088119" class="whatsapp-proyecto" target="_blank" style="display: inline-flex; align-items: center; background: #3f51b5; color: white; padding: 14px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(63, 81, 181, 0.3); font-size: 1.1rem;">
+          <i class="fab fa-whatsapp" style="font-size: 1.4rem; margin-right: 12px;"></i>
+          Cotiza tu proyecto
+        </a>
       </div>
-      <div class="carrusel-slide">
-        <img src="images/proyecto4.webp" alt="Proyecto 4">
-      </div>
-      <div class="carrusel-slide">
-        <img src="images/proyecto5.webp" alt="Proyecto 5">
-      </div>
-      <div class="carrusel-slide">
-        <img src="images/proyecto6.webp" alt="Proyecto 6">
-      </div>
-      <div class="carrusel-slide">
-        <img src="images/proyecto7.webp" alt="Proyecto 7">
-      </div>
-      <div class="carrusel-slide">
-        <img src="images/proyecto8.webp" alt="Proyecto 8">
-      </div>
-      <div class="carrusel-slide">
-        <img src="images/proyecto9.webp" alt="Proyecto 9">
-      </div>
-  
-      <!-- Agrega más divs .carrusel-slide para más proyectos -->
+      
+      <style>
+        .carrusel-btn:hover {
+          background: #1a237e !important;
+          color: white !important;
+          transform: translateY(-50%) scale(1.1) !important;
+        }
+        
+        .carrusel-slide {
+          cursor: pointer;
+        }
+        
+        .carrusel-slide:hover {
+          transform: translateY(-10px) !important;
+          box-shadow: 0 15px 35px rgba(63, 81, 181, 0.2) !important;
+        }
+        
+        .carrusel-slide:hover .proyecto-overlay {
+          opacity: 1;
+          background: linear-gradient(to top, rgba(63, 81, 181, 0.9) 0%, rgba(63, 81, 181, 0.1) 50%);
+        }
+        
+        .carrusel-slide:hover .proyecto-overlay div {
+          transform: translateY(0) !important;
+        }
+        
+        .carrusel-slide:hover img {
+          transform: scale(1.05);
+        }
+        
+        .whatsapp-proyecto:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 30px rgba(63, 81, 181, 0.5) !important;
+          background: #303f9f;
+        }
+        
+        @media (max-width: 1024px) {
+          .carrusel-slide {
+            min-width: 300px !important;
+            height: 350px !important;
+          }
+          
+          .carrusel-btn {
+            width: 40px !important;
+            height: 40px !important;
+            font-size: 1.2rem !important;
+          }
+          
+          .carrusel-btn.prev {
+            left: -20px !important;
+          }
+          
+          .carrusel-btn.next {
+            right: -20px !important;
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .carrusel-slide {
+            min-width: 280px !important;
+            height: 320px !important;
+          }
+          
+          .proyectos-frase {
+            font-size: 1.1rem !important;
+            padding: 0 1rem;
+          }
+          
+          .carrusel-btn {
+            display: none !important;
+          }
+        }
+      </style>
     </div>
-    <button class="carrusel-btn next" aria-label="Siguiente">&#8594;</button>
-  </div>
-</section>
+  </section>
 
   <!-- SUCURSALES -->
   <section class="sucursales">
