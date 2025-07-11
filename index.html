@@ -14,14 +14,1198 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .hero {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+    .navbar-hero {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+    
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #ECECEC;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    
+    header.hero {
+      background: #ffffff;
+      color: #ECECEC;
+      text-align: center;
+      padding: 3.2rem 1rem 2.5rem 1rem;
+      border-bottom: 1px solid #fcfcfc;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-main {
+      font-family: 'Montserrat', 'Poppins', 'Segoe UI', Arial, sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 0.7rem;
+      color: #050505;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.18);
+      line-height: 1.18;
+      border-bottom: 2.5px solid #000000;
+      display: inline-block;
+      padding-bottom: 0.25em;
+      animation: fadeInHero 1s cubic-bezier(0.4,0,0.2,1);
+    }
+    .hero-sub {
+      font-family: 'Montserrat', 'Poppins', 'Segoe UI', Arial, sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #0824a1;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.3px;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      animation: fadeInHero 1.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .hero-bienvenida {
+      margin: 0 auto;
+      max-width: 730px;
+      padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+      background: rgba(0, 0, 0, 0.82);
+      border-radius: 20px;
+      border: 1.5px solid #2C2F33;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+      backdrop-filter: blur(2px);
+      animation: fadeInHero 1.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .bienvenida-frase {
+      font-size: 1.18rem;
+      font-weight: 500;
+      color: #ECECEC;
+      margin-bottom: 0.4em;
+      letter-spacing: 0.05em;
+      font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+    }
+    .bienvenida-detalle {
+      font-size: 1.03rem;
+      font-weight: 400;
+      color: #B0B0B0;
+      margin-bottom: 0;
+      font-family: 'Montserrat', 'Poppins', Arial, sans-serif;
+      line-height: 1.5;
+    }
+    @keyframes fadeInHero {
+      from { opacity: 0; transform: translateY(32px); }
+      to { opacity: 1; transform: none; }
+    }
+    @media (max-width: 700px) {
+      .hero-main { font-size: 1.5rem; }
+      .hero-sub { font-size: 1.05rem; }
+      .hero-bienvenida { padding: 1.1rem 0.5rem; }
+    }
+    
+    .logo {
+      display: block;
+      max-width: 260px;
+      width: 90vw;
+      margin: 0 auto 2rem auto;
+      filter: drop-shadow(0 8px 32px rgba(255, 255, 255, 0.15));
+      transition: transform 0.3s;
+    }
+    .logo:hover {
+      transform: scale(1.04) rotate(-2deg);
+      filter: drop-shadow(0 16px 40px rgba(255, 255, 255, 0.22));
+    }
+    @media (max-width: 600px) {
+      .logo {
+        max-width: 180px;
+        margin-bottom: 1.2rem;
+      }
+    }
+    
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 1rem;
+      background: #000000;
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15);
+      transition: all 0.3s ease;
+      border: 2px solid #000000;
+      outline: none;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+    }
+    
+    .cta.whatsapp-btn {
+      background: #25D366;
+      border-color: #25D366;
+      padding: 0.9rem 2.2rem;
+      font-size: 1.1rem;
+    }
+    
+    .whatsapp-icon {
+      font-size: 1.6rem;
+      display: inline-flex;
+      align-items: center;
+      animation: pulse 2s infinite;
+      margin-right: 4px;
+      filter: drop-shadow(0 2px 4px rgb(255, 255, 255));
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    .cta.whatsapp-btn:hover {
+      background: #1ebe5d;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+    }
+    .cta:hover, .cta:focus {
+      background: #1ebe5d;
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 8px 24px rgba(37,211,102,0.25);
+      text-decoration: none;
+      color: #fff;
+    }
+    .cta:active {
+      background: #189c4c;
+      transform: scale(0.98);
+    }
+    .cta-watts {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem 0 1rem 0;
+      width: 100%;
+    }
+    
+    section {
+      padding: 2rem 1rem;
+      background: #ffffff;
+      margin-bottom: 1.2rem;
+      border-radius: 18px;
+      box-shadow: 0 2px 12px rgba(255, 255, 255, 0.08);
+      border: 1px solid #ffffff;
+    }
+    
+    section h2 {
+      color: #000000;
+      margin-bottom: 1rem;
+      text-align: center;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+    
+    ul {
+      list-style: none;
+      padding-left: 0;
+      max-width: 600px;
+      margin: auto;
+    }
+    
+    ul li {
+      background: #ffffff;
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+      border-left: 5px solid #ffffff;
+      color: #ECECEC;
+    }
+    
+    .sobre-nosotros .stats {
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: bold;
+      color: #ffffff;
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+    }
+    .destacado {
+      text-align: center;
+      font-family: 'Montserrat', 'Poppins', 'Segoe UI', Arial, sans-serif;
+      font-size: 1.25rem;
+      color: #ffffff;
+      font-weight: 600;
+      margin: 1.5rem auto 0 auto;
+      letter-spacing: 0.5px;
+      max-width: 600px;
+      line-height: 1.5;
+      background: transparent;
+    }
+    .subtitulo-nosotros {
+      text-align: center;
+      font-family: 'Montserrat', 'Poppins', 'Segoe UI', Arial, sans-serif;
+      font-size: 1.15rem;
+      color: #000000;
+      font-weight: 500;
+      margin: 1.2rem auto 0.7rem auto;
+      letter-spacing: 0.2px;
+      max-width: 650px;
+      line-height: 1.5;
+    }
+    
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .galeria img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+      background: #1A1A1A;
+      border: 1px solid #23272A;
+    }
+    
+    blockquote {
+      background: #23272A;
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 600px;
+      font-style: italic;
+      border-left: 4px solid #393C41;
+      color: #ECECEC;
+    }
+    
+    footer {
+      background: #000000;
+      color: #ffffff;
+      text-align: center;
+      padding: 1.2rem;
+      border-top: 1px solid #23272A;
+    }
+    
+    .proyectos-main {
+      font-family: 'Montserrat', 'Poppins', 'Segoe UI', Arial, sans-serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: 0.7px;
+      margin-bottom: 0.6rem;
+      color: #ffffff;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      line-height: 1.16;
+      border-bottom: 2px solid #1ebe5d;
+      display: inline-block;
+      padding-bottom: 0.18em;
+      animation: fadeInHero 1s cubic-bezier(0.4,0,0.2,1);
+    }
+    .proyectos-bienvenida {
+      margin: 0 auto 1.5rem auto;
+      max-width: 600px;
+      padding: 1.1rem 1.1rem 0.7rem 1.1rem;
+      background: rgba(24,26,27,0.78);
+      border-radius: 15px;
+      border: 1.5px solid #ffffff;
+      box-shadow: 0 2px 18px rgba(0,0,0,0.10);
+      backdrop-filter: blur(1.5px);
+      animation: fadeInHero 1.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .proyectos-frase {
+      font-size: 1.08rem;
+      font-weight: 500;
+      color: #000000;
+      margin-bottom: 0;
+      letter-spacing: 0.04em;
+      font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+      text-align: center;
+    }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .galeria {
+        flex-direction: column;
+        align-items: center;
+      }
+      .cta {
+        font-size: 1rem;
+      }
+      header.hero h1 {
+        font-size: 1.5rem;
+      }
+      section h2 {
+        font-size: 1.3rem;
+      }
+    }
+    
+    /* Performance Tips */
+    img {
+      width: 100%;
+      height: auto;
+    }
+  /* Carrusel estilos */
+.carrusel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin: 0 auto 3rem auto;
+  max-width: 1200px;
+  padding: 0 20px;
+    }
+
+.carrusel-galeria {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1140px;
+  padding: 10px 0;
+}
+
+.carrusel-slide {
+  min-width: 360px;
+  max-width: 360px;
+  height: 400px;
+  margin: 0 15px;
+  background: #2a2f33;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 8px 30px rgb(255, 255, 255);
+  padding: 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.carrusel-slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.carrusel-slide:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.carrusel-slide:hover::before {
+  opacity: 1;
+}
+
+#carrusel-materiales .carrusel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+  background: white;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#carrusel-proyectos .carrusel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+
+.carrusel-slide:hover img {
+  transform: scale(1.03);
+}
+
+/* Efecto de superposición al hacer hover - Solo para el carrusel de proyectos */
+#carrusel-proyectos .carrusel-slide::after {
+  content: 'Ver Proyecto';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  padding: 12px 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+  z-index: 2;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+#carrusel-proyectos .carrusel-slide:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fondo para el botón en el carrusel de materiales */
+#carrusel-materiales .carrusel-slide::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.9));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+#carrusel-materiales .carrusel-slide:hover::after {
+  opacity: 1;
+}
+
+.ver-producto {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #1a237e; /* Azul oscuro */
+  color: white;
+  border: 2px solid white;
+  padding: 10px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(26, 35, 126, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 2;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 90%;
+}
+
+.ver-producto:hover {
+  background: #0d47a1; /* Azul un poco más claro al pasar el mouse */
+  transform: translateX(-50%) translateY(8px);
+  box-shadow: 0 6px 20px rgba(26, 35, 126, 0.3);
+}
+
+.ver-producto:active {
+  transform: translateX(-50%) translateY(10px);
+  box-shadow: 0 2px 10px rgba(26, 35, 126, 0.3);
+}
+
+/* Estilos para el lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+  display: flex;
+  opacity: 1;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90vh;
+  position: relative;
+  animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 8px;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 300;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 1001;
+}
+
+.lightbox-close:hover {
+  transform: rotate(90deg);
+  color: #ffffff;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 1001;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.5);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: #1ebe5d;
+  transform: scale(1.1);
+}
+
+/* Estilos para la sección de beneficios */
+.beneficios {
+  padding: 4rem 5%;
+  background: #f8f9fa;
+  text-align: center;
+}
+
+.beneficios-header {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.beneficios h2 {
+  color: #1a1a1a;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.beneficios h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #1a1a1a;
+  border-radius: 2px;
+}
+
+.beneficios-subtitle {
+  color: #555;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-top: 1rem;
+}
+
+.beneficios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.beneficio-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.beneficio-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #1a1a1a;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.beneficio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.beneficio-card:hover::before {
+  transform: scaleX(1);
+}
+
+.beneficio-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1.5rem;
+  background: #f8f9fa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+.beneficio-card:hover .beneficio-icon {
+  background: #1a1a1a;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.beneficio-card h3 {
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.beneficio-card p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .beneficios {
+    padding: 3rem 5%;
+  }
+  
+  .beneficios h2 {
+    font-size: 2rem;
+  }
+  
+  .beneficios-subtitle {
+    font-size: 1rem;
+  }
+  
+  .beneficios-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .beneficio-card {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Estilos para la sección de sucursales */
+.sucursales {
+  padding: 3rem 5%;
+  background-color: #f9f9f9;
+}
+
+.sucursales h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 2.2rem;
+}
+
+.sucursales-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.sucursales-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+}
+
+.sucursales-tabs {
+  display: flex;
+  overflow-x: auto;
+  background: #f0f0f0;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff #f0f0f0;
+}
+
+.sucursales-tabs::-webkit-scrollbar {
+  height: 6px;
+}
+
+.sucursales-tabs::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 3px;
+}
+
+.tab-btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #444;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tab-btn:hover {
+  background: #e0e0e0;
+}
+
+.tab-btn.active {
+  background: #1ebe5d;
+  color: white;
+  box-shadow: 0 4px 8px rgba(30, 190, 93, 0.3);
+}
+
+.sucursales-content {
+  position: relative;
+  min-height: 400px;
+}
+
+.tab-content {
+  display: none;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2rem;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-content.active {
+  display: grid;
+}
+
+.sucursal-info {
+  padding: 1rem;
+}
+
+.sucursal-info h3 {
+  color: #222;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  position: relative;
+  padding-bottom: 0.8rem;
+}
+
+.sucursal-info h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #1ebe5d;
+}
+
+.sucursal-info p {
+  margin: 1rem 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.sucursal-info i {
+  color: #1ebe5d;
+  width: 20px;
+  margin-right: 10px;
+}
+
+.sucursal-info a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sucursal-info a:hover {
+  color: #1ebe5d;
+}
+
+.ver-mapa {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background: #f0f9f0;
+  color: #1ebe5d !important;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+}
+
+.ver-mapa:hover {
+  background: #1ebe5d;
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(30, 190, 93, 0.3);
+}
+
+.ver-mapa i {
+  margin-right: 8px;
+  transition: all 0.3s ease;
+}
+
+.ver-mapa:hover i {
+  color: white !important;
+}
+
+.sucursal-mapa {
+  height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sucursales-note {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #e8f5e9;
+  border-radius: 8px;
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+.sucursales-note i {
+  margin-right: 8px;
+  color: #2e7d32;
+}
+
+/* Ajustes responsivos para la sección de sucursales */
+@media (max-width: 992px) {
+  .tab-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .sucursal-mapa {
+    height: 300px;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sucursales {
+    padding: 2rem 4%;
+  }
+  
+  .sucursales h2 {
+    font-size: 1.8rem;
+  }
+  
+  .tab-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sucursales {
+    padding: 1.5rem 3%;
+  }
+  
+  .sucursales h2 {
+    font-size: 1.6rem;
+  }
+  
+  .tab-content {
+    padding: 1rem;
+  }
+  
+  .sucursal-info h3 {
+    font-size: 1.2rem;
+  }
+  
+  .ver-mapa {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Ajustes responsivos */
+@media (max-width: 1024px) {
+  .carrusel-slide {
+    min-width: 300px;
+    height: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carrusel-slide {
+    min-width: 280px;
+    height: 320px;
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carrusel-slide {
+    min-width: 85vw;
+    height: 300px;
+    margin: 0 5px;
+  }
+}
+.carrusel-btn {
+  background: transparent;
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 2.2rem;
+  font-weight: 300;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+  position: relative;
+  opacity: 0.7;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.carrusel-btn:hover {
+  opacity: 1;
+  transform: scale(1.2);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.carrusel-btn:active {
+  transform: scale(0.9);
+}
+
+/* Posicionar los botones en los extremos del contenedor */
+.carrusel-btn.prev {
+  left: 10px;
+}
+
+.carrusel-btn.next {
+  right: 10px;
+}
+
+/* Asegurar que los botones estén por encima de las imágenes */
+.carrusel-container {
+  position: relative;
+}
+
+.carrusel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Ocultar botones en dispositivos muy pequeños */
+@media (max-width: 480px) {
+  .carrusel-btn {
+    display: none;
+  }
+}
+.ver-producto {
+  background: #25D366;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(37,211,102,0.13);
+  transition: background 0.2s;
+}
+.ver-producto:hover { background: #1ebe5d; }
+@media (max-width: 1100px) {
+  .carrusel-slide { min-width: 260px; max-width: 260px; }
+}
+@media (max-width: 900px) {
+  .carrusel-slide { min-width: 200px; max-width: 200px; }
+}
+@media (max-width: 700px) {
+  .carrusel-galeria { max-width: 98vw; }
+  .carrusel-slide { min-width: 90vw; max-width: 90vw; }
+}
+.navbar-hero {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 2.5vw 0.5rem 2vw;
+  background: rgba(35,39,42,0.97);
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 2px 18px rgba(30,190,93,0.08);
+  margin-bottom: 1.1rem;
+  min-height: 64px;
+  margin-top: 0;
+}
+.hero {
+  margin-top: 0;
+  padding-top: 0;
+}
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+.logo-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: box-shadow 0.18s;
+}
+.logo-btn:focus,.logo-btn:hover {
+  box-shadow: 0 0 0 2px #1ebe5d44;
+}
+.navbar-img {
+  height: 48px;
+  width: auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(30,190,93,0.08);
+}
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+.navbar-btn {
+  background: none;
+  border: none;
+  color: #ECECEC;
+  font-family: 'Montserrat', 'Poppins', Arial, sans-serif;
+  font-size: 1.13rem;
+  font-weight: 600;
+  padding: 0.65rem 1.5rem;
+  border-radius: 22px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  letter-spacing: 0.5px;
+  box-shadow: none;
+  outline: none;
+  margin-left: 0;
+}
+.navbar-btn:hover, .navbar-btn:focus {
+  background: #1ebe5d;
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(30,190,93,0.10);
+}
+.navbar-btn.whatsapp {
+  background: #25D366;
+  color: #fff;
+  margin-left: 0.5rem;
+  box-shadow: 0 2px 8px rgba(37,211,102,0.13);
+}
+.navbar-btn.whatsapp:hover {
+  background: #1ebe5d;
+}
+@media (max-width: 700px) {
+  .navbar-hero {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.6rem 2vw 0.6rem 2vw;
+    min-height: 56px;
+    gap: 0.6rem;
+  }
+  .navbar-links {
+    justify-content: center;
+    gap: 0.6rem;
+  }
+  .navbar-img {
+    height: 36px;
+  }
+}
+
+  body {
+    padding-top: 62px; /* Espacio para la navbar fija */
+    margin-left: 0.5rem;
+  }
+.navbar-btn.whatsapp:hover {
+  background: #1ebe5d;
+}
+body {
+  padding-top: 62px; /* Espacio para la navbar fija */
+}
+</style>
   <link rel="icon" href="favicon.ico">
 </head>
 <body>
   <!-- HERO -->
   <header class="hero">
+    <nav class="navbar-hero">
+      <div class="navbar-logo">
+        <button class="logo-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});" aria-label="Inicio">
+          <img src="/images/logoblanco.webp" alt="Logo" class="navbar-img">
+        </button>
+      </div>
+      <div class="navbar-links">
+        <button class="navbar-btn" onclick="window.open('https://panelylamina.com/catalogo','_blank')">Catálogo</button>
+        <button class="navbar-btn" onclick="document.getElementById('proyectos-section').scrollIntoView({behavior: 'smooth'});">Proyectos</button>
+        <button class="navbar-btn whatsapp" onclick="window.open('https://wa.me/523318088119','_blank')">Cotizar</button>
+      </div>
+    </nav>
     <div class="logo-nombre">
-      <img src="/logo.png" alt="Logo P&L Paneles" class="logo">
+      <img src="/images/logoazul.webp" alt="Logo P&L Paneles" class="logo">
       <span class="nombre"></span>
     </div>
     <h1 class="hero-main">Líderes de venta en panel aislado y láminas</h1>
@@ -33,40 +1217,279 @@
   </header>
 
   <!-- BENEFICIOS -->
-  <section class="beneficios">
-    <h2>✔ ¿Por qué elegirnos?</h2>
-    <ul>
-      <li>✅ Atención personalizada</li>
-      <li>✅ Inventario para entrega inmediata</li>
-      <li>✅ Amplia variedad de panel aislado, multypanel y láminas</li>
-      <li>✅ Envíos a todo el país</li>
-      <li>✅ Precios competitivos por volumen</li>
-    </ul>
-  </section>
-  <section class="cta-watts">
-    <a class="cta" href="https://wa.me/523318088119" target="_blank">📲 Cotizar ahora por WhatsApp</a>
-  </section>
+  <section class="cta-watts" style="padding: 2rem 0; background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);">
+    <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+      <a class="cta whatsapp-btn" href="https://wa.me/523318088119" target="_blank" style="display: inline-flex; align-items: center; background: #25D366; color: white; padding: 12px 28px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); transition: all 0.3s ease; margin-bottom: 2rem;">
+        <i class="fab fa-whatsapp" style="font-size: 1.4rem; margin-right: 10px;"></i>
+        <span>Cotiza gratis por WhatsApp</span>
+      </a>
+      
 
-  <!-- SOBRE NOSOTROS -->
-  <section class="sobre-nosotros">
-    <h2>📦 Empresa líder en distribución de paneles aislantes</h2>
-    <p class="subtitulo-nosotros">Trabajamos con panel aislado y láminas de alta calidad para toda la industria de la construcción.</p>
-    <p class="destacado">Te ayudamos a elegir el material ideal según tu necesidad y presupuesto.</p>
-    <div class="stats">
-      <span>+30 años de experiencia</span> |
-      <span>+5500 proyectos</span> |
-      <span>+20 marcas</span>
+    <style>
+      .cta.whatsapp-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      }
+      
+      .stat-number {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .stat-number::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, #1a237e, #3f51b5);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.6s ease 1s;
+      }
+      
+      .stats-container.animate .stat-number::after {
+        transform: scaleX(1);
+      }
+      
+      @media (max-width: 768px) {
+        .stats-container {
+          flex-direction: column;
+          gap: 1.5rem !important;
+        }
+        
+        .stat-divider {
+          display: none;
+        }
+        
+        .stat-item {
+          margin-bottom: 1rem;
+        }
+      }
+    </style>
+    
+    <script>
+      // Animate numbers
+      function animateValue(el, start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+          if (!startTimestamp) startTimestamp = timestamp;
+          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+          el.textContent = Math.floor(progress * (end - start) + start);
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+          }
+        };
+        window.requestAnimationFrame(step);
+      }
+      
+      // Animate on scroll
+      function animateOnScroll() {
+        const statsSection = document.querySelector('.stats-section');
+        const statsContainer = document.querySelector('.stats-container');
+        const statItems = document.querySelectorAll('.stat-item');
+        const headings = document.querySelectorAll('.stats-section h2, .stats-section p, .stats-container');
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // Animate headings and text
+              headings.forEach((el, index) => {
+                setTimeout(() => {
+                  el.style.opacity = '1';
+                  el.style.transform = 'translateY(0)';
+                }, index * 200);
+              });
+              
+              // Animate numbers
+              setTimeout(() => {
+                statsContainer.classList.add('animate');
+                document.querySelectorAll('.counter').forEach(counter => {
+                  const target = +counter.getAttribute('data-target');
+                  animateValue(counter, 0, target, 2000);
+                });
+              }, 1000);
+              
+              // Unobserve after animation
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        
+        observer.observe(statsSection);
+      }
+      
+      // Initialize animations when document is loaded
+      document.addEventListener('DOMContentLoaded', animateOnScroll);
+    </script>
+  </section>
+  <section class="beneficios" style="background-color: #f8f9fa; padding: 4rem 1rem;">
+    <div class="beneficios-header" style="text-align: center; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+      <h2 style="color: #1a237e; font-size: 2.2rem; margin-bottom: 1rem; font-weight: 700;">¿Por qué elegirnos?</h2>
+      <p class="beneficios-subtitle" style="color: #555; font-size: 1.1rem; line-height: 1.6;">Soluciones integrales en paneles y láminas para tus proyectos de construcción</p>
+    </div>
+    <div class="beneficios-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1400px; margin: 0 auto; padding: 0 1rem;">
+      <div class="beneficio-card" style="background: white; border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid #eee;">
+        <div class="beneficio-icon" style="width: 70px; height: 70px; background: #e8eaf6; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.8rem; color: #1a237e;">
+          <i class="fas fa-headset"></i>
+        </div>
+        <h3 style="color: #1a237e; margin-bottom: 1rem; font-size: 1.3rem;">Atención personalizada</h3>
+        <p style="color: #666; line-height: 1.6; font-size: 1rem;">Asesoría experta para encontrar la mejor solución para tu proyecto, con un trato cercano y profesional.</p>
+      </div>
+      
+      <div class="beneficio-card" style="background: white; border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid #eee;">
+        <div class="beneficio-icon" style="width: 70px; height: 70px; background: #e8eaf6; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.8rem; color: #1a237e;">
+          <i class="fas fa-truck-loading"></i>
+        </div>
+        <h3 style="color: #1a237e; margin-bottom: 1rem; font-size: 1.3rem;">Inventario disponible</h3>
+        <p style="color: #666; line-height: 1.6; font-size: 1rem;">Entrega inmediata gracias a nuestro amplio inventario en stock, listo para ser despachado.</p>
+      </div>
+      
+      <div class="beneficio-card" style="background: white; border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid #eee;">
+        <div class="beneficio-icon" style="width: 70px; height: 70px; background: #e8eaf6; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.8rem; color: #1a237e;">
+          <i class="fas fa-th-large"></i>
+        </div>
+        <h3 style="color: #1a237e; margin-bottom: 1rem; font-size: 1.3rem;">Amplia variedad</h3>
+        <p style="color: #666; line-height: 1.6; font-size: 1rem;">Paneles aislados, multypanel y láminas de las mejores marcas del mercado.</p>
+      </div>
+      
+      <div class="beneficio-card" style="background: white; border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid #eee;">
+        <div class="beneficio-icon" style="width: 70px; height: 70px; background: #e8eaf6; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.8rem; color: #1a237e;">
+          <i class="fas fa-map-marked-alt"></i>
+        </div>
+        <h3 style="color: #1a237e; margin-bottom: 1rem; font-size: 1.3rem;">Cobertura nacional</h3>
+        <p style="color: #666; line-height: 1.6; font-size: 1rem;">Enviamos a todo el país con seguimiento en tiempo real y la mejor logística.</p>
+      </div>
+      
+      <div class="beneficio-card" style="background: white; border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid #eee;">
+        <div class="beneficio-icon" style="width: 70px; height: 70px; background: #e8eaf6; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.8rem; color: #1a237e;">
+          <i class="fas fa-tags"></i>
+        </div>
+        <h3 style="color: #1a237e; margin-bottom: 1rem; font-size: 1.3rem;">Precios competitivos</h3>
+        <p style="color: #666; line-height: 1.6; font-size: 1rem;">Excelentes precios por volumen y descuentos especiales para proyectos grandes.</p>
+      </div>
+      
+      <div class="beneficio-card" style="background: white; border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid #eee;">
+        <div class="beneficio-icon" style="width: 70px; height: 70px; background: #e8eaf6; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.8rem; color: #1a237e;">
+          <i class="fas fa-medal"></i>
+        </div>
+        <h3 style="color: #1a237e; margin-bottom: 1rem; font-size: 1.3rem;">Garantía de calidad</h3>
+        <p style="color: #666; line-height: 1.6; font-size: 1rem;">Productos certificados y con garantía de fábrica, respaldados por años de experiencia.</p>
+      </div>
     </div>
   </section>
+ 
+
+  <!-- SOBRE NOSOTROS -->
+  <div class="stats-section" style="padding: 2rem 1rem; max-width: 900px; margin: 0 auto;">
+    <h2 style="color: #1a237e; font-size: 1.8rem; margin-bottom: 1rem; font-weight: 700; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease;">
+      <span style="display: inline-block;">📦</span> Empresa líder en distribución de paneles aislantes
+    </h2>
+    <p style="color: #444; font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;">
+      Trabajamos con panel aislado y láminas de alta calidad para toda la industria de la construcción.
+    </p>
+    <p style="color: #1a237e; font-size: 1.2rem; font-weight: 500; margin-bottom: 2rem; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s;">
+      Te ayudamos a elegir el material ideal según tu necesidad y presupuesto.
+    </p>
+    
+    <div class="stats-container" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; margin-top: 2.5rem; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease 0.6s, transform 0.6s ease 0.6s;">
+      <div class="stat-item" style="text-align: center;">
+        <div class="stat-number" style="font-size: 2.2rem; font-weight: 700; color: #1a237e; margin-bottom: 0.5rem; line-height: 1;">+<span class="counter" data-target="30">0</span></div>
+        <div class="stat-label" style="font-size: 1rem; color: #555; text-transform: uppercase; letter-spacing: 1px;">Años de experiencia</div>
+      </div>
+      <div class="stat-divider" style="width: 1px; background: #ddd; margin: 0 10px;"></div>
+      <div class="stat-item" style="text-align: center;">
+        <div class="stat-number" style="font-size: 2.2rem; font-weight: 700; color: #1a237e; margin-bottom: 0.5rem; line-height: 1;">+<span class="counter" data-target="5500">0</span></div>
+        <div class="stat-label" style="font-size: 1rem; color: #555; text-transform: uppercase; letter-spacing: 1px;">Proyectos realizados</div>
+      </div>
+      <div class="stat-divider" style="width: 1px; background: #ddd; margin: 0 10px;"></div>
+      <div class="stat-item" style="text-align: center;">
+        <div class="stat-number" style="font-size: 2.2rem; font-weight: 700; color: #1a237e; margin-bottom: 0.5rem; line-height: 1;">+<span class="counter" data-target="20">0</span></div>
+        <div class="stat-label" style="font-size: 1rem; color: #555; text-transform: uppercase; letter-spacing: 1px;">Marcas disponibles</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <!-- PRODUCTOS -->
-  <section class="Nuestos productos">
-    <h2>Materiales garantizados</h2>
-    <div class="galeria">
-      <!-- Sustituir 'producto1.jpg', 'producto2.jpg', etc. con tus imágenes -->
-      <img src="producto1.jpg" alt="Producto 1">
-      <img src="producto2.jpg" alt="Producto 2">
-      <img src="producto3.jpg" alt="Producto 3">
+  <section class="productos" style="padding: 4rem 1rem; background-color: #fff;">
+    <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+      <h2 style="color: #1a237e; font-size: 2.2rem; margin-bottom: 2.5rem; font-weight: 700;">Materiales Garantizados</h2>
+      
+      <div class="carrusel-container" id="carrusel-materiales" style="position: relative; max-width: 1200px; margin: 0 auto; overflow: hidden;">
+        <button class="carrusel-btn prev" aria-label="Anterior" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(255,255,255,0.9); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #1a237e; transition: all 0.3s ease;">&#8592;</button>
+        
+        <div class="carrusel-galeria" style="display: flex; transition: transform 0.5s ease; padding: 20px 0;">
+          <div class="carrusel-slide" style="min-width: 350px; margin: 0 15px; position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; height: 350px;">
+            <img src="images/producto1.webp" alt="Producto 1" style="width: 100%; height: 100%; object-fit: cover;">
+            <button class="ver-producto" onclick="window.open('https://panelylamina.com/catalogo','_blank')" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1a237e; color: white; border: 2px solid white; padding: 10px 25px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">Ver producto</button>
+          </div>
+          
+          <div class="carrusel-slide" style="min-width: 350px; margin: 0 15px; position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; height: 350px;">
+            <img src="images/producto2.webp" alt="Producto 2" style="width: 100%; height: 100%; object-fit: cover;">
+            <button class="ver-producto" onclick="window.open('https://panelylamina.com/catalogo','_blank')" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1a237e; color: white; border: 2px solid white; padding: 10px 25px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">Ver producto</button>
+          </div>
+          
+          <div class="carrusel-slide" style="min-width: 350px; margin: 0 15px; position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; height: 350px;">
+            <img src="images/producto3.webp" alt="Producto 3" style="width: 100%; height: 100%; object-fit: cover;">
+            <button class="ver-producto" onclick="window.open('https://panelylamina.com/catalogo','_blank')" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1a237e; color: white; border: 2px solid white; padding: 10px 25px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">Ver producto</button>
+          </div>
+          
+          <!-- Agrega más slides según sea necesario -->
+        </div>
+        
+        <button class="carrusel-btn next" aria-label="Siguiente" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(255,255,255,0.9); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #1a237e; transition: all 0.3s ease;">&#8594;</button>
+      </div>
+      
+      <style>
+        .carrusel-btn:hover {
+          background: #1a237e !important;
+          color: white !important;
+          transform: translateY(-50%) scale(1.1) !important;
+        }
+        
+        .carrusel-slide {
+          position: relative;
+          cursor: pointer;
+        }
+        
+        .carrusel-slide:hover .ver-producto {
+          opacity: 1;
+          transform: translate(-50%, -10px);
+        }
+        
+        .carrusel-slide:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .ver-producto:hover {
+          background: white !important;
+          color: #1a237e !important;
+          box-shadow: 0 6px 20px rgba(26, 35, 126, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+          .carrusel-slide {
+            min-width: 280px !important;
+            height: 300px !important;
+            margin: 0 10px !important;
+          }
+          
+          .carrusel-btn {
+            display: none !important;
+          }
+          
+          .ver-producto {
+            opacity: 1 !important;
+            transform: translateX(-50%) !important;
+            font-size: 0.9rem !important;
+            padding: 8px 20px !important;
+          }
+        }
+      </style>
     </div>
   </section>
 
@@ -79,26 +1502,426 @@
   </section>
 
   <!-- PROYECTOS -->
-  <section class="proyectos">
-    <h2 class="proyectos-main">Proyectos</h2>
-    <div class="proyectos-bienvenida">
-      <p class="proyectos-frase">Especialistas en satisfacer las necesidades de toda la industria de la construcción.</p>
+  <section class="proyectos" id="proyectos-section">
+  <h2 class="proyectos-main">Proyectos</h2>
+  <div class="proyectos-bienvenida">
+    <p class="proyectos-frase">Especialistas en satisfacer las necesidades de toda la industria de la construcción.</p>
+  </div>
+  <div class="carrusel-container" id="carrusel-proyectos">
+    <button class="carrusel-btn prev" aria-label="Anterior">&#8592;</button>
+    <div class="carrusel-galeria">
+      <div class="carrusel-slide">
+        <img src="images/proyecto1.webp" alt="Proyecto 1">
+      </div>
+      <div class="carrusel-slide">
+        <img src="images/proyecto2.webp" alt="Proyecto 2">
+      </div>
+      <div class="carrusel-slide">
+        <img src="images/proyecto3.webp" alt="Proyecto 3">
+      </div>
+      <div class="carrusel-slide">
+        <img src="images/proyecto4.webp" alt="Proyecto 4">
+      </div>
+      <div class="carrusel-slide">
+        <img src="images/proyecto5.webp" alt="Proyecto 5">
+      </div>
+      <div class="carrusel-slide">
+        <img src="images/proyecto6.webp" alt="Proyecto 6">
+      </div>
+      <div class="carrusel-slide">
+        <img src="images/proyecto7.webp" alt="Proyecto 7">
+      </div>
+      <div class="carrusel-slide">
+        <img src="images/proyecto8.webp" alt="Proyecto 8">
+      </div>
+      <div class="carrusel-slide">
+        <img src="images/proyecto9.webp" alt="Proyecto 9">
+      </div>
+  
+      <!-- Agrega más divs .carrusel-slide para más proyectos -->
     </div>
-    <!-- Reemplaza 'proyecto1.jpg', etc. con tus imágenes -->
-    <div class="galeria">
-      <img src="proyecto1.jpg" alt="Proyecto 1">
-      <img src="proyecto2.jpg" alt="Proyecto 2">
-    </div>
-  </section>
+    <button class="carrusel-btn next" aria-label="Siguiente">&#8594;</button>
+  </div>
+</section>
 
-  <!-- MAPA -->
-  <section class="mapa">
-    <h2>Entregas en todo México</h2>
-    <iframe src="https://www.google.com/maps/embed?..." width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  <!-- SUCURSALES -->
+  <section class="sucursales">
+    <h2>Nuestras Sucursales</h2>
+    <p class="sucursales-subtitle">Visítanos en cualquiera de nuestras ubicaciones en Jalisco y Colima</p>
+    
+    <div class="sucursales-container">
+      <!-- Pestañas de navegación -->
+      <div class="sucursales-tabs">
+        <button class="tab-btn active" data-tab="panel-periferico">Panel Periférico</button>
+        <button class="tab-btn" data-tab="periferico">Periférico</button>
+        <button class="tab-btn" data-tab="juan-gil">Juan Gil Preciado</button>
+        <button class="tab-btn" data-tab="punto-sur">Punto Sur</button>
+        <button class="tab-btn" data-tab="colima">Colima</button>
+      </div>
+      
+      <!-- Contenido de las pestañas -->
+      <div class="sucursales-content">
+        <!-- Sucursal Panel Periférico -->
+        <div class="tab-content active" id="panel-periferico">
+          <div class="sucursal-info">
+            <h3>SUCURSAL PANEL PERIFÉRICO</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Av. Periférico Pte. Manuel Gómez Morin 2880<br>Paraísos del Colli CP. 45069 Zapopan, Jal.</p>
+            <p><i class="fas fa-phone"></i> <a href="tel:3318954547">33 1895 4547</a></p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:ventas@lesamx.com">ventas@lesamx.com</a></p>
+            <a href="https://maps.google.com/maps?q=20.6907,-103.4185" target="_blank" class="ver-mapa">
+              <i class="fas fa-map-marked-alt"></i> Ver en mapa
+            </a>
+          </div>
+          <div class="sucursal-mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.6544!2d-103.4208!3d20.6907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDQxJzI2LjUiTiAxMDPCsDI1JzE0LjkiVw!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+        
+        <!-- Sucursal Periférico -->
+        <div class="tab-content" id="periferico">
+          <div class="sucursal-info">
+            <h3>SUCURSAL PERIFÉRICO</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Av. Perif. Pte. Manuel Gómez Morin 2790-D<br>Paraísos del Colli CP. 45069 Zapopan, Jal.</p>
+            <p><i class="fas fa-phone"></i> <a href="tel:3310203117">33 1020 3117</a></p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:ventas@lesamx.com">ventas@lesamx.com</a></p>
+            <a href="https://maps.google.com/maps?q=20.6910,-103.4200" target="_blank" class="ver-mapa">
+              <i class="fas fa-map-marked-alt"></i> Ver en mapa
+            </a>
+          </div>
+          <div class="sucursal-mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.6544!2d-103.4208!3d20.6910!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDQxJzI3LjYiTiAxMDPCsDI1JzE0LjkiVw!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+        
+        <!-- Sucursal Juan Gil Preciado -->
+        <div class="tab-content" id="juan-gil">
+          <div class="sucursal-info">
+            <h3>SUCURSAL JUAN GIL PRECIADO</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Lat. Juan Gil Preciado 4176<br>Hogares de Nuevo México CP. 45160 Zapopan, Jal.</p>
+            <p><i class="fas fa-phone"></i> <a href="tel:3319618388">33 1961 8388</a></p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:ventas@lesamx.com">ventas@lesamx.com</a></p>
+            <a href="https://maps.google.com/maps?q=20.6745,-103.4567" target="_blank" class="ver-mapa">
+              <i class="fas fa-map-marked-alt"></i> Ver en mapa
+            </a>
+          </div>
+          <div class="sucursal-mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3733.1234!2d-103.4589!3d20.6745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjBcNDAnMjguMiJOIDEwM8KwMjcnMjQuMSJX!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+        
+        <!-- Sucursal Punto Sur -->
+        <div class="tab-content" id="punto-sur">
+          <div class="sucursal-info">
+            <h3>SUCURSAL PUNTO SUR</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Av. Camino Real a Colima 150<br>CP. 45602 San Pedro Tlaquepaque</p>
+            <p><i class="fas fa-phone"></i> <a href="tel:3318064670">33 1806 4670</a></p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:ventas@lesamx.com">ventas@lesamx.com</a></p>
+            <a href="https://maps.google.com/maps?q=20.6083,-103.4187" target="_blank" class="ver-mapa">
+              <i class="fas fa-map-marked-alt"></i> Ver en mapa
+            </a>
+          </div>
+          <div class="sucursal-mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3735.6789!2d-103.4209!3d20.6083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM2JzI5LjkiTiAxMDPCsDI1JzA3LjMiVw!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+        
+        <!-- Sucursal Colima -->
+        <div class="tab-content" id="colima">
+          <div class="sucursal-info">
+            <h3>SUCURSAL COLIMA</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Blvrd Camino Real 670<br>Residencial Los Olivos El Provenir II<br>CP. 28019 Col, Colima.</p>
+            <p><i class="fas fa-phone"></i> <a href="tel:3310203117">33 1020 3117</a></p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:ventas@lesamx.com">ventas@lesamx.com</a></p>
+            <a href="https://maps.google.com/maps?q=19.2678,-103.7229" target="_blank" class="ver-mapa">
+              <i class="fas fa-map-marked-alt"></i> Ver en mapa
+            </a>
+          </div>
+          <div class="sucursal-mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.7890!2d-103.7251!3d19.2678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDE2JzA0LjEiTiAxMDPCsDQzJzIyLjQiVw!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="sucursales-note">
+      <p><i class="fas fa-truck"></i> Realizamos envíos a toda la república mexicana</p>
+    </div>
   </section>
 
   <footer>
     <p>&copy; 2025 P&L Paneles - Todos los derechos reservados.</p>
   </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <div class="lightbox-nav">
+      <div class="lightbox-prev">&#10094;</div>
+      <div class="lightbox-next">&#10095;</div>
+    </div>
+    <div class="lightbox-content">
+      <img src="" alt="Proyecto" id="lightbox-img">
+    </div>
+  </div>
+<script>
+// Animación de conteo para los números de experiencia, proyectos y marcas
+function animateNumber(id, end, duration = 1200) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  let start = 0;
+  const startTime = performance.now();
+  const isInt = Number.isInteger(end);
+  function update(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const value = Math.floor(progress * (end - start) + start);
+    el.textContent = isInt ? `+${value}` : `+${value}`;
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      el.textContent = `+${end}`;
+    }
+  }
+  requestAnimationFrame(update);
+}
+
+let statsAnimated = false;
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !statsAnimated) {
+      statsAnimated = true;
+      animateNumber('experiencia-num', 30, 1200);
+      animateNumber('proyectos-num', 5500, 1400);
+      animateNumber('marcas-num', 20, 1000);
+    }
+  });
+}, { threshold: 0.4 });
+
+const statsSection = document.querySelector('.stats');
+if (statsSection) {
+  observer.observe(statsSection);
+}
+</script>
+<script>
+// Carrusel funcionalidad para ambos carruseles
+function initCarrusel(containerId, slidesToShow = 3) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  
+  const galeria = container.querySelector('.carrusel-galeria');
+  const slides = galeria.querySelectorAll('.carrusel-slide');
+  const prevBtn = container.querySelector('.carrusel-btn.prev');
+  const nextBtn = container.querySelector('.carrusel-btn.next');
+  let currentIndex = 0;
+  let autoSlideInterval;
+  const slideDuration = 4000; // 4 segundos entre cada slide
+
+  // Clonar los slides para crear un efecto de bucle infinito
+  const totalSlides = slides.length;
+  
+  function updateCarrusel() {
+    // Ocultar todos los slides
+    slides.forEach(slide => {
+      slide.style.display = 'none';
+      slide.style.opacity = '0';
+      slide.style.transition = 'opacity 0.5s ease';
+    });
+    
+    // Mostrar los slides actuales
+    for (let i = 0; i < slidesToShow; i++) {
+      const slideIndex = (currentIndex + i) % totalSlides;
+      const slide = slides[slideIndex];
+      if (slide) {
+        slide.style.display = 'flex';
+        // Usar setTimeout para asegurar que la transición se aplique
+        setTimeout(() => {
+          slide.style.opacity = '1';
+        }, 10);
+      }
+    }
+    
+    // Actualizar estado de los botones
+    prevBtn.disabled = false;
+    nextBtn.disabled = false;
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % (totalSlides - slidesToShow + 1);
+    updateCarrusel();
+    resetAutoSlide();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + (totalSlides - slidesToShow + 1)) % (totalSlides - slidesToShow + 1);
+    updateCarrusel();
+    resetAutoSlide();
+  }
+
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(nextSlide, slideDuration);
+  }
+
+  function resetAutoSlide() {
+    clearInterval(autoSlideInterval);
+    startAutoSlide();
+  }
+
+  // Event listeners
+  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener('click', nextSlide);
+
+  // Pausar el carrusel cuando el mouse está sobre él
+  container.addEventListener('mouseenter', () => {
+    clearInterval(autoSlideInterval);
+  });
+
+  // Reanudar el carrusel cuando el mouse sale
+  container.addEventListener('mouseleave', startAutoSlide);
+
+  // Inicializar el carrusel
+  updateCarrusel();
+  startAutoSlide();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  initCarrusel('carrusel-materiales', 3);
+  initCarrusel('carrusel-proyectos', 3);
+  
+  // Reiniciar el carrusel cuando la ventana cambie de tamaño
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      initCarrusel('carrusel-materiales', window.innerWidth < 768 ? 1 : 3);
+      initCarrusel('carrusel-proyectos', window.innerWidth < 768 ? 1 : 3);
+    }, 250);
+  });
+  
+  // Funcionalidad de pestañas para sucursales
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  // Mostrar la primera pestaña por defecto
+  if (tabContents.length > 0) {
+    tabContents[0].classList.add('active');
+  }
+  
+  // Manejar clic en las pestañas
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tabId = button.getAttribute('data-tab');
+      
+      // Remover clase active de todos los botones y contenidos
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+      
+      // Agregar clase active al botón y contenido seleccionado
+      button.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+      
+      // Hacer scroll suave hacia la sección de sucursales
+      document.querySelector('.sucursales').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    });
+  });
+
+  // Inicializar lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.querySelector('.lightbox-close');
+  const lightboxPrev = document.querySelector('.lightbox-prev');
+  const lightboxNext = document.querySelector('.lightbox-next');
+  let currentSlideIndex = 0;
+  let slides = [];
+
+  // Función para abrir el lightbox
+  function openLightbox(index) {
+    currentSlideIndex = index;
+    updateLightboxImage();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Evitar scroll del body
+  }
+
+  // Función para cerrar el lightbox
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = ''; // Restaurar scroll del body
+  }
+
+  // Función para actualizar la imagen mostrada en el lightbox
+  function updateLightboxImage() {
+    if (slides.length > 0) {
+      const imgSrc = slides[currentSlideIndex].querySelector('img').src;
+      lightboxImg.src = imgSrc;
+    }
+  }
+
+  // Función para ir a la siguiente imagen
+  function nextImage() {
+    if (slides.length === 0) return;
+    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+    updateLightboxImage();
+  }
+
+  // Función para ir a la imagen anterior
+  function prevImage() {
+    if (slides.length === 0) return;
+    currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+    updateLightboxImage();
+  }
+
+  // Obtener todas las imágenes del carrusel de proyectos
+  const carruselProyectos = document.getElementById('carrusel-proyectos');
+  if (carruselProyectos) {
+    slides = Array.from(carruselProyectos.querySelectorAll('.carrusel-slide'));
+    
+    // Agregar evento de clic a cada slide
+    slides.forEach((slide, index) => {
+      slide.style.cursor = 'pointer';
+      slide.addEventListener('click', () => {
+        currentSlideIndex = index;
+        openLightbox(index);
+      });
+    });
+  }
+
+  // Event listeners para los controles del lightbox
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxNext.addEventListener('click', (e) => {
+    e.stopPropagation();
+    nextImage();
+  });
+  lightboxPrev.addEventListener('click', (e) => {
+    e.stopPropagation();
+    prevImage();
+  });
+
+  // Cerrar al hacer clic fuera de la imagen
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Navegación con teclado
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    
+    switch(e.key) {
+      case 'Escape':
+        closeLightbox();
+        break;
+      case 'ArrowLeft':
+        prevImage();
+        break;
+      case 'ArrowRight':
+        nextImage();
+        break;
+    }
+  });
+});
+</script>
 </body>
 </html>
