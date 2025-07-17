@@ -11,11 +11,64 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_MX">
   <title>P&L Paneles - Cotiza Paneles Aislados y Láminas</title>
+  
+  <!-- Preconnect y dns-prefetch para recursos externos -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  
+  <!-- Preload de fuentes críticas -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap"></noscript>
+  
+  <!-- Carga asíncrona de Font Awesome -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <!-- Carga diferida de GSAP -->
+  <script>
+    function loadScript(src, callback) {
+      var script = document.createElement('script');
+      script.src = src;
+      script.async = true;
+      script.onload = callback;
+      document.head.appendChild(script);
+    }
+    
+    // Cargar GSAP después de que la página haya cargado
+    if (window.innerWidth > 768) { // Solo cargar en escritorio
+      window.addEventListener('load', function() {
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js', function() {
+          loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js');
+        });
+      });
+    }
+  </script>
+  
+  <!-- Estilos críticos inline -->
   <style>
+    /* Fuentes de respaldo mientras cargan las de Google */
+    @font-face {
+      font-family: 'Montserrat-fallback';
+      src: local('Arial');
+      size-adjust: 105%;
+      ascent-override: 90%;
+      descent-override: 22.5%;
+      line-gap-override: 0%;
+    }
+    
+    @font-face {
+      font-family: 'Poppins-fallback';
+      src: local('Arial');
+      size-adjust: 110%;
+      ascent-override: 92%;
+      descent-override: 23%;
+      line-gap-override: 0%;
+    }
+    
     * {
       margin: 0;
       padding: 0;
@@ -35,12 +88,17 @@
     }
     
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Montserrat', 'Montserrat-fallback', 'Segoe UI', sans-serif;
       line-height: 1.6;
       background-color: #ffffff;
-      color: #FFFFFF;
+      color: #333333;
       max-width: 100%;
       overflow-x: hidden;
+      text-rendering: optimizeSpeed;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', 'Poppins-fallback', 'Segoe UI', sans-serif;
     }
     
     header.hero {
