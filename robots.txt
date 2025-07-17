@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://tu-dominio.com/sitemap.xml
+
+# Deshabilitar archivos específicos
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /cgi-bin/
+
+# Permitir todos los bots principales de búsqueda
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Velocidad de rastreo (opcional)
+# 1 a 10, donde 10 es el más rápido
+Crawl-delay: 5
