@@ -1173,9 +1173,15 @@
   margin-bottom: 1.1rem;
   min-height: 64px;
   margin-top: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
 .hero {
-  margin-top: 0;
+  margin-top: 60px; /* Añadido espacio para la navbar fija */
   padding-top: 0;
 }
 .navbar-logo {
@@ -1245,6 +1251,12 @@
     padding: 0.6rem 2vw 0.6rem 2vw;
     min-height: 56px;
     gap: 0.6rem;
+    position: relative;
+  }
+  
+  /* Ajustar el espacio para el contenido debajo de la navbar fija */
+  .hero-content-collage {
+    padding-top: 100px !important;
   }
   .navbar-links {
     justify-content: center;
@@ -1256,14 +1268,14 @@
 }
 
   body {
-    padding-top: 62px; /* Espacio para la navbar fija */
+    padding-top: 70px; /* Aumentado el espacio para la navbar fija */
     margin-left: 0.5rem;
   }
     .navbar-btn.whatsapp:hover {
   background: #BD3768;
 }
 body {
-  padding-top: 62px; /* Espacio para la navbar fija */
+  padding-top: 70px; /* Aumentado el espacio para la navbar fija */
 }
 </style>
   <link rel="icon" href="favicon.ico">
@@ -1282,7 +1294,7 @@ body {
         <button class="navbar-btn whatsapp" onclick="window.open('https://wa.me/523318088119','_blank')">Cotizar</button>
       </div>
     </nav>
-    <div class="hero-content-collage" style="content-visibility: auto; contain-intrinsic-size: 0 500px;">
+    <div class="hero-content-collage" style="content-visibility: auto; contain-intrinsic-size: 0 500px; padding-top: 100px;">
       <div class="hero-left" style="will-change: transform; transform: translateZ(0);">
         <!-- Título optimizado para LCP -->
         <style>
@@ -1299,11 +1311,11 @@ body {
           /* Estilos críticos en línea */
           .hero-main {
             color: #b31f6c;
-            font-size: 2.4rem;
+            font-size: 2.64rem;
             text-align: left;
-            margin: 0 0 0.7rem 0;
+            margin: 1.5rem 0 1rem 0; /* Aumentado el margen superior */
             padding: 0;
-            line-height: 1.2;
+            line-height: 1.2; /* Ajustado el interlineado */
             font-family: 'Poppins-LCP', system-ui, -apple-system, sans-serif;
             font-weight: 700;
             /* Forzar capa de GPU */
@@ -1316,11 +1328,29 @@ body {
             /* Prevenir desbordamiento */
             overflow-wrap: break-word;
             word-wrap: break-word;
+            transition: transform 0.3s ease;
           }
           
-          @media (max-width: 480px) {
+          /* Aumentar tamaño en desktop */
+          @media (min-width: 774px) {
             .hero-main {
-              font-size: 2.1rem;
+              transform: scale(1.32) translateZ(0); /* Aumentado en 10% desde 1.2 */
+              transform-origin: left top;
+              margin-bottom: 1.2rem; /* Reducido el margen inferior */
+              width: 66.67%;
+            }
+          }
+          
+          @media (max-width: 823px) {
+            .hero-main {
+              font-size: 4.2rem; /* Aumentado en 200% para móviles */
+              margin-bottom: 1rem;
+              line-height: 1;
+              letter-spacing: -1px;
+              width: 100%;
+            }
+            .hero-main + div {
+              margin-bottom: 0.5rem !important;
             }
           }
           
@@ -1330,72 +1360,349 @@ body {
           }
         </style>
         <h1 class="hero-main" aria-label="Líderes de venta en panel aislado y láminas">
-          <span>Líderes de venta en</span><br>
-          <span>panel aislado y</span><br>
-          <span>láminas</span>
+          <span style="display:block; margin-bottom:0.3em;">Líderes de venta en</span>
+          <span style="display:block; margin-bottom:0.3em;">panel aislado y</span>
+          <span style="display:block;">láminas</span>
         </h1>
-        <div style="font-weight:600; color:#333; font-size:1.13rem; margin-bottom:0.7rem; text-align:left;">
+        <div style="font-weight:600; color:#333; font-size:1.24rem; margin: 3.5rem 0 0.8rem 0; text-align:left;">
           <span style="font-style:italic;">Entrega rápida, asesoría técnica y precios competitivos</span>
         </div>
-        <div style="color:#222; font-size:1.04rem; margin-bottom:1.2rem; text-align:left;">
+        <div style="color:#222; font-size:1.14rem; margin-bottom:0.8rem; text-align:left;">
           Distribuimos paneles tipo sándwich, térmicos y estructurales para techo y muro.
         </div>
-        <a href="https://wa.me/523318088119" target="_blank" class="cta whatsapp-btn" style="display:inline-flex;align-items:center;background:#1a7a34;color:white;padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:600;font-size:1.1rem;box-shadow:0 4px 15px rgba(0,0,0,0.2);transition:all 0.3s ease;margin-bottom:2rem;border: 2px solid #145c28;">
+        <a href="https://wa.me/523318088119" target="_blank" class="cta whatsapp-btn" style="display:inline-flex;align-items:center;background:#1a7a34;color:white;padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:600;font-size:1.21rem;box-shadow:0 4px 15px rgba(0,0,0,0.2);transition:all 0.3s ease;margin-bottom:1.2rem;border: 2px solid #145c28;">
           <i class="fab fa-whatsapp" style="font-size:1.4rem;margin-right:10px;"></i>
           <span>COTIZA GRATIS</span>
         </a>
       </div>
-      <div class="collage-modern">
-  <div class="collage-col-izq">
-    <img src="images/proyecto3.webp" alt="Panel 1" class="collage-img-lg">
-  </div>
-  <div class="collage-col-der">
-    <div class="collage-row">
-      <img src="images/proyecto5.webp" alt="Panel 2" class="collage-img-sm">
-      <img src="images/proyecto6.webp" alt="Panel 3" class="collage-img-sm">
-    </div>
-    <div class="collage-row">
-      <img src="images/proyecto9.webp" alt="Panel 4" class="collage-img-sm">
-      <img src="images/proyecto10.webp" alt="Panel 5" class="collage-img-sm">
-    </div>
-  </div>
-</div>
+      <!-- Carrusel para móvil -->
+      <div class="mobile-carousel" style="display: none;">
+        <div class="carousel-container">
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <img src="images/proyecto3.webp" alt="Panel 1" class="carousel-img">
+            </div>
+            <div class="carousel-slide">
+              <img src="images/proyecto5.webp" alt="Panel 2" class="carousel-img">
+            </div>
+            <div class="carousel-slide">
+              <img src="images/proyecto6.webp" alt="Panel 3" class="carousel-img">
+            </div>
+            <div class="carousel-slide">
+              <img src="images/proyecto9.webp" alt="Panel 4" class="carousel-img">
+            </div>
+            <div class="carousel-slide">
+              <img src="images/proyecto10.webp" alt="Panel 5" class="carousel-img">
+            </div>
+          </div>
+          <button class="carousel-btn prev">❮</button>
+          <button class="carousel-btn next">❯</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+      
+      <!-- Collage para escritorio -->
+      <div class="desktop-collage" style="transform: scale(1.2); transform-origin: center; transition: transform 0.3s ease; display: grid; grid-template-columns: 35% 65%; gap: 8px; width: 95%; max-width: 620px; margin: 0 auto; padding: 0 10px; align-items: start;">
+        <!-- Columna izquierda - Imagen grande (reducida 30%) -->
+        <div class="collage-col-izq" style="height: 100%; display: flex; align-items: center; justify-content: center; padding: 10px 0;">
+          <img src="images/proyecto3.webp" alt="Panel 1" style="width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+        
+        <!-- Columna derecha - Cuadrícula de 2x2 -->
+        <div class="collage-col-der" style="display: grid; grid-template-rows: 1fr 1fr; gap: 10px; height: 100%;">
+          <div class="collage-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; height: 100%;">
+            <div style="overflow: hidden; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 5px; box-sizing: border-box; background: #f8f8f8;">
+              <img src="images/proyecto5.webp" alt="Panel 2" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div style="overflow: hidden; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 5px; box-sizing: border-box; background: #f8f8f8;">
+              <img src="images/proyecto6.webp" alt="Panel 3" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+          </div>
+          <div class="collage-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; height: 100%;">
+            <div style="overflow: hidden; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 5px; box-sizing: border-box; background: #f8f8f8;">
+              <img src="images/proyecto9.webp" alt="Panel 4" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div style="overflow: hidden; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 5px; box-sizing: border-box; background: #f8f8f8;">
+              <img src="images/proyecto10.webp" alt="Panel 5" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
+  
+  <style>
+    /* Estilos del carrusel móvil */
+    @media (max-width: 823px) {
+      .mobile-carousel {
+        display: block !important;
+        width: 100%;
+        overflow: hidden;
+        margin: 1rem 0;
+      }
+      
+      .desktop-collage {
+        display: none !important;
+      }
+      
+      .carousel-container {
+        position: relative;
+        max-width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+      
+      .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease;
+        width: 100%;
+      }
+      
+      .carousel-slide {
+        min-width: 100%;
+        box-sizing: border-box;
+        padding: 0 10px;
+      }
+      
+      .carousel-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+      
+      .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,0.7);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #333;
+      }
+      
+      .carousel-btn.prev {
+        left: 10px;
+      }
+      
+      .carousel-btn.next {
+        right: 10px;
+      }
+      
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+      }
+      
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #ccc;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      
+      .dot.active {
+        background-color: #BD3768;
+      }
+    }
+    
+    @media (min-width: 824px) {
+      .mobile-carousel {
+        display: none !important;
+      }
+      
+      .desktop-collage {
+        display: grid !important;
+        grid-template-columns: 35% 65%;
+        gap: 8px;
+        width: 95%;
+        max-width: 620px;
+        margin: 0 auto;
+        padding: 0 10px;
+        align-items: start;
+        box-sizing: border-box;
+      }
+      
+      .collage-col-izq {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 0;
+      }
+      
+      .collage-col-izq img {
+        width: 80%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+      
+      .collage-col-der {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        gap: 12px;
+        height: 100%;
+        padding: 5px 0;
+        box-sizing: border-box;
+      }
+      
+      .collage-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        height: 100%;
+        width: 100%;
+      }
+      
+      .collage-row > div {
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8f8f8;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      
+      .collage-row img {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 4px;
+      }
+    }
+  </style>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Solo inicializar el carrusel en móviles
+      if (window.innerWidth <= 823) {
+        initMobileCarousel();
+      }
+      
+      // Manejar cambio de tamaño de ventana
+      window.addEventListener('resize', function() {
+        if (window.innerWidth <= 823) {
+          const carousel = document.querySelector('.carousel-track');
+          if (carousel && !carousel.classList.contains('initialized')) {
+            initMobileCarousel();
+          }
+        }
+      });
+      
+      function initMobileCarousel() {
+        const track = document.querySelector('.carousel-track');
+        if (!track || track.classList.contains('initialized')) return;
+        
+        const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+        const dotsContainer = document.querySelector('.carousel-dots');
+        let currentSlide = 0;
+        
+        // Crear indicadores de puntos
+        slides.forEach((_, index) => {
+          const dot = document.createElement('div');
+          dot.classList.add('dot');
+          if (index === 0) dot.classList.add('active');
+          dot.addEventListener('click', () => goToSlide(index));
+          dotsContainer.appendChild(dot);
+        });
+        
+        // Botones de navegación
+        document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
+          goToSlide(currentSlide - 1);
+        });
+        
+        document.querySelector('.carousel-btn.next').addEventListener('click', () => {
+          goToSlide(currentSlide + 1);
+        });
+        
+        // Función para ir a un slide específico
+        function goToSlide(n) {
+          currentSlide = (n + slides.length) % slides.length;
+          updateCarousel();
+        }
+        
+        // Función para actualizar el carrusel
+        function updateCarousel() {
+          track.style.transform = `translateX(-${currentSlide * 100}%)`;
+          
+          // Actualizar puntos de navegación
+          document.querySelectorAll('.carousel-dots .dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+          });
+        }
+        
+        // Iniciar autoplay
+        let autoplay = setInterval(() => {
+          goToSlide(currentSlide + 1);
+        }, 4000);
+        
+        // Pausar autoplay al pasar el ratón
+        track.addEventListener('mouseenter', () => {
+          clearInterval(autoplay);
+        });
+        
+        track.addEventListener('mouseleave', () => {
+          autoplay = setInterval(() => {
+            goToSlide(currentSlide + 1);
+          }, 4000);
+        });
+        
+        track.classList.add('initialized');
+      }
+    });
+  </script>
+  
   <!-- Barra de servicios -->
-  <section class="servicios-bar">
+  <section class="servicios-bar" style="margin-bottom: 20px;">
   <div class="servicio-item">
     <i class="fas fa-headset servicio-icon"></i>
     <div class="servicio-txt">
-      <span class="servicio-txt-bold">Atención</span><br>
-      <span class="servicio-txt-italic">personalizada</span>
+      <span class="servicio-txt-bold">Atención personalizada</span>
     </div>
   </div>
   <div class="servicio-item">
     <i class="fas fa-clipboard-list servicio-icon"></i>
     <div class="servicio-txt">
-      <span class="servicio-txt-bold">Inventario</span><br>
-      <span class="servicio-txt-italic">disponible</span>
+      <span class="servicio-txt-bold">Inventario disponible</span>
     </div>
   </div>
   <div class="servicio-item">
     <i class="fas fa-dollar-sign servicio-icon"></i>
     <div class="servicio-txt">
-      <span class="servicio-txt-bold">Precios</span><br>
-      <span class="servicio-txt-italic">competitivos</span>
+      <span class="servicio-txt-bold">Precios competitivos</span>
     </div>
   </div>
   <div class="servicio-item">
     <i class="fas fa-truck-moving servicio-icon"></i>
     <div class="servicio-txt">
-      <span class="servicio-txt-bold">Cobertura</span><br>
-      <span class="servicio-txt-italic">nacional</span>
+      <span class="servicio-txt-bold">Cobertura nacional</span>
     </div>
   </div>
 </section>
 
   <!-- Sección destacada tipo empresa líder -->
-  <section class="destacado-empresa" style="color: #2d2d2d;">
+  <section class="destacado-empresa" style="color: #2d2d2d; margin-top: 30px;">
     <div class="destacado-row">
   <div class="destacado-header" style="width:100%;">
     <span class="destacado-icon"><i class="fas fa-box-open"></i></span>
@@ -1786,9 +2093,16 @@ body {
         gap: 2rem;
       }
     }
-    @media (max-width: 600px) {
+    @media (max-width: 823px) {
       .destacado-empresa {
+        margin-top: 20px !important;
         padding: 1.2rem 0.5rem 0.5rem 0.5rem;
+      }
+      .destacado-img {
+        margin-top: -8rem !important;
+      }
+      .destacado-desc {
+        margin-bottom: 0rem;
       }
       .destacado-row {
         gap: 1.1rem;
@@ -1917,6 +2231,7 @@ body {
 }
 
     .servicios-bar {
+      padding: 15px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2235,8 +2550,8 @@ body {
     <!-- Contenido para móviles -->
     <div class="mobile-content" style="display: none;">
       <div class="proyectos-bienvenida" style="max-width: 800px; margin: 2rem auto;">
-        <p class="proyectos-frase" style="color: #2D4766; font-size: 1.4rem; line-height: 1.6; margin-bottom: 2rem; font-weight: 400; text-align: center;">
-          Transformamos espacios con soluciones innovadoras en paneles y láminas. Cada proyecto es una muestra de nuestro compromiso con la excelencia y la calidad en la construcción.
+        <p class="proyectos-frase" style="color: #2D4766; font-size: 1.5rem; line-height: 1.7; margin-bottom: 2rem; font-weight: 600; text-align: center; font-family: 'Poppins', 'Segoe UI', sans-serif; padding: 0 1rem;">
+          <strong style="font-weight: 700; color: #1a1a1a;">Transformamos espacios con soluciones innovadoras en paneles y láminas.</strong> <br><span style="font-weight: 500; color: #2D4766;">Cada proyecto es una muestra de nuestro compromiso con la excelencia y la calidad en la construcción.</span>
         </p>
       </div>
       <!-- Botón de WhatsApp móvil -->
@@ -2252,8 +2567,8 @@ body {
       <div style="max-width: 1200px; margin: 0 auto; display: flex; gap: 4rem; position: relative; z-index: 1;" class="desktop-layout">
         <div style="flex: 1; padding-top: 2rem;" class="desktop-text">
           <div class="proyectos-bienvenida" style="max-width: 800px; margin: 0 auto 2rem auto;">
-            <p class="proyectos-frase" style="color: #2D4766; font-size: 1.4rem; line-height: 1.8; margin-bottom: 2.5rem; font-weight: 400;">
-              Transformamos espacios con soluciones innovadoras en paneles y láminas. Cada proyecto es una muestra de nuestro compromiso con la excelencia y la calidad en la construcción.
+            <p class="proyectos-frase" style="color: #2D4766; font-size: 1.6rem; line-height: 1.8; margin-bottom: 2.5rem; font-weight: 600; font-family: 'Poppins', 'Segoe UI', sans-serif; text-align: left;">
+              <strong style="font-weight: 700; color: #1a1a1a;">Transformamos espacios con soluciones innovadoras en paneles y láminas.</strong> <br><span style="font-weight: 500; color: #2D4766;">Cada proyecto es una muestra de nuestro compromiso con la excelencia y la calidad en la construcción.</span>
             </p>
           </div>
           <!-- Botón de WhatsApp escritorio -->
