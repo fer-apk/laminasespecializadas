@@ -20,10 +20,14 @@
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   
-  <!-- Preload de fuentes críticas -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap&display=swap" media="print" onload="this.media='all'">
+  <!-- Preload de fuentes críticas con display=swap -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap"></noscript>
+  <!-- Precargar la fuente del hero -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <!-- Preload de la imagen hero -->
+  <link rel="preload" as="image" href="images/hero-image.webp" imagesrcset="images/hero-image-mobile.webp 600w, images/hero-image.webp 1200w" imagesizes="100vw">
   
   <!-- Carga asíncrona de Font Awesome -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -50,7 +54,7 @@
   
   <!-- Estilos críticos inline -->
   <style>
-    /* Fuentes de respaldo mientras cargan las de Google */
+    /* Fuentes de respaldo optimizadas para móvil */
     @font-face {
       font-family: 'Montserrat-fallback';
       src: local('Arial');
@@ -58,15 +62,18 @@
       ascent-override: 90%;
       descent-override: 22.5%;
       line-gap-override: 0%;
+      font-display: swap;
     }
     
     @font-face {
       font-family: 'Poppins-fallback';
-      src: local('Arial');
-      size-adjust: 110%;
+      src: local('Arial Bold'), local('Arial');
+      font-weight: 700;
+      size-adjust: 105%;
       ascent-override: 92%;
       descent-override: 23%;
       line-gap-override: 0%;
+      font-display: swap;
     }
     
     * {
@@ -95,6 +102,8 @@
       max-width: 100%;
       overflow-x: hidden;
       text-rendering: optimizeSpeed;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     
     h1, h2, h3, h4, h5, h6 {
@@ -1253,7 +1262,7 @@ body {
     <nav class="navbar-hero">
       <div class="navbar-logo">
         <button class="logo-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});" aria-label="Inicio">
-          <img src="/images/logoblanco.webp" alt="Logo" class="navbar-img">
+          <img src="images/logoblanco.webp" alt="Logo" class="navbar-img">
         </button>
       </div>
       <div class="navbar-links">
@@ -1261,9 +1270,9 @@ body {
         <button class="navbar-btn whatsapp" onclick="window.open('https://wa.me/523318088119','_blank')">Cotizar</button>
       </div>
     </nav>
-    <div class="hero-content-collage">
-      <div class="hero-left">
-        <h1 class="hero-main" style="color:#b31f6c; font-size:2.6rem; text-align:left; margin-bottom:0.7rem;">Líderes de venta en<br>panel aislado y<br><span style="color:#b31f6c;">láminas</span></h1>
+    <div class="hero-content-collage" style="content-visibility: auto; contain-intrinsic-size: 0 500px;">
+      <div class="hero-left" style="will-change: transform; transform: translateZ(0);">
+        <h1 class="hero-main" style="color:#b31f6c; font-size:2.6rem; text-align:left; margin-bottom:0.7rem; font-family:'Poppins', 'Poppins-fallback', sans-serif; font-weight:700; will-change: transform; transform: translateZ(0);">Líderes de venta en<br>panel aislado y<br><span style="color:#b31f6c;">láminas</span></h1>
         <div style="font-weight:600; color:#333; font-size:1.13rem; margin-bottom:0.7rem; text-align:left;">
           <span style="font-style:italic;">Entrega rápida, asesoría técnica y precios competitivos</span>
         </div>
@@ -1277,16 +1286,16 @@ body {
       </div>
       <div class="collage-modern">
   <div class="collage-col-izq">
-    <img src="/images/proyecto3.webp" alt="Panel 1" class="collage-img-lg">
+    <img src="images/proyecto3.webp" alt="Panel 1" class="collage-img-lg">
   </div>
   <div class="collage-col-der">
     <div class="collage-row">
-      <img src="/images/proyecto5.webp" alt="Panel 2" class="collage-img-sm">
-      <img src="/images/proyecto6.webp" alt="Panel 3" class="collage-img-sm">
+      <img src="images/proyecto5.webp" alt="Panel 2" class="collage-img-sm">
+      <img src="images/proyecto6.webp" alt="Panel 3" class="collage-img-sm">
     </div>
     <div class="collage-row">
-      <img src="/images/proyecto9.webp" alt="Panel 4" class="collage-img-sm">
-      <img src="/images/proyecto10.webp" alt="Panel 5" class="collage-img-sm">
+      <img src="images/proyecto9.webp" alt="Panel 4" class="collage-img-sm">
+      <img src="images/proyecto10.webp" alt="Panel 5" class="collage-img-sm">
     </div>
   </div>
 </div>
@@ -1340,7 +1349,7 @@ body {
     </div>
   </div>
   <div class="destacado-img">
-    <img src="/images/proyecto10.webp" alt="Industria" />
+    <img src="images/proyecto10.webp" alt="Industria" />
   </div>
 </div>
     <div class="destacado-stats">
@@ -2541,12 +2550,12 @@ body {
             <p><i class="fas fa-map-marker-alt"></i> Av. Periférico Pte. Manuel Gómez Morin 2880<br>Paraísos del Colli CP. 45069 Zapopan, Jal.</p>
             <p><i class="fas fa-phone"></i> <a href="tel:3318954547">33 1895 4547</a></p>
             <p><i class="fas fa-envelope"></i> <a href="mailto:ventas@lesamx.com">ventas@lesamx.com</a></p>
-            <a href="https://maps.google.com/maps?q=20.6907,-103.4185" target="_blank" class="ver-mapa">
+            <a href="https://www.google.com/maps/place/Av+Perif%C3%A9rico+Pte+Manuel+G%C3%B3mez+Morin+2880,+Para%C3%ADsos+del+Colli,+45069+Zapopan,+Jal.,+M%C3%A9xico/@20.6907,-103.4185,17z/data=!3m1!4b1!4m5!3m4!1s0x8428ae4a6f0f2f1f:0x1c9f1c9f1c9f1c9f!8m2!3d20.6907!4d-103.4185" target="_blank" class="ver-mapa">
               <i class="fas fa-map-marked-alt"></i> Ver en mapa
             </a>
           </div>
           <div class="sucursal-mapa">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.6544!2d-103.4208!3d20.6907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDQxJzI2LjUiTiAxMDPCsDI1JzE0LjkiVw!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.6544!2d-103.4208!3d20.6907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428ae4a6f0f2f1f%3A0x1c9f1c9f1c9f1c9f!2sAv%20Perif%C3%A9rico%20Pte%20Manuel%20G%C3%B3mez%20Morin%202880%2C%20Para%C3%ADsos%20del%20Colli%2C%2045069%20Zapopan%2C%20Jal.!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
         
@@ -2557,12 +2566,12 @@ body {
             <p><i class="fas fa-map-marker-alt"></i> Av. Perif. Pte. Manuel Gómez Morin 2790-D<br>Paraísos del Colli CP. 45069 Zapopan, Jal.</p>
             <p><i class="fas fa-phone"></i> <a href="tel:3310203117">33 1020 3117</a></p>
             <p><i class="fas fa-envelope"></i> <a href="mailto:ventas@lesamx.com">ventas@lesamx.com</a></p>
-            <a href="https://maps.google.com/maps?q=20.6910,-103.4200" target="_blank" class="ver-mapa">
+            <a href="https://www.google.com/maps/place/Av+Perif%C3%A9rico+Pte+Manuel+G%C3%B3mez+Morin+2790-D,+Para%C3%ADsos+del+Colli,+45069+Zapopan,+Jal.,+M%C3%A9xico/@20.6910,-103.4200,17z/data=!3m1!4b1!4m5!3m4!1s0x8428ae4a6f0f2f1f:0x1c9f1c9f1c9f1c9f!8m2!3d20.6910!4d-103.4200" target="_blank" class="ver-mapa">
               <i class="fas fa-map-marked-alt"></i> Ver en mapa
             </a>
           </div>
           <div class="sucursal-mapa">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.6544!2d-103.4208!3d20.6910!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDQxJzI3LjYiTiAxMDPCsDI1JzE0LjkiVw!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.6544!2d-103.4208!3d20.6910!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428ae4a6f0f2f1f%3A0x1c9f1c9f1c9f1c9f!2sAv%20Perif%C3%A9rico%20Pte%20Manuel%20G%C3%B3mez%20Morin%202790-D%2C%20Para%C3%ADsos%20del%20Colli%2C%2045069%20Zapopan%2C%20Jal.!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
         
@@ -2573,12 +2582,12 @@ body {
             <p><i class="fas fa-map-marker-alt"></i> Lat. Juan Gil Preciado 4176<br>Hogares de Nuevo México CP. 45160 Zapopan, Jal.</p>
             <p><i class="fas fa-phone"></i> <a href="tel:3319618388">33 1961 8388</a></p>
             <p><i class="fas fa-envelope"></i> <a href="mailto:ventas@lesamx.com">ventas@lesamx.com</a></p>
-            <a href="https://maps.google.com/maps?q=20.6745,-103.4567" target="_blank" class="ver-mapa">
+            <a href="https://www.google.com/maps/place/Lat+Juan+Gil+Preciado+4176,+Hogares+de+Nuevo+M%C3%A9xico,+45160+Zapopan,+Jal.,+M%C3%A9xico/@20.6745,-103.4567,17z/data=!3m1!4b1!4m5!3m4!1s0x8428b3f9f9f9f9f9:0x1c9f1c9f1c9f1c9f!8m2!3d20.6745!4d-103.4567" target="_blank" class="ver-mapa">
               <i class="fas fa-map-marked-alt"></i> Ver en mapa
             </a>
           </div>
           <div class="sucursal-mapa">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3733.1234!2d-103.4589!3d20.6745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjBcNDAnMjguMiJOIDEwM8KwMjcnMjQuMSJX!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3733.1234!2d-103.4589!3d20.6745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b3f9f9f9f9f9%3A0x1c9f1c9f1c9f1c9f!2sLat%20Juan%20Gil%20Preciado%204176%2C%20Hogares%20de%20Nuevo%20M%C3%A9xico%2C%2045160%20Zapopan%2C%20Jal.!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
         
@@ -2589,12 +2598,12 @@ body {
             <p><i class="fas fa-map-marker-alt"></i> Av. Camino Real a Colima 150<br>CP. 45602 San Pedro Tlaquepaque</p>
             <p><i class="fas fa-phone"></i> <a href="tel:3318064670">33 1806 4670</a></p>
             <p><i class="fas fa-envelope"></i> <a href="mailto:ventas@lesamx.com">ventas@lesamx.com</a></p>
-            <a href="https://maps.google.com/maps?q=20.6083,-103.4187" target="_blank" class="ver-mapa">
+            <a href="https://www.google.com/maps/place/Av+Camino+Real+a+Colima+150,+San+Pedro+Tlaquepaque,+Jal.,+M%C3%A9xico/@20.6083,-103.4187,17z/data=!3m1!4b1!4m5!3m4!1s0x8428b3f9f9f9f9f9:0x1c9f1c9f1c9f1c9f!8m2!3d20.6083!4d-103.4187" target="_blank" class="ver-mapa">
               <i class="fas fa-map-marked-alt"></i> Ver en mapa
             </a>
           </div>
           <div class="sucursal-mapa">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3735.6789!2d-103.4209!3d20.6083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM2JzI5LjkiTiAxMDPCsDI1JzA3LjMiVw!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3735.6789!2d-103.4209!3d20.6083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b3f9f9f9f9f9%3A0x1c9f1c9f1c9f1c9f!2sAv%20Camino%20Real%20a%20Colima%20150%2C%20San%20Pedro%20Tlaquepaque%2C%20Jal.%2C%20M%C3%A9xico!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
         
@@ -2605,12 +2614,12 @@ body {
             <p><i class="fas fa-map-marker-alt"></i> Blvrd Camino Real 670<br>Residencial Los Olivos El Provenir II<br>CP. 28019 Col, Colima.</p>
             <p><i class="fas fa-phone"></i> <a href="tel:3310203117">33 1020 3117</a></p>
             <p><i class="fas fa-envelope"></i> <a href="mailto:ventas@lesamx.com">ventas@lesamx.com</a></p>
-            <a href="https://maps.google.com/maps?q=19.2678,-103.7229" target="_blank" class="ver-mapa">
+            <a href="https://www.google.com/maps/place/Blvd+Camino+Real+670,+Residencial+Los+Olivos,+28019+Colima,+Col.,+M%C3%A9xico/@19.2678,-103.7229,17z/data=!3m1!4b1!4m5!3m4!1s0x84255e9f9f9f9f9f:0x1c9f1c9f1c9f1c9f!8m2!3d19.2678!4d-103.7229" target="_blank" class="ver-mapa">
               <i class="fas fa-map-marked-alt"></i> Ver en mapa
             </a>
           </div>
           <div class="sucursal-mapa">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.7890!2d-103.7251!3d19.2678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDE2JzA0LjEiTiAxMDPCsDQzJzIyLjQiVw!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.7890!2d-103.7251!3d19.2678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84255e9f9f9f9f9f%3A0x1c9f1c9f1c9f1c9f!2sBlvd%20Camino%20Real%20670%2C%20Residencial%20Los%20Olivos%2C%2028019%20Colima%2C%20Col.!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
       </div>
