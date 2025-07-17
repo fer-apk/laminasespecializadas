@@ -21,13 +21,20 @@
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   
   <!-- Preload de fuentes críticas con display=swap -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap"></noscript>
-  <!-- Precargar la fuente del hero -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <!-- Preload de la imagen hero -->
-  <link rel="preload" as="image" href="images/hero-image.webp" imagesrcset="images/hero-image-mobile.webp 600w, images/hero-image.webp 1200w" imagesizes="100vw">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"></noscript>
+  
+  <!-- Carga no crítica de otras fuentes -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" media="print" onload="this.media='all'">
+  
+  <!-- Preload de la imagen hero con atributos de carga optimizados -->
+  <link rel="preload" href="images/hero-mobile.webp" as="image" media="(max-width: 768px)" fetchpriority="high" importance="high">
+  <link rel="preload" href="images/hero-desktop.webp" as="image" media="(min-width: 769px)" fetchpriority="high" importance="high">
+  <meta name="theme-color" content="#b31f6c">
   
   <!-- Carga asíncrona de Font Awesome -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -579,7 +586,7 @@
 }
 
 .ver-producto:hover {
-  background: #2D4766; /* Azul un poco más claro al pasar el mouse */
+  background: #1ebe5d;
   transform: translateX(-50%) translateY(8px);
   box-shadow: 0 6px 20px rgba(26, 35, 126, 0.3);
 }
@@ -880,7 +887,7 @@
 .tab-btn.active {
   background: #BD3768;
   color: white;
-  box-shadow: 0 4px 8px rgba(30, 190, 93, 0.3);
+  box-shadow: 0 4px 8px rgba(30,190,93,0.3);
 }
 
 .sucursales-content {
@@ -966,7 +973,7 @@
   background: #BD3768;
   color: white !important;
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(30, 190, 93, 0.3);
+  box-shadow: 0 5px 15px rgba(30,190,93,0.3);
 }
 
 .ver-mapa i {
@@ -1275,7 +1282,11 @@ body {
     </nav>
     <div class="hero-content-collage" style="content-visibility: auto; contain-intrinsic-size: 0 500px;">
       <div class="hero-left" style="will-change: transform; transform: translateZ(0);">
-        <h1 class="hero-main" style="color:#b31f6c; font-size:2.6rem; text-align:left; margin-bottom:0.7rem; font-family:'Poppins', 'Poppins-fallback', sans-serif; font-weight:700; will-change: transform; transform: translateZ(0);">Líderes de venta en<br>panel aislado y<br><span style="color:#b31f6c;">láminas</span></h1>
+        <!-- Precargar la fuente Poppins para el título principal -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"></noscript>
+
+<h1 class="hero-main" style="color:#b31f6c; font-size:2.6rem; text-align:left; margin-bottom:0.7rem; font-family:'Poppins', system-ui, -apple-system, sans-serif; font-weight:700; will-change: transform; transform: translateZ(0); font-display: swap; line-height: 1.2; content-visibility: auto; contain-intrinsic-size: 0 3.5em;">Líderes de venta en<br>panel aislado y<br><span style="color:#b31f6c;">láminas</span></h1>
         <div style="font-weight:600; color:#333; font-size:1.13rem; margin-bottom:0.7rem; text-align:left;">
           <span style="font-style:italic;">Entrega rápida, asesoría técnica y precios competitivos</span>
         </div>
@@ -1511,13 +1522,6 @@ body {
   text-align: center;
   margin: 1.4rem 0 1.1rem 0;
 }
-.destacado-desc p {
-  font-size: 1.17rem;
-  color: #222;
-  font-family: 'Montserrat','Poppins',Arial,sans-serif;
-  margin-bottom: 1.1rem;
-  font-weight: 400;
-}
 .destacado-btn {
   display: inline-flex;
   align-items: center;
@@ -1561,7 +1565,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 0;
+  gap: 4rem;
   margin-top: 2.2rem;
   border-top: 1.5px solid #eee;
   padding-top: 1.2rem;
@@ -2278,7 +2282,7 @@ body {
         
         <div class="carrusel-galeria" style="display: flex; transition: transform 0.5s ease; padding: 20px 0; touch-action: pan-y; scroll-snap-type: x mandatory; overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none;">
           <div class="carrusel-slide" style="min-width: 100%; margin: 0; position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.1); transition: all 0.4s ease; height: 400px;">
-            <img src="images/proyecto1.webp" alt="Proyecto 1" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <img src="images/proyecto1.webp" alt="Proyecto Residencial" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" loading="lazy" decoding="async" fetchpriority="low">
             <div class="proyecto-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 2rem;">
               <div style="transform: translateY(30px); transition: transform 0.3s ease 0.1s;">
                 <h3 style="color: white; font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 600;">Proyecto Residencial</h3>
