@@ -20,12 +20,13 @@
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   
-  <!-- Preload de fuentes críticas con display=swap -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Preload de recursos críticos -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"></noscript>
+  <link rel="preconnect" href="https://fonts.gstatic.com" as="font" type="font/woff2" crossorigin>
+  
+  <!-- Cargar fuentes de manera asíncrona -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=optional">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=optional" media="print" onload="this.media='all'">
   
   <!-- Carga no crítica de otras fuentes -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -1286,7 +1287,39 @@ body {
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"></noscript>
 
-<h1 class="hero-main" style="color:#b31f6c; font-size:2.6rem; text-align:left; margin-bottom:0.7rem; font-family:'Poppins', system-ui, -apple-system, sans-serif; font-weight:700; will-change: transform; transform: translateZ(0); font-display: swap; line-height: 1.2; content-visibility: auto; contain-intrinsic-size: 0 3.5em;">Líderes de venta en<br>panel aislado y<br><span style="color:#b31f6c;">láminas</span></h1>
+<style>
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-display: optional;
+    src: url('https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7Z1JlFc-K.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  
+  .hero-main {
+    color: #b31f6c;
+    font-size: 2.4rem;
+    text-align: left;
+    margin-bottom: 0.7rem;
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    content-visibility: auto;
+    contain-intrinsic-size: 0 3em;
+    will-change: transform;
+    transform: translateZ(0);
+    margin-top: 0;
+    padding: 0;
+  }
+  
+  @media (max-width: 480px) {
+    .hero-main {
+      font-size: 2.1rem;
+    }
+  }
+</style>
+<h1 class="hero-main">Líderes de venta en<br>panel aislado y<br><span style="color:#b31f6c;">láminas</span></h1>
         <div style="font-weight:600; color:#333; font-size:1.13rem; margin-bottom:0.7rem; text-align:left;">
           <span style="font-style:italic;">Entrega rápida, asesoría técnica y precios competitivos</span>
         </div>
