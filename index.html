@@ -108,8 +108,10 @@
       line-height: 1.6;
       background-color: #ffffff;
       color: #333333;
-      max-width: 100%;
+      width: 100%;
+      max-width: 100vw;
       overflow-x: hidden;
+      position: relative;
       text-rendering: optimizeSpeed;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -120,13 +122,15 @@
     }
     
     header.hero {
-      background: #ffffff;
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images/proyecto9.webp') center/cover no-repeat;
       color: #FFFFFF;
       text-align: center;
       padding: 3.2rem 1rem 2.5rem 1rem;
       border-bottom: 1px solid #ffffff;
       position: relative;
       overflow: hidden;
+      width: 100%;
+      box-sizing: border-box;
     }
     .hero-main {
       font-family: 'Montserrat', 'Poppins', 'Segoe UI', Arial, sans-serif;
@@ -184,9 +188,50 @@
       to { opacity: 1; transform: none; }
     }
     @media (max-width: 700px) {
-      .hero-main { font-size: 1.5rem; }
-      .hero-sub { font-size: 1.05rem; }
-      .hero-bienvenida { padding: 1.1rem 0.5rem; }
+      .hero-main { 
+        font-size: 1.8rem;
+        padding: 0 15px;
+        margin: 0 auto 15px;
+        max-width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        line-height: 1.3;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        overflow: visible;
+        display: block;
+      }
+      .hero-sub { 
+        font-size: 1.05rem;
+        padding: 0 20px;
+        margin: 0 auto;
+        max-width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        line-height: 1.4;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+      .hero-bienvenida { 
+        padding: 1.1rem 20px;
+        margin: 0 auto;
+        max-width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+      }
+      .hero-content {
+        padding: 0 20px;
+        margin: 0 auto;
+        max-width: 100%;
+        box-sizing: border-box;
+        width: 100%;
+      }
+      .hero-content > * {
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
     }
     
     .logo {
@@ -204,7 +249,15 @@
     @media (max-width: 600px) {
       .logo {
         max-width: 180px;
-        margin-bottom: 1.2rem;
+        margin: 0 auto 1.2rem auto;
+        padding: 0 15px;
+        box-sizing: border-box;
+        width: auto;
+      }
+      .cta {
+        margin: 0 15px;
+        max-width: calc(100% - 30px);
+        box-sizing: border-box;
       }
     }
     
@@ -213,6 +266,9 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
+      margin: 0 auto;
+      max-width: 100%;
+      box-sizing: border-box;
       margin-top: 1rem;
       background: #000000;
       color: white;
@@ -1294,8 +1350,8 @@ body {
         <button class="navbar-btn whatsapp" onclick="window.open('https://wa.me/523318088119','_blank')">Cotizar</button>
       </div>
     </nav>
-    <div class="hero-content-collage" style="content-visibility: auto; contain-intrinsic-size: 0 500px; padding-top: 100px;">
-      <div class="hero-left" style="will-change: transform; transform: translateZ(0);">
+    <div class="hero-content-collage" style="content-visibility: auto; contain-intrinsic-size: 0 500px; padding: 120px 15px 40px; max-width: 100%; overflow: hidden; box-sizing: border-box;">
+      <div class="hero-left" style="will-change: transform; transform: translateZ(0); max-width: 100%;">
         <!-- Título optimizado para LCP -->
         <style>
           /* Precargar la fuente en formato woff2 */
@@ -1343,11 +1399,17 @@ body {
           
           @media (max-width: 823px) {
             .hero-main {
-              font-size: 4.2rem; /* Aumentado en 200% para móviles */
-              margin-bottom: 1rem;
-              line-height: 1;
-              letter-spacing: -1px;
+              font-size: 2.5rem; /* Tamaño más manejable para móviles */
+              margin: 0 auto 1.5rem;
+              line-height: 1.2;
+              letter-spacing: -0.5px;
               width: 100%;
+              padding: 0 15px !important;
+              white-space: normal;
+              word-break: break-word;
+              display: block;
+              text-align: center;
+              box-sizing: border-box;
             }
             .hero-main + div {
               margin-bottom: 0.5rem !important;
@@ -1359,16 +1421,16 @@ body {
             color: inherit;
           }
         </style>
-        <h1 class="hero-main" aria-label="Líderes de venta en panel aislado y láminas">
-          <span style="display:block; margin-bottom:0.3em;">Líderes de venta en</span>
-          <span style="display:block; margin-bottom:0.3em;">panel aislado y</span>
-          <span style="display:block;">láminas</span>
+        <h1 class="hero-main" aria-label="Líderes de venta en panel aislado y láminas" style="padding: 0 15px; margin: 0 auto 15px; box-sizing: border-box; width: 100%;">
+          <span style="display:block; margin-bottom:0.3em; padding: 0 5px;">Líderes de venta en</span>
+          <span style="display:block; margin-bottom:0.3em; padding: 0 5px;">panel aislado y</span>
+          <span style="display:block; padding: 0 5px;">láminas</span>
         </h1>
-        <div style="font-weight:600; color:#333; font-size:1.24rem; margin: 3.5rem 0 0.8rem 0; text-align:left;">
-          <span style="font-style:italic;">Entrega rápida, asesoría técnica y precios competitivos</span>
+        <div style="font-weight:700; color:#000000; font-size:1.1rem; margin: 2.5rem 15px 1rem; text-align:center; max-width: 100%;">
+          <span style="font-style:italic; display: inline-block; max-width: 100%;"><strong>Entrega rápida, asesoría técnica y precios competitivos</strong></span>
         </div>
-        <div style="color:#222; font-size:1.14rem; margin-bottom:0.8rem; text-align:left;">
-          Distribuimos paneles tipo sándwich, térmicos y estructurales para techo y muro.
+        <div style="color:#000000; font-weight:600; font-size:1rem; margin:0 15px 1.5rem; text-align:center; max-width: 100%;">
+          <strong>Distribuimos paneles tipo sándwich, térmicos y estructurales para techo y muro.</strong>
         </div>
         <a href="https://wa.me/523318088119" target="_blank" class="cta whatsapp-btn" style="display:inline-flex;align-items:center;background:#1a7a34;color:white;padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:600;font-size:1.21rem;box-shadow:0 4px 15px rgba(0,0,0,0.2);transition:all 0.3s ease;margin-bottom:1.2rem;border: 2px solid #145c28;">
           <i class="fab fa-whatsapp" style="font-size:1.4rem;margin-right:10px;"></i>
@@ -1402,28 +1464,28 @@ body {
       </div>
       
       <!-- Collage para escritorio -->
-      <div class="desktop-collage" style="transform: scale(1.2); transform-origin: center; transition: transform 0.3s ease; display: grid; grid-template-columns: 35% 65%; gap: 8px; width: 95%; max-width: 620px; margin: 0 auto; padding: 0 10px; align-items: start;">
+      <div class="desktop-collage" style="transform: scale(1.44) translateX(-80px); transform-origin: center; transition: transform 0.3s ease; display: grid; grid-template-columns: 35% 65%; gap: 8px; width: 100%; max-width: 500px; margin: 0 auto; padding: 0 10px; align-items: start; box-sizing: border-box;">
         <!-- Columna izquierda - Imagen grande (reducida 30%) -->
         <div class="collage-col-izq" style="height: 100%; display: flex; align-items: center; justify-content: center; padding: 10px 0;">
-          <img src="images/proyecto3.webp" alt="Panel 1" style="width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <img src="images/proyecto3.webp" alt="Panel 1" style="width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.25);">
         </div>
         
         <!-- Columna derecha - Cuadrícula de 2x2 -->
         <div class="collage-col-der" style="display: grid; grid-template-rows: 1fr 1fr; gap: 10px; height: 100%;">
           <div class="collage-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; height: 100%;">
-            <div style="overflow: hidden; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 5px; box-sizing: border-box; background: #f8f8f8;">
-              <img src="images/proyecto5.webp" alt="Panel 2" style="width: 100%; height: 100%; object-fit: contain;">
+            <div style="overflow: hidden; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 5px; box-sizing: border-box; background: #f8f8f800;">
+              <img src="images/proyecto5.webp" alt="Panel 2" style="width: 100%; height: 100%; object-fit: contain; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
             </div>
-            <div style="overflow: hidden; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 5px; box-sizing: border-box; background: #f8f8f8;">
-              <img src="images/proyecto6.webp" alt="Panel 3" style="width: 100%; height: 100%; object-fit: contain;">
+            <div style="overflow: hidden; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 5px; box-sizing: border-box; background: #f8f8f800;">
+              <img src="images/proyecto6.webp" alt="Panel 3" style="width: 100%; height: 100%; object-fit: contain; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
             </div>
           </div>
           <div class="collage-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; height: 100%;">
-            <div style="overflow: hidden; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 5px; box-sizing: border-box; background: #f8f8f8;">
-              <img src="images/proyecto9.webp" alt="Panel 4" style="width: 100%; height: 100%; object-fit: contain;">
+            <div style="overflow: hidden; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 5px; box-sizing: border-box; background: #f8f8f800;">
+              <img src="images/proyecto9.webp" alt="Panel 4" style="width: 100%; height: 100%; object-fit: contain; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
             </div>
-            <div style="overflow: hidden; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 5px; box-sizing: border-box; background: #f8f8f8;">
-              <img src="images/proyecto10.webp" alt="Panel 5" style="width: 100%; height: 100%; object-fit: contain;">
+            <div style="overflow: hidden; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 5px; box-sizing: border-box; background: #f8f8f800;">
+              <img src="images/proyecto10.webp" alt="Panel 5" style="width: 100%; height: 100%; object-fit: contain; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
             </div>
           </div>
         </div>
@@ -1431,7 +1493,31 @@ body {
     </div>
   </header>
   
+  <!-- Botón flotante para móvil -->
+  <div class="mobile-float-btn" style="display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: #1a7a34; z-index: 1000; padding: 15px; box-shadow: 0 -2px 10px rgba(0,0,0,0.2); text-align: center;">
+    <a href="https://wa.me/523318088119" target="_blank" style="display: block; color: white; text-decoration: none; font-weight: 600; font-size: 1.1rem; letter-spacing: 0.5px;">
+      <i class="fab fa-whatsapp" style="margin-right: 8px; font-size: 1.3rem;"></i>COTIZA GRATIS AHORA
+    </a>
+  </div>
+  
   <style>
+    /* Estilos para el botón flotante en móvil */
+    @media (max-width: 768px) {
+      .mobile-float-btn {
+        display: block !important;
+        animation: slideUp 0.3s ease-out;
+      }
+      
+      @keyframes slideUp {
+        from { transform: translateY(100%); }
+        to { transform: translateY(0); }
+      }
+      
+      /* Asegurar que el contenido no quede oculto detrás del botón flotante */
+      body {
+        padding-bottom: 70px;
+      }
+    }
     /* Estilos del carrusel móvil */
     @media (max-width: 823px) {
       .mobile-carousel {
@@ -1469,7 +1555,8 @@ body {
         height: 250px;
         object-fit: cover;
         border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        border: none;
       }
       
       .carousel-btn {
@@ -1549,7 +1636,8 @@ body {
         max-height: 100%;
         object-fit: contain;
         border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        border: none;
       }
       
       .collage-col-der {
@@ -1572,7 +1660,7 @@ body {
       .collage-row > div {
         overflow: hidden;
         border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         height: 100%;
         display: flex;
         align-items: center;
@@ -1580,6 +1668,7 @@ body {
         background: #f8f8f8;
         padding: 10px;
         box-sizing: border-box;
+        border: none;
       }
       
       .collage-row img {
@@ -2366,29 +2455,29 @@ body {
         <img src="images/quality.webp" alt="Calidad garantizada" style="width: 280px; height: auto; max-width: 100%;">
       </div>
       
-      <div class="carrusel-container" id="carrusel-materiales" style="position: relative; max-width: 1200px; margin: 0 auto; overflow: hidden;">
+      <div class="carrusel-container" id="carrusel-materiales" style="position: relative; max-width: 100%; margin: 0 auto; overflow: hidden; padding: 0 15px;">
         <button class="carrusel-btn prev" aria-label="Anterior" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(255,255,255,0.9); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #1a237e; transition: all 0.3s ease;">&#8592;</button>
         
-        <div class="carrusel-galeria" style="display: flex; transition: transform 1s ease-in-out; padding: 20px 0;">
-          <div class="carrusel-slide" style="min-width: 350px; margin: 0 15px; position: relative; transition: transform 0.3s ease; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 450px;">
-            <div style="width: 100%; height: 380px; display: flex; align-items: center; justify-content: center; background: transparent;">
-              <img src="images/producto1.webp" alt="Producto 1" style="max-width: 100%; max-height: 100%; object-fit: contain; background: transparent;">
-            </div>
-            <button class="ver-producto" onclick="window.open('https://panelylamina.com/catalogo','_blank')" style="margin-top: 15px; background: white; color: #333; border: 2px solid #333; padding: 10px 30px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onmouseover="this.style.background='#BD3768'; this.style.color='white'; this.style.borderColor='#BD3768'; this.style.boxShadow='0 4px 15px rgba(189, 55, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='#333'; this.style.borderColor='#333'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)';">Ver producto</button>
+        <div class="carrusel-galeria" style="display: flex; transition: transform 0.8s ease-in-out; padding: 20px 10px; width: 100%;">
+          <div class="carrusel-slide" style="min-width: 280px; margin: 0 10px; position: relative; transition: all 0.8s ease; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: auto; padding: 15px; box-sizing: border-box;">
+        <div style="width: 100%; min-height: 200px; display: flex; align-items: center; justify-content: center; background: transparent; padding: 10px;">
+          <img src="images/producto1.webp" alt="Producto 1" style="max-width: 130%; max-height: 390px; object-fit: contain; background: transparent; width: auto; height: auto; margin: 0 -15%;">
+        </div>
+            <button class="ver-producto" onclick="window.open('https://panelylamina.com/catalogo','_blank')" style="margin: 25px 0 -10px 0; background: white; color: #333; border: 2px solid #333; padding: 10px 30px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onmouseover="this.style.background='#BD3768'; this.style.color='white'; this.style.borderColor='#BD3768'; this.style.boxShadow='0 4px 15px rgba(189, 55, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='#333'; this.style.borderColor='#333'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)';">Ver producto</button>
           </div>
           
-          <div class="carrusel-slide" style="min-width: 350px; margin: 0 15px; position: relative; transition: transform 0.3s ease; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 450px;">
-            <div style="width: 100%; height: 380px; display: flex; align-items: center; justify-content: center; background: transparent;">
-              <img src="images/producto2.webp" alt="Producto 2" style="max-width: 100%; max-height: 100%; object-fit: contain; background: transparent;">
-            </div>
-            <button class="ver-producto" onclick="window.open('https://panelylamina.com/catalogo','_blank')" style="margin-top: 15px; background: white; color: #333; border: 2px solid #333; padding: 10px 30px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onmouseover="this.style.background='#BD3768'; this.style.color='white'; this.style.borderColor='#BD3768'; this.style.boxShadow='0 4px 15px rgba(189, 55, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='#333'; this.style.borderColor='#333'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)';">Ver producto</button>
+          <div class="carrusel-slide" style="min-width: 280px; margin: 0 10px; position: relative; transition: all 0.8s ease; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: auto; padding: 15px; box-sizing: border-box;">
+        <div style="width: 100%; min-height: 200px; display: flex; align-items: center; justify-content: center; background: transparent; padding: 10px;">
+          <img src="images/producto2.webp" alt="Producto 2" style="max-width: 130%; max-height: 390px; object-fit: contain; background: transparent; width: auto; height: auto; margin: 0 -15%;">
+        </div>
+            <button class="ver-producto" onclick="window.open('https://panelylamina.com/catalogo','_blank')" style="margin: 25px 0 -10px 0; background: white; color: #333; border: 2px solid #333; padding: 10px 30px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onmouseover="this.style.background='#BD3768'; this.style.color='white'; this.style.borderColor='#BD3768'; this.style.boxShadow='0 4px 15px rgba(189, 55, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='#333'; this.style.borderColor='#333'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)';">Ver producto</button>
           </div>
           
-          <div class="carrusel-slide" style="min-width: 350px; margin: 0 15px; position: relative; transition: transform 0.3s ease; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 450px;">
-            <div style="width: 100%; height: 380px; display: flex; align-items: center; justify-content: center; background: transparent;">
-              <img src="images/producto3.webp" alt="Producto 3" style="max-width: 100%; max-height: 100%; object-fit: contain; background: transparent;">
-            </div>
-            <button class="ver-producto" onclick="window.open('https://panelylamina.com/catalogo','_blank')" style="margin-top: 15px; background: white; color: #333; border: 2px solid #333; padding: 10px 30px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onmouseover="this.style.background='#BD3768'; this.style.color='white'; this.style.borderColor='#BD3768'; this.style.boxShadow='0 4px 15px rgba(189, 55, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='#333'; this.style.borderColor='#333'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)';">Ver producto</button>
+          <div class="carrusel-slide" style="min-width: 280px; margin: 0 10px; position: relative; transition: all 0.8s ease; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: auto; padding: 15px; box-sizing: border-box;">
+        <div style="width: 100%; min-height: 200px; display: flex; align-items: center; justify-content: center; background: transparent; padding: 10px;">
+          <img src="images/producto3.webp" alt="Producto 3" style="max-width: 130%; max-height: 390px; object-fit: contain; background: transparent; width: auto; height: auto; margin: 0 -15%;">
+        </div>
+            <button class="ver-producto" onclick="window.open('https://panelylamina.com/catalogo','_blank')" style="margin: 25px 0  -10px 0; background: white; color: #333; border: 2px solid #333; padding: 10px 30px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onmouseover="this.style.background='#BD3768'; this.style.color='white'; this.style.borderColor='#BD3768'; this.style.boxShadow='0 4px 15px rgba(189, 55, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='#333'; this.style.borderColor='#333'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)';">Ver producto</button>
           </div>
           
           <!-- Agrega más slides según sea necesario -->
@@ -2444,8 +2533,15 @@ body {
           
           .carrusel-slide {
             min-width: 280px !important;
-            height: 300px !important;
+            height: auto !important;
             margin: 0 10px !important;
+            padding-bottom: 20px !important;
+            overflow: visible !important;
+          }
+          
+          .carrusel-slide img {
+            transform: scale(1.3);
+            transform-origin: center;
           }
           
           .carrusel-btn {
@@ -2464,7 +2560,7 @@ body {
   </section>
 
   <!-- REVIEWS -->
-  <section class="reviews" style="padding: 5rem 1rem; background:#2B4562; color: white;">
+  <section class="reviews" style="padding: 3rem 0; background:#2B4562; color: white; overflow: hidden;">
     <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
       <h2 style="color: white; font-size: 2.5rem; margin-bottom: 1rem; font-weight: 700; position: relative; display: block;">
         Nuestros Clientes Satisfechos
@@ -2476,9 +2572,9 @@ body {
       </div>
 
       <!-- Google Reviews Container -->
-      <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; padding: 0 1.5rem;">
+      <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; padding: 0 1rem; width: 100%; box-sizing: border-box;">
         <!-- Review Card 1 -->
-        <div style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 2rem; text-align: left; position: relative; backdrop-filter: blur(10px);">
+        <div style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 1.5rem; text-align: left; position: relative; backdrop-filter: blur(10px); width: 100%; box-sizing: border-box; margin: 0 auto; max-width: 320px;">
           <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
             <div style="width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; overflow: hidden;">
               <img src="images/logogoogleg.webp" alt="Google" style="width: 100%; height: 100%; object-fit: contain; padding: 5px;">
@@ -2493,7 +2589,7 @@ body {
         </div>
 
         <!-- Review Card 2 -->
-        <div style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 2rem; text-align: left; position: relative; backdrop-filter: blur(10px);">
+        <div style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 1.5rem; text-align: left; position: relative; backdrop-filter: blur(10px); width: 100%; box-sizing: border-box; margin: 0 auto; max-width: 320px;">
           <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
             <div style="width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; overflow: hidden;">
               <img src="images/logogoogleg.webp" alt="Google" style="width: 100%; height: 100%; object-fit: contain; padding: 5px;">
@@ -2508,7 +2604,7 @@ body {
         </div>
 
         <!-- Review Card 3 -->
-        <div style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 2rem; text-align: left; position: relative; backdrop-filter: blur(10px);">
+        <div style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 1.5rem; text-align: left; position: relative; backdrop-filter: blur(10px); width: 100%; box-sizing: border-box; margin: 0 auto; max-width: 320px;">
           <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
             <div style="width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; overflow: hidden;">
               <img src="images/logogoogleg.webp" alt="Google" style="width: 100%; height: 100%; object-fit: contain; padding: 5px;">
@@ -2568,7 +2664,7 @@ body {
         <div style="flex: 1; padding-top: 2rem;" class="desktop-text">
           <div class="proyectos-bienvenida" style="max-width: 800px; margin: 0 auto 2rem auto;">
             <p class="proyectos-frase" style="color: #2D4766; font-size: 1.6rem; line-height: 1.8; margin-bottom: 2.5rem; font-weight: 600; font-family: 'Poppins', 'Segoe UI', sans-serif; text-align: left;">
-              <strong style="font-weight: 700; color: #1a1a1a;">Transformamos espacios con soluciones innovadoras en paneles y láminas.</strong> <br><span style="font-weight: 500; color: #2D4766;">Cada proyecto es una muestra de nuestro compromiso con la excelencia y la calidad en la construcción.</span>
+              <strong style="font-weight: 700; color: #BD3768;">Transformamos espacios con soluciones innovadoras en paneles y láminas.</strong> <br><span style="font-weight: 500; color: #2D4766;">Cada proyecto es una muestra de nuestro compromiso con la excelencia y la calidad en la construcción.</span>
             </p>
           </div>
           <!-- Botón de WhatsApp escritorio -->
@@ -3067,7 +3163,8 @@ function initCarrusel(containerId, slidesToShow = 3) {
   const nextBtn = container.querySelector('.carrusel-btn.next');
   let currentIndex = 0;
   let autoSlideInterval;
-  const slideDuration = 3000; // 3 segundos entre cada slide
+  const slideDuration = 5000; // 5 segundos entre cada slide (aumentado de 3s)
+  let isMobile = window.innerWidth <= 768;
 
   // Clonar los slides para crear un efecto de bucle infinito
   const totalSlides = slides.length;
@@ -3077,11 +3174,12 @@ function initCarrusel(containerId, slidesToShow = 3) {
     slides.forEach(slide => {
       slide.style.display = 'none';
       slide.style.opacity = '0';
-      slide.style.transition = 'opacity 0.5s ease';
+      slide.style.transition = 'opacity 0.8s ease';
     });
     
     // Mostrar los slides actuales
-    for (let i = 0; i < slidesToShow; i++) {
+    const slidesToDisplay = isMobile ? 1 : slidesToShow;
+    for (let i = 0; i < slidesToDisplay; i++) {
       const slideIndex = (currentIndex + i) % totalSlides;
       const slide = slides[slideIndex];
       if (slide) {
@@ -3099,13 +3197,15 @@ function initCarrusel(containerId, slidesToShow = 3) {
   }
 
   function nextSlide() {
-    currentIndex = (currentIndex + 1) % (totalSlides - slidesToShow + 1);
+    const slidesToDisplay = isMobile ? 1 : slidesToShow;
+    currentIndex = (currentIndex + 1) % (totalSlides - slidesToDisplay + 1);
     updateCarrusel();
     resetAutoSlide();
   }
 
   function prevSlide() {
-    currentIndex = (currentIndex - 1 + (totalSlides - slidesToShow + 1)) % (totalSlides - slidesToShow + 1);
+    const slidesToDisplay = isMobile ? 1 : slidesToShow;
+    currentIndex = (currentIndex - 1 + (totalSlides - slidesToDisplay + 1)) % (totalSlides - slidesToDisplay + 1);
     updateCarrusel();
     resetAutoSlide();
   }
@@ -3133,16 +3233,40 @@ function initCarrusel(containerId, slidesToShow = 3) {
 
   // Inicializar el carrusel
   updateCarrusel();
+  
+  // Iniciar autoplay en todos los dispositivos
   startAutoSlide();
+  
+  // Manejar el evento de redimensionamiento
+  window.addEventListener('resize', function() {
+    const wasMobile = isMobile;
+    isMobile = window.innerWidth <= 768;
+    
+    // Si cambia entre móvil y escritorio, reiniciar el carrusel
+    if (wasMobile !== isMobile) {
+      // Detener el intervalo actual
+      clearInterval(autoSlideInterval);
+      
+      // Actualizar la visualización
+      updateCarrusel();
+      
+      // Reiniciar el autoplay
+      startAutoSlide();
+    } else {
+      updateCarrusel();
+    }
+  });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Inicializar carrusel automático si no es dispositivo móvil
+  // Inicializar carrusel de Materiales Garantizados (funciona en móviles y escritorio)
+  initCarrusel('carrusel-materiales', window.innerWidth > 768 ? 3 : 1);
+  
+  // Inicializar carrusel de Proyectos
   if (window.innerWidth > 768) {
-    initCarrusel('carrusel-materiales', 3);
     initCarrusel('carrusel-proyectos', 3);
   } else {
-    // Para móviles, solo inicializar la navegación manual
+    // Para móviles, inicializar la navegación manual para el carrusel de proyectos
     const proyectosContainer = document.getElementById('carrusel-proyectos');
     if (proyectosContainer) {
       const slides = proyectosContainer.querySelectorAll('.carrusel-slide');
