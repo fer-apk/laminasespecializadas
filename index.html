@@ -49,9 +49,14 @@
   <link rel="preload" href="https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7Z1JlFc-K.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="https://fonts.gstatic.com/s/montserrat/v25/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2" as="font" type="font/woff2" crossorigin>
   
-  <!-- Cargar estilos de fuentes no críticas de forma asíncrona -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@700&display=swap"></noscript>
+  <!-- Preload critical fonts with font-display: swap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap">
+  </noscript>
   
   <!-- Precargar solo la imagen hero que se usará -->
   <link rel="preload" href="images/hero-mobile.webp" as="image" media="(max-width: 768px)" fetchpriority="high">
@@ -64,8 +69,45 @@
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
   
+  <!-- Cargar FontFaceObserver para manejo de fuentes -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fontfaceobserver/2.3.0/fontfaceobserver.standalone.js" integrity="sha512-7Lq5M6SXqDKFmgKqX1XIC7MvJvFR+1qZ0tX8nQJ4zR5q9U9Xq+5Z5q8eUfU9KkG1RkGvH1eU2pLjY0yWt5q5w==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+  
   <!-- Script para cargar recursos no críticos -->
   <script>
+    // Manejar carga de fuentes y prevenir CLS
+    document.documentElement.classList.add('js-loading');
+    
+    window.addEventListener('load', function() {
+      document.documentElement.classList.remove('js-loading');
+    });
+    
+    (function() {
+      // Añadir clase cuando las fuentes estén cargadas
+      function handleFontsLoaded() {
+        document.documentElement.classList.add('fonts-loaded');
+        sessionStorage.fontsLoaded = true;
+      }
+      
+      // Verificar si las fuentes ya están cargadas
+      if (sessionStorage.fontsLoaded) {
+        document.documentElement.classList.add('fonts-loaded');
+      } else {
+        // Usar FontFaceObserver para detectar cuando las fuentes están listas
+        if ('FontFaceObserver' in window) {
+          const montserrat = new FontFaceObserver('Montserrat');
+          const poppins = new FontFaceObserver('Poppins');
+          
+          Promise.all([
+            montserrat.load(null, 3000).catch(e => console.warn('Montserrat font loading failed', e)),
+            poppins.load(null, 3000).catch(e => console.warn('Poppins font loading failed', e))
+          ]).then(handleFontsLoaded);
+        } else {
+          // Fallback si no hay soporte para FontFaceObserver
+          document.fonts.ready.then(handleFontsLoaded);
+        }
+      }
+    })();
+    
     // Función para cargar scripts de forma óptima
     function loadScript(src, options = {}) {
       return new Promise((resolve, reject) => {
@@ -148,7 +190,7 @@
     
     /* Estilos base optimizados */
     body {
-      font-family: 'Montserrat', 'Montserrat-fallback', system-ui, -apple-system, sans-serif;
+      font-family: 'Montserrat-fallback', system-ui, -apple-system, sans-serif;
       line-height: 1.6;
       background: #fff;
       color: #333;
@@ -157,11 +199,27 @@
       overflow-x: hidden;
       text-rendering: optimizeSpeed;
       -webkit-font-smoothing: antialiased;
+      /* Prevent layout shifts */
+      overflow-y: scroll;
+    }
+    
+    /* Font loading classes */
+    .fonts-loaded body {
+      font-family: 'Montserrat', 'Montserrat-fallback', system-ui, -apple-system, sans-serif;
+    }
+    
+    .fonts-loaded h1,
+    .fonts-loaded h2,
+    .fonts-loaded h3,
+    .fonts-loaded h4,
+    .fonts-loaded h5,
+    .fonts-loaded h6 {
+      font-family: 'Poppins', 'Poppins-fallback', system-ui, -apple-system, sans-serif;
     }
     
     /* Tipografía optimizada */
     h1, h2, h3, h4, h5, h6 {
-      font-family: 'Poppins', 'Poppins-fallback', system-ui, -apple-system, sans-serif;
+      font-family: 'Poppins-fallback', system-ui, -apple-system, sans-serif;
       font-weight: 700;
       line-height: 1.2;
       margin-bottom: 0.5em;
@@ -1837,11 +1895,11 @@ body {
 </section>
 
   <!-- Sección destacada tipo empresa líder -->
-  <section class="destacado-empresa" style="color: #2d2d2d; margin-top: 30px;">
+  <section class="destacado-empresa" style="color: #2d2d2d; margin-top: 30px; min-height: 1px;">
     <div class="destacado-row">
   <div class="destacado-header" style="width:100%;">
     <span class="destacado-icon"><i class="fas fa-box-open"></i></span>
-    <h2 class="destacado-titulo-principal" style="color: #1a1a1a;">Empresa <b style="color: #0077cc;">líder en distribución</b> de <b style="color: #0077cc;">paneles aislantes</b>, y diversos <b style="color: #0077cc;">sistemas aislantes</b>.</h2>
+    <h2 class="destacado-titulo-principal" style="color: #1a1a1a; min-height: 1.2em;">Empresa <b style="color: #0077cc;">líder en distribución</b> de <b style="color: #0077cc;">paneles aislantes</b>, y diversos <b style="color: #0077cc;">sistemas aislantes</b>.</h2>
   </div>
   <div class="destacado-info">
     <div class="destacado-desc">
