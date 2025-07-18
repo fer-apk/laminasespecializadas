@@ -16,61 +16,121 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   
-  <!-- Optimización avanzada de fuentes -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Precargar solo los caracteres necesarios -->
+  <!-- Cargar solo estilos críticos -->
+  <style>
+    /* Estilos críticos mínimos */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { margin: 0 !important; padding: 0 !important; overflow-x: hidden; }
+    .hero { margin-top: 0 !important; padding-top: 0 !important; }
+    .navbar-hero { margin-top: 0 !important; padding-top: 0 !important; }
+    
+    /* Estilos críticos para el hero */
+    .hero-main {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      color: #b31f6c;
+      font-size: 2.64rem;
+      line-height: 1.2;
+      font-weight: 700;
+      margin: 1.5rem 0 1rem;
+    }
+    
+    /* Asegurar que el contenido sea visible inmediatamente */
+    body { opacity: 1; }
+    
+    /* Evitar cambios de diseño (CLS) */
+    .hero-content-collage, .navbar-hero, .mobile-float-btn {
+      will-change: transform;
+      contain: layout style paint;
+    }
+  </style>
+  
+  <!-- Precargar solo fuentes críticas -->
   <link rel="preload" href="https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7Z1JlFc-K.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/montserrat/v25/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2" as="font" type="font/woff2" crossorigin>
   
-  <!-- Cargar estilos de fuentes no críticas -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" media="print" onload="this.media='all'">
+  <!-- Cargar estilos de fuentes no críticas de forma asíncrona -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@700&display=swap"></noscript>
   
-  <!-- Precargar recursos críticos -->
+  <!-- Precargar solo la imagen hero que se usará -->
   <link rel="preload" href="images/hero-mobile.webp" as="image" media="(max-width: 768px)" fetchpriority="high">
   <link rel="preload" href="images/hero-desktop.webp" as="image" media="(min-width: 769px)" fetchpriority="high">
   
-  <!-- Preload de la imagen hero con atributos de carga optimizados -->
-  <link rel="preload" href="images/hero-mobile.webp" as="image" media="(max-width: 768px)" fetchpriority="high" importance="high">
-  <link rel="preload" href="images/hero-desktop.webp" as="image" media="(min-width: 769px)" fetchpriority="high" importance="high">
   <meta name="theme-color" content="#b31f6c">
   
-  <!-- Carga asíncrona de Font Awesome -->
+  <!-- Cargar Font Awesome de forma diferida -->
+  <!-- Cargar Font Awesome de forma diferida -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-  <!-- Carga diferida de GSAP -->
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+  
+  <!-- Script para cargar recursos no críticos -->
   <script>
-    function loadScript(src, callback) {
-      var script = document.createElement('script');
-      script.src = src;
-      script.async = true;
-      script.onload = callback;
-      document.head.appendChild(script);
-    }
-    
-    // Cargar GSAP después de que la página haya cargado
-    if (window.innerWidth > 768) { // Solo cargar en escritorio
-      window.addEventListener('load', function() {
-        loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js', function() {
-          loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js');
-        });
+    // Función para cargar scripts de forma óptima
+    function loadScript(src, options = {}) {
+      return new Promise((resolve, reject) => {
+        if (window.innerWidth <= 768 && !options.forceLoad) return resolve();
+        
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = !options.defer;
+        script.defer = !!options.defer;
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error(`Error al cargar ${src}`));
+        
+        if (options.id) script.id = options.id;
+        if (options.module) script.type = 'module';
+        
+        (options.target || document.body).appendChild(script);
       });
     }
+    
+    // Cargar recursos no críticos después de que la página esté interactiva
+    function loadNonCriticalResources() {
+      // GSAP solo para escritorio
+      if (window.innerWidth > 768) {
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js', { defer: true })
+          .then(() => loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js', { defer: true }))
+          .catch(console.error);
+      }
+      
+      // Cargar estilos no críticos
+      const nonCriticalStyles = [
+        // Agregar aquí cualquier hoja de estilo no crítica
+      ];
+      
+      nonCriticalStyles.forEach(href => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        link.media = 'print';
+        link.onload = () => { link.media = 'all'; };
+        document.head.appendChild(link);
+      });
+    }
+    
+    // Iniciar carga de recursos no críticos
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadNonCriticalResources);
+    } else {
+      setTimeout(loadNonCriticalResources, 0);
+    }
+    
+    // Optimizar scroll y animaciones
+    document.addEventListener('scroll', function() {
+      // Usar requestAnimationFrame para mejor rendimiento
+      requestAnimationFrame(() => {
+        // Código de scroll si es necesario
+      });
+    }, { passive: true });
   </script>
   
   <!-- Estilos críticos inline -->
   <style>
-    /* Fuentes de respaldo optimizadas para móvil */
+    /* Fuentes de respaldo optimizadas */
     @font-face {
       font-family: 'Montserrat-fallback';
       src: local('Arial');
-      size-adjust: 105%;
-      ascent-override: 90%;
-      descent-override: 22.5%;
-      line-gap-override: 0%;
       font-display: swap;
     }
     
@@ -78,47 +138,33 @@
       font-family: 'Poppins-fallback';
       src: local('Arial Bold'), local('Arial');
       font-weight: 700;
-      size-adjust: 105%;
-      ascent-override: 92%;
-      descent-override: 23%;
-      line-gap-override: 0%;
       font-display: swap;
     }
     
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    .hero {
-      margin-top: 0 !important;
-      padding-top: 0 !important;
-    }
-    .navbar-hero {
-      margin-top: 0 !important;
-      padding-top: 0 !important;
-    }
+    /* Reset y estilos críticos mínimos */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; overflow-x: hidden; }
+    .hero, .navbar-hero { margin: 0 !important; padding: 0 !important; }
     
+    /* Estilos base optimizados */
     body {
-      font-family: 'Montserrat', 'Montserrat-fallback', 'Segoe UI', sans-serif;
+      font-family: 'Montserrat', 'Montserrat-fallback', system-ui, -apple-system, sans-serif;
       line-height: 1.6;
-      background-color: #ffffff;
-      color: #333333;
+      background: #fff;
+      color: #333;
       width: 100%;
-      max-width: 100vw;
+      max-width: 100%;
       overflow-x: hidden;
-      position: relative;
       text-rendering: optimizeSpeed;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
     
+    /* Tipografía optimizada */
     h1, h2, h3, h4, h5, h6 {
-      font-family: 'Poppins', 'Poppins-fallback', 'Segoe UI', sans-serif;
+      font-family: 'Poppins', 'Poppins-fallback', system-ui, -apple-system, sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.5em;
     }
     
     header.hero {
