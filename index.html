@@ -2609,7 +2609,8 @@ body {
       .servicios-bar, .stats-bar {
         flex-direction: column;
         gap: 1.2rem;
-        padding: 1rem 0;
+        padding: 0rem 0;
+        margin-bottom: 0.3rem !important;
       }
       .stat-block {
         min-width: 80px;
@@ -2625,6 +2626,30 @@ body {
 
   <!-- Materiales Garantizados -->
   <section class="productos" style="padding: 4rem 1rem; background-color: transparent;">
+  <style>
+    @media (max-width: 823px) {
+      section.productos {
+        padding: 0rem 1rem !important;
+        transform: translateY(-30px) !important;
+        position: relative;
+        z-index: 1;
+      }
+      .titulo-seccion {
+        margin-bottom: 1rem !important;
+      }
+      .titulo-seccion div {
+        margin-top: -3rem !important;/* esta linea ajusta el espacio entre el inicio de materiales garantizados y lo de arriba de marcas disponibles  */
+      }
+      .titulo-seccion span:first-child {
+        margin-bottom: -3.8rem !important;
+      }
+      .titulo-seccion span {
+        margin-left: 0 !important;
+        font-size: 2.8rem !important;
+        line-height: 1 !important;
+      }
+    }
+  </style>
     <div style="max-width: 1200px; margin: 0 auto;">
       <div class="titulo-seccion" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 3rem;">
         <div style="display: flex; flex-direction: column; align-items: flex-start;">
@@ -2766,12 +2791,12 @@ body {
               <img src="images/logogoogleg.webp" alt="Google" style="width: 100%; height: 100%; object-fit: contain; padding: 5px;">
             </div>
             <div>
-              <h4 style="margin: 0; color: white; font-size: 1rem; font-weight: 600;">Juan Pérez</h4>
+              <h4 style="margin: 0; color: white; font-size: 1rem; font-weight: 600;">Carlos Sandoval</h4>
               <div style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.8); margin-top: 2px;">Hace 1 mes</div>
             </div>
           </div>
           <div style="font-size: 1.2rem; color: #fbbc04; margin-bottom: 1rem;">★★★★★</div>
-          <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.6; font-size: 0.95rem; margin: 0;">Excelente atención y entrega muy rápida. Los materiales son de excelente calidad y el servicio al cliente es inmejorable. ¡Totalmente recomendados!</p>
+          <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.6; font-size: 0.95rem; margin: 0;">Buena calidad y variedad en materiales, buenos precios e impecable atención, son muy amables, buen servicio!</p>
         </div>
 
         <!-- Review Card 2 -->
@@ -2781,12 +2806,12 @@ body {
               <img src="images/logogoogleg.webp" alt="Google" style="width: 100%; height: 100%; object-fit: contain; padding: 5px;">
             </div>
             <div>
-              <h4 style="margin: 0; color: white; font-size: 1rem; font-weight: 600;">María González</h4>
+              <h4 style="margin: 0; color: white; font-size: 1rem; font-weight: 600;">Daniel Castillo</h4>
               <div style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.8); margin-top: 2px;">Hace 2 semanas</div>
             </div>
           </div>
           <div style="font-size: 1.2rem; color: #fbbc04; margin-bottom: 1rem;">★★★★★</div>
-          <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.6; font-size: 0.95rem; margin: 0;">Me asesoraron muy bien con los materiales que necesitaba. El precio fue mejor que en otros lugares y la calidad es excelente. Volveré a comprar.</p>
+          <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.6; font-size: 0.95rem; margin: 0;">Tienen gran variedad de materiales, las entregas son rápidas y los precios accesibles. Los chicos de almacén son muy amables.</p>
         </div>
 
         <!-- Review Card 3 -->
@@ -2796,12 +2821,12 @@ body {
               <img src="images/logogoogleg.webp" alt="Google" style="width: 100%; height: 100%; object-fit: contain; padding: 5px;">
             </div>
             <div>
-              <h4 style="margin: 0; color: white; font-size: 1rem; font-weight: 600;">Carlos Ramírez</h4>
+              <h4 style="margin: 0; color: white; font-size: 1rem; font-weight: 600;">Luis Torres</h4>
               <div style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.8); margin-top: 2px;">Hace 3 días</div>
             </div>
           </div>
           <div style="font-size: 1.2rem; color: #fbbc04; margin-bottom: 1rem;">★★★★★</div>
-          <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.6; font-size: 0.95rem; margin: 0;">Excelente servicio, los productos son de primera calidad y el precio es muy competitivo. Recomiendo 100% esta ferretería. El trato fue excelente.</p>
+          <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.6; font-size: 0.95rem; margin: 0;">Excelente atención de todo el personal, muy amables y rápidos en el proceso.</p>
         </div>
       </div>
 
