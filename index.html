@@ -29,9 +29,27 @@
   <style>
     /* Estilos críticos mínimos */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { margin: 0 !important; padding: 0 !important; overflow-x: hidden; }
-    .hero { margin-top: 0 !important; padding-top: 0 !important; }
-    .navbar-hero { margin-top: 0 !important; padding-top: 0 !important; }
+    html, body { 
+      margin: 0 !important; 
+      padding: 0 !important; 
+      overflow-x: hidden;
+      opacity: 1 !important; 
+      visibility: visible !important;
+    }
+    
+    .hero { 
+      margin-top: 0 !important; 
+      padding-top: 0 !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    
+    .navbar-hero { 
+      margin-top: 0 !important; 
+      padding-top: 0 !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
     
     /* Estilos críticos para el hero */
     .hero-main {
@@ -41,15 +59,19 @@
       line-height: 1.2;
       font-weight: 700;
       margin: 1.5rem 0 1rem;
+      opacity: 1 !important;
+      visibility: visible !important;
+      animation: none !important;
+      transition: none !important;
     }
-    
-    /* Asegurar que el contenido sea visible inmediatamente */
-    body { opacity: 1; }
     
     /* Evitar cambios de diseño (CLS) */
     .hero-content-collage, .navbar-hero, .mobile-float-btn {
       will-change: transform;
       contain: layout style paint;
+      opacity: 1 !important;
+      visibility: visible !important;
+      animation: none !important;
     }
   </style>
   
@@ -82,37 +104,35 @@
   
   <!-- Script para cargar recursos no críticos -->
   <script>
-    // Manejar carga de fuentes y prevenir CLS
-    document.documentElement.classList.add('js-loading');
+    // Forzar visibilidad inmediata
+    document.documentElement.classList.remove('js-loading');
+    document.documentElement.classList.add('fonts-loaded');
+    document.body.style.opacity = '1';
+    document.body.style.visibility = 'visible';
     
-    window.addEventListener('load', function() {
-      document.documentElement.classList.remove('js-loading');
-    });
+    // Marcar fuentes como cargadas
+    sessionStorage.fontsLoaded = true;
     
+    // Función para manejar la carga de fuentes (sin hacer nada que cause parpadeo)
+    function handleFontsLoaded() {
+      // No hacer nada que pueda causar parpadeo
+    }
+    
+    // Cargar recursos no críticos
     (function() {
-      // Añadir clase cuando las fuentes estén cargadas
-      function handleFontsLoaded() {
-        document.documentElement.classList.add('fonts-loaded');
-        sessionStorage.fontsLoaded = true;
-      }
+      // No esperar por las fuentes, mostrarlas de inmediato
+      handleFontsLoaded();
       
-      // Verificar si las fuentes ya están cargadas
-      if (sessionStorage.fontsLoaded) {
-        document.documentElement.classList.add('fonts-loaded');
-      } else {
-        // Usar FontFaceObserver para detectar cuando las fuentes están listas
-        if ('FontFaceObserver' in window) {
-          const montserrat = new FontFaceObserver('Montserrat');
-          const poppins = new FontFaceObserver('Poppins');
-          
-          Promise.all([
-            montserrat.load(null, 3000).catch(e => console.warn('Montserrat font loading failed', e)),
-            poppins.load(null, 3000).catch(e => console.warn('Poppins font loading failed', e))
-          ]).then(handleFontsLoaded);
-        } else {
-          // Fallback si no hay soporte para FontFaceObserver
-          document.fonts.ready.then(handleFontsLoaded);
-        }
+      // Cargar fuentes en segundo plano
+      if ('FontFaceObserver' in window) {
+        const montserrat = new FontFaceObserver('Montserrat');
+        const poppins = new FontFaceObserver('Poppins');
+        
+        // Cargar en segundo plano sin afectar la visualización
+        Promise.all([
+          montserrat.load(null, 3000).catch(e => console.warn('Montserrat font loading failed', e)),
+          poppins.load(null, 3000).catch(e => console.warn('Poppins font loading failed', e))
+        ]);
       }
     })();
     
@@ -1504,31 +1524,28 @@ body {
             color: #b31f6c;
             font-size: 2.64rem;
             text-align: left;
-            margin: 1.5rem 0 1rem 0; /* Aumentado el margen superior */
+            margin: 1.5rem 0 1rem 0;
             padding: 0;
-            line-height: 1.2; /* Ajustado el interlineado */
+            line-height: 1.2;
             font-family: 'Poppins-LCP', system-ui, -apple-system, sans-serif;
             font-weight: 700;
-            /* Forzar capa de GPU */
+            /* Optimizaciones de rendimiento */
             transform: translateZ(0);
-            backface-visibility: hidden;
-            /* Evitar repintados costosos */
-            will-change: transform, opacity;
-            /* Layout fijo */
+            will-change: transform;
             contain: layout style paint;
-            /* Prevenir desbordamiento */
             overflow-wrap: break-word;
             word-wrap: break-word;
-            transition: transform 0.3s ease;
+            /* Eliminada la transición para que aparezca inmediatamente */
           }
           
-          /* Aumentar tamaño en desktop */
+          /* Estilos para desktop */
           @media (min-width: 774px) {
             .hero-main {
-              transform: scale(1.32) translateZ(0); /* Aumentado en 10% desde 1.2 */
-              transform-origin: left top;
-              margin-bottom: 1.2rem; /* Reducido el margen inferior */
+              /* Eliminado el transform: scale para cargar en tamaño final */
+              margin-bottom: 1.2rem;
               width: 66.67%;
+              /* Ajustar el tamaño de fuente directamente en lugar de usar scale */
+              font-size: 3.48rem !important; /* 2.64rem * 1.32 */
             }
           }
           
@@ -1590,7 +1607,14 @@ body {
       
       <!-- Imagen grande a la derecha -->
       <div class="desktop-image" style="transform: scale(1.3) translateX(-60px) translateY(-93px); transform-origin: top left; transition: transform 0.3s ease; width: 100%; max-width: 500px; margin: 0; padding: 0; box-sizing: border-box; text-align: left;">
-        <img src="images/collage.webp" alt="Panel de construcción" style="width: 100%; max-width: 100%; height: auto; object-fit: contain; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.25);">
+        <img 
+          src="images/collage.webp" 
+          alt="Panel de construcción" 
+          loading="lazy" 
+          decoding="async"
+          style="width: 100%; max-width: 100%; height: auto; object-fit: contain; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.25);"
+          onload="this.style.opacity=1"
+          style="opacity:0;transition:opacity 0.3s">
       </div>
     </div>
   </header>
