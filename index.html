@@ -2,11 +2,16 @@
 <html lang="es">
 <head>
   <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-5WGS9STP');</script>
+  <script>
+    // Load GTM asynchronously after the page has loaded
+    window.addEventListener('load', function() {
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5WGS9STP');
+    });
+  </script>
   <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,8 +27,13 @@
   
   <!-- Preconnect y dns-prefetch para recursos externos -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Resource Hints -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
   
   <!-- Cargar solo estilos críticos -->
   <style>
@@ -100,7 +110,51 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
   
   <!-- Cargar FontFaceObserver para manejo de fuentes -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fontfaceobserver/2.3.0/fontfaceobserver.standalone.js" integrity="sha512-7Lq5M6SXqDKFmgKqX1XIC7MvJvFR+1qZ0tX8nQJ4zR5q9U9Xq+5Z5q8eUfU9KkG1RkGvH1eU2pLjY0yWt5q5w==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+  <!-- Load Font Awesome with Critical CSS -->
+  <style>
+    /* Critical Font Awesome Icons CSS */
+    @font-face {
+      font-family: 'Font Awesome 5 Free';
+      font-style: normal;
+      font-weight: 400;
+      font-display: block;
+      src: url("data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAABUcAAsAAAAAIkAAABTAAAANBgABQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADsAAABUIIslek9TLzIAAAFEAAAAPgAAAFZRiV3tY21hcAAAAYQAAACJAAABsO4oKfpjdnQgAAACFAAAABMAAAAgB9wADWZwZ20AAAIsAAABsQAAAmUPtC+...") format('woff2');
+    }
+    
+    /* Only include the icons you actually use */
+    .fa-whatsapp:before { content: "\f232"; }
+    .fa-phone-alt:before { content: "\f879"; }
+    .fa-envelope:before { content: "\f0e0"; }
+    .fa-map-marker-alt:before { content: "\f3c5"; }
+    .fa-chevron-right:before { content: "\f054"; }
+  </style>
+  
+  <!-- Load full Font Awesome asynchronously -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"></noscript>
+  
+  <script>
+    // Load full Font Awesome after page load if needed
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if critical icons are loaded
+      const testIcon = document.createElement('i');
+      testIcon.className = 'fas fa-check';
+      document.body.appendChild(testIcon);
+      const style = window.getComputedStyle(testIcon, ':before');
+      const content = style.getPropertyValue('content');
+      document.body.removeChild(testIcon);
+      
+      // If critical icons not loaded, load full CSS
+      if (!content || content === 'normal' || content === 'none') {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
+        document.head.appendChild(link);
+      }
+    });
+  </script>
   
   <!-- Script para cargar recursos no críticos -->
   <script>
