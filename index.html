@@ -23,7 +23,10 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_MX">
   <title>P&L Paneles - Cotiza Paneles Aislados y Láminas</title>
-  <link rel="preload" as="image" href="images/proyecto1.webp" fetchpriority="high">
+  <!-- Preload critical resources -->
+  <link rel="preload" as="image" href="images/collage.webp" fetchpriority="high" imagesrcset="images/collage.webp 1x, images/collage.webp 2x" imagesizes="(max-width: 768px) 100vw, 50vw">
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7Z1JlFc-K.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLDz8Z1JlFc-K.woff2" type="font/woff2" crossorigin>
   
   <!-- Preconnect y dns-prefetch para recursos externos -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1568,9 +1571,11 @@ body {
             font-family: 'Poppins-LCP';
             font-style: normal;
             font-weight: 700;
-            font-display: block; /* Bloquea el render hasta cargar la fuente */
+            font-display: swap; /* Swap to system font while loading */
+            font-display: optional; /* Fallback for older browsers */
             src: url('https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7Z1JlFc-K.woff2') format('woff2');
             unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            font-display: optional; /* Fallback for older browsers */
           }
           
           /* Estilos críticos en línea */
@@ -1581,15 +1586,18 @@ body {
             margin: 1.5rem 0 1rem 0;
             padding: 0;
             line-height: 1.2;
-            font-family: 'Poppins-LCP', system-ui, -apple-system, sans-serif;
+            font-family: 'Poppins-LCP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-weight: 700;
             /* Optimizaciones de rendimiento */
             transform: translateZ(0);
-            will-change: transform;
+            will-change: transform, opacity;
             contain: layout style paint;
             overflow-wrap: break-word;
             word-wrap: break-word;
-            /* Eliminada la transición para que aparezca inmediatamente */
+            /* Mejora de rendimiento */
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
           }
           
           /* Estilos para desktop */
@@ -1659,16 +1667,20 @@ body {
       </div>
     
       
-      <!-- Imagen grande a la derecha -->
+      <!-- Hero Image - Optimized for LCP -->
       <div class="desktop-image" style="transform: scale(1.3) translateX(-60px) translateY(-93px); transform-origin: top left; transition: transform 0.3s ease; width: 100%; max-width: 500px; margin: 0; padding: 0; box-sizing: border-box; text-align: left;">
         <img 
           src="images/collage.webp" 
+          srcset="images/collage.webp 1x, images/collage.webp 2x"
+          sizes="(max-width: 768px) 100vw, 500px"
           alt="Panel de construcción" 
-          loading="lazy" 
+          width="500"
+          height="500"
+          fetchpriority="high"
           decoding="async"
-          style="width: 100%; max-width: 100%; height: auto; object-fit: contain; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.25);"
+          style="width: 100%; max-width: 100%; height: auto; object-fit: contain; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.25); opacity: 1; transition: opacity 0.3s ease-in-out; will-change: opacity;"
           onload="this.style.opacity=1"
-          style="opacity:0;transition:opacity 0.3s">
+          onerror="this.onerror=null;this.src='images/collage.jpg'">
       </div>
     </div>
   </header>
