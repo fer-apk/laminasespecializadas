@@ -1933,13 +1933,27 @@ body {
     });
   </script>
 
- <!-- Carrusel de productos 2da seccion de la pagina despues de la seccion de inicio-->
- <section class="product-carousel2" style="background-color: #f5f5f5; padding: 3.5rem 0; margin: 0; overflow: hidden; position: relative;">
+<!-- Carrusel de productos 2da seccion de la pagina despues de la seccion de inicio-->
+<section class="product-carousel2" style="background-color: #f5f5f5; padding: 3.5rem 0; margin: 0; overflow: hidden; position: relative;">
   <div class="carousel-container2" style="max-width: 1200px; margin: 0 auto; padding: 0 15px; position: relative;">
       <h2 style="text-align: center; margin-bottom: 1.5rem; color: #333; font-family: 'Montserrat', sans-serif; font-size: 1.8rem;">NUESTROS PRODUCTOS DESTACADOS</h2>
       
+      <!-- Botón izquierdo -->
+      <button id="prevBtn" class="nav-button nav-button-left" style="position: absolute; left: -15px; top: 50%; transform: translateY(-50%); z-index: 10; background: white; border: 2px solid #ddd; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15,18 9,12 15,6"></polyline>
+          </svg>
+      </button>
+      
+      <!-- Botón derecho -->
+      <button id="nextBtn" class="nav-button nav-button-right" style="position: absolute; right: -15px; top: 50%; transform: translateY(-50%); z-index: 10; background: white; border: 2px solid #ddd; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9,18 15,12 9,6"></polyline>
+          </svg>
+      </button>
+      
       <div class="carousel-wrapper" style="overflow: hidden; width: 100%;">
-          <div class="product-track2" id="productTrack" style="display: flex; align-items: center; transition: none;">
+          <div class="product-track2" id="productTrack" style="display: flex; align-items: center; transition: transform 0.5s ease;">
               <!-- Productos originales -->
               <div class="product-card2" style="flex-shrink: 0; width: 330px; padding: 0 15px 20px; text-align: center; transition: all 0.3s ease;">
                   <div style="background: white; border-radius: 8px; padding: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
@@ -2074,9 +2088,19 @@ body {
       transform: scale(1.05);
   }
   
+  .nav-button:hover {
+      background: #f8f8f8 !important;
+      border-color: #ccc !important;
+      transform: translateY(-50%) scale(1.1) !important;
+  }
+  
+  .nav-button:active {
+      transform: translateY(-50%) scale(0.95) !important;
+  }
+  
   @media (max-width: 768px) {
       .product-card2 {
-          padding: 0 12px !important;
+          padding: 0 12px 20px !important;
           width: 270px !important;
       }
       
@@ -2086,53 +2110,170 @@ body {
           padding: 15px !important;
       }
       
-      .product-card2 img {
-          height: 225px !important;
+      .nav-button {
+          width: 40px !important;
+          height: 40px !important;
+      }
+      
+      .nav-button svg {
+          width: 16px !important;
+          height: 16px !important;
+      }
+      
+      .nav-button-left {
+          left: 5px !important;
+      }
+      
+      .nav-button-right {
+          right: 5px !important;
+      }
+  }
+  
+  @media (max-width: 480px) {
+      .nav-button-left {
+          left: 0px !important;
+      }
+      
+      .nav-button-right {
+          right: 0px !important;
       }
   }
 </style>
+
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-      const track = document.getElementById('productTrack');
-      const cards = Array.from(track.children);
-      const cardWidth = 330; // Ancho de cada tarjeta incluyendo padding
-      let currentPosition = 0;
-      const speed = 0.5; // Velocidad del movimiento (pixeles por frame)
-      let isAnimating = true;
+document.addEventListener('DOMContentLoaded', function() {
+  const track = document.getElementById('productTrack');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const cards = Array.from(track.children);
+  const cardWidth = window.innerWidth <= 768 ? 270 : 330;
+  
+  let currentPosition = 0;
+  let currentIndex = 0;
+  const speed = 0.5;
+  let isAnimating = true;
+  let manualPauseTimeout = null;
+  
+  // Clonar todas las tarjetas al final para efecto infinito
+  cards.forEach(card => {
+      const clone = card.cloneNode(true);
+      track.appendChild(clone);
+  });
+  
+  // Función para pausar temporalmente la animación
+  function pauseTemporarily() {
+      isAnimating = false;
       
-      // Clonar todas las tarjetas al final para efecto infinito
-      cards.forEach(card => {
-          const clone = card.cloneNode(true);
-          track.appendChild(clone);
-      });
-      
-      // Función de animación
-      function animate() {
-          if (isAnimating) {
-              currentPosition -= speed;
-              
-              // Cuando completamos un ciclo completo (17 productos), resetear sin que se note
-              if (Math.abs(currentPosition) >= cardWidth * cards.length) {
-                  currentPosition = 0;
-              }
-              
-              track.style.transform = `translateX(${currentPosition}px)`;
-          }
-          requestAnimationFrame(animate);
+      // Limpiar timeout anterior si existe
+      if (manualPauseTimeout) {
+          clearTimeout(manualPauseTimeout);
       }
       
-      // Pausar en hover
-      track.addEventListener('mouseenter', () => {
+      // Reanudar después de 10 segundos
+      manualPauseTimeout = setTimeout(() => {
+          isAnimating = true;
+      }, 10000);
+  }
+  
+  // Función para mover a una posición específica
+  function moveToPosition(targetPosition, smooth = true) {
+      if (smooth) {
+          track.style.transition = 'transform 0.5s ease';
+      } else {
+          track.style.transition = 'none';
+      }
+      
+      currentPosition = targetPosition;
+      track.style.transform = `translateX(${currentPosition}px)`;
+      
+      // Restaurar transición después de un momento
+      setTimeout(() => {
+          track.style.transition = 'none';
+      }, 500);
+  }
+  
+  // Función para ir al siguiente producto
+  function goToNext() {
+      currentIndex++;
+      if (currentIndex >= cards.length) {
+          currentIndex = 0;
+      }
+      
+      const targetPosition = -(currentIndex * cardWidth);
+      moveToPosition(targetPosition);
+      pauseTemporarily();
+  }
+  
+  // Función para ir al producto anterior
+  function goToPrev() {
+      currentIndex--;
+      if (currentIndex < 0) {
+          currentIndex = cards.length - 1;
+      }
+      
+      const targetPosition = -(currentIndex * cardWidth);
+      moveToPosition(targetPosition);
+      pauseTemporarily();
+  }
+  
+  // Event listeners para los botones
+  nextBtn.addEventListener('click', goToNext);
+  prevBtn.addEventListener('click', goToPrev);
+  
+  // Función de animación automática
+  function animate() {
+      if (isAnimating) {
+          currentPosition -= speed;
+          
+          // Cuando completamos un ciclo completo, resetear sin que se note
+          if (Math.abs(currentPosition) >= cardWidth * cards.length) {
+              currentPosition = 0;
+              currentIndex = 0;
+          }
+          
+          // Actualizar índice basado en la posición
+          currentIndex = Math.round(Math.abs(currentPosition) / cardWidth);
+          
+          track.style.transform = `translateX(${currentPosition}px)`;
+      }
+      requestAnimationFrame(animate);
+  }
+  
+  // Pausar en hover del carrusel
+  track.addEventListener('mouseenter', () => {
+      if (manualPauseTimeout) return; // No pausar si ya está en pausa manual
+      isAnimating = false;
+  });
+  
+  track.addEventListener('mouseleave', () => {
+      if (manualPauseTimeout) return; // No reanudar si está en pausa manual
+      isAnimating = true;
+  });
+  
+  // Pausar en hover de los botones
+  [prevBtn, nextBtn].forEach(btn => {
+      btn.addEventListener('mouseenter', () => {
+          if (manualPauseTimeout) return;
           isAnimating = false;
       });
       
-      track.addEventListener('mouseleave', () => {
+      btn.addEventListener('mouseleave', () => {
+          if (manualPauseTimeout) return;
           isAnimating = true;
       });
-      
-      // Iniciar la animación
-      animate();
   });
+  
+  // Manejar cambio de tamaño de ventana
+  window.addEventListener('resize', () => {
+      const newCardWidth = window.innerWidth <= 768 ? 270 : 330;
+      if (newCardWidth !== cardWidth) {
+          location.reload(); // Recargar para ajustar dimensiones
+      }
+  });
+  
+  // Iniciar la animación
+  animate();
+});
 </script>
 </section>
 
@@ -2891,150 +3032,246 @@ body {
 </section>
 
 
-  <!-- Materiales Garantizados -->
-  <section class="productos" style="padding: 4rem 1rem; background-color: transparent;">
+ <!-- Materiales Garantizados -->
+<section class="productos" style="padding: 4rem 1rem; background-color: transparent;">
   <style>
-    @media (max-width: 823px) {
-      section.productos {
-        padding: 0rem 1rem !important;
-        transform: translateY(-30px) !important;
-        position: relative;
-        z-index: 1;
+      @media (max-width: 823px) {
+          section.productos {
+              padding: 2rem 1rem !important;
+              transform: translateY(-30px) !important;
+              position: relative;
+              z-index: 1;
+          }
+          .titulo-seccion {
+              margin-bottom: 2rem !important;
+          }
+          .titulo-seccion div {
+              margin-top: -3rem !important;
+          }
+          .titulo-seccion span:first-child {
+              margin-bottom: -3.8rem !important;
+          }
+          .titulo-seccion span {
+              margin-left: 0 !important;
+              font-size: 2.8rem !important;
+              line-height: 1 !important;
+          }
       }
-      .titulo-seccion {
-        margin-bottom: 1rem !important;
-      }
-      .titulo-seccion div {
-        margin-top: -3rem !important;/* esta linea ajusta el espacio entre el inicio de materiales garantizados y lo de arriba de marcas disponibles  */
-      }
-      .titulo-seccion span:first-child {
-        margin-bottom: -3.8rem !important;
-      }
-      .titulo-seccion span {
-        margin-left: 0 !important;
-        font-size: 2.8rem !important;
-        line-height: 1 !important;
-      }
-    }
   </style>
-    <div style="max-width: 1200px; margin: 0 auto;">
+  
+  <div style="max-width: 1200px; margin: 0 auto;">
       <div class="titulo-seccion" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 3rem;">
-        <div style="display: flex; flex-direction: column; align-items: flex-start;">
-          <span style="color: #666666; font-size: 4.2rem; font-weight: 700; line-height: 1.2; margin-left: 14.5rem; margin-top: -0.5rem;">Materiales</span>
-          <span style="color: #BD3768; font-size: 3.4rem; font-weight: 700; line-height: 1.2; margin-left: 29.5rem; margin-top: -0.5rem;">Garantizados</span>
-        </div>
-        <img src="images/quality.webp" alt="Calidad garantizada" style="width: 280px; height: auto; max-width: 100%;">
+          <div style="display: flex; flex-direction: column; align-items: flex-start;">
+              <span style="color: #666666; font-size: 4.2rem; font-weight: 700; line-height: 1.2; margin-left: 14.5rem; margin-top: -0.5rem;">Materiales</span>
+              <span style="color: #BD3768; font-size: 3.4rem; font-weight: 700; line-height: 1.2; margin-left: 29.5rem; margin-top: -0.5rem;">Garantizados</span>
+          </div>
+          <img src="images/quality.webp" alt="Calidad garantizada" style="width: 280px; height: auto; max-width: 100%;">
       </div>
       
-      <div class="carrusel-container" id="carrusel-materiales" style="position: relative; max-width: 100%; margin: 0 auto; overflow: hidden; padding: 0 15px;">
-        <button class="carrusel-btn prev" aria-label="Anterior" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(255,255,255,0.9); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #1a237e; transition: all 0.3s ease;">&#8592;</button>
-        
-        <div class="carrusel-galeria" style="display: flex; transition: transform 0.8s ease-in-out; padding: 20px 10px; width: 100%;">
-          <!-- Slide 1 (los demás slides serán similares) -->
-          <div class="carrusel-slide" style="min-width: 280px; margin: 0 10px; position: relative; transition: all 0.8s ease; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: auto; padding: 15px; box-sizing: border-box;">
-            <div style="width: 100%; min-height: 200px; display: flex; align-items: center; justify-content: center; background: transparent; padding: 10px;">
-              <img src="images/producto1.webp" alt="Producto 1" style="max-width: 130%; max-height: 390px; object-fit: contain; background: transparent; width: auto; height: auto; margin: 0 -15%; filter: drop-shadow(0 2px 6px rgba(0,0,0,100));">
-            </div>
-            <button class="ver-producto" onclick="window.open('https://wa.me/523319588421?text=Hola,%20estoy%20interesado%20en%20este%20producto,%20¿me%20pueden%20dar%20más%20información?', '_blank')" style="margin: 25px 0 -10px 0; background: white; color: #333; border: 2px solid #333; padding: 10px 5px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onmouseover="this.style.background='#BD3768'; this.style.color='white'; this.style.borderColor='#BD3768'; this.style.boxShadow='0 4px 15px rgba(189, 55, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='#333'; this.style.borderColor='#333'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)';">Estamos Listos Para Ayudarte</button>
+      <!-- Desktop: 3 imágenes en una sola fila -->
+      <div class="desktop-gallery" style="display: flex; justify-content: center; gap: 20px; padding: 20px 0; max-width: 1400px; margin: 0 auto; flex-wrap: nowrap; overflow-x: auto;">
+          <!-- Producto 1 -->
+          <div class="producto-item" style="flex: 0 0 33.333%; max-width: 33.333%; min-width: 300px; display: flex; flex-direction: column; align-items: center; background: transparent; padding: 10px; box-sizing: border-box; height: auto;">
+              <div class="imagen-container" style="width: 100%; height: 400px; display: flex; align-items: center; justify-content: center; background: transparent; padding: 20px; overflow: visible; border-radius: 10px; margin-bottom: 20px;">
+                  <img src="images/producto1.webp" alt="Producto 1" style="max-width: 100%; max-height: 100%; object-fit: contain; background: transparent; width: auto; height: auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2)); transition: transform 0.3s ease;">
+              </div>
+              <button class="ver-producto" onclick="window.open('https://wa.me/523319588421?text=Hola,%20estoy%20interesado%20en%20este%20producto,%20¿me%20pueden%20dar%20más%20información?', '_blank')" style="background: white; color: #333; border: 2px solid #333; padding: 20px 20px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 1; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-size: 0.9rem; text-align: center; white-space: nowrap; min-width: 220px; z-index: 10; position: relative; transform: translateX(-200px);">Estamos Listos Para Ayudarte</button>
           </div>
           
-          <!-- Slide 2 -->
-          <div class="carrusel-slide" style="min-width: 280px; margin: 0 10px; position: relative; transition: all 0.8s ease; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: auto; padding: 15px; box-sizing: border-box;">
-            <div style="width: 100%; min-height: 200px; display: flex; align-items: center; justify-content: center; background: transparent; padding: 10px;">
-              <img src="images/producto2.webp" alt="Producto 2" style="max-width: 130%; max-height: 390px; object-fit: contain; background: transparent; width: auto; height: auto; margin: 0 -15%; filter: drop-shadow(0 2px 6px rgba(0,0,0,100));">
-            </div>
-            <button class="ver-producto" onclick="window.open('https://wa.me/523319588421?text=Hola,%20estoy%20interesado%20en%20este%20producto,%20¿me%20pueden%20dar%20más%20información?', '_blank')" style="margin: 25px 0 -10px 0; background: white; color: #333; border: 2px solid #333; padding: 10px 5px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onmouseover="this.style.background='#BD3768'; this.style.color='white'; this.style.borderColor='#BD3768'; this.style.boxShadow='0 4px 15px rgba(189, 55, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='#333'; this.style.borderColor='#333'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)';">Estamos Listos Para Ayudarte</button>
+          <!-- Producto 2 -->
+          <div class="producto-item" style="flex: 0 0 33.333%; max-width: 33.333%; min-width: 300px; display: flex; flex-direction: column; align-items: center; background: transparent; padding: 10px; box-sizing: border-box; height: auto;">
+              <div class="imagen-container" style="width: 100%; height: 400px; display: flex; align-items: center; justify-content: center; background: transparent; padding: 20px; overflow: visible; border-radius: 10px; margin-bottom: 20px;">
+                  <img src="images/producto2.webp" alt="Producto 2" style="max-width: 100%; max-height: 100%; object-fit: contain; background: transparent; width: auto; height: auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2)); transition: transform 0.3s ease;">
+              </div>
+              <button class="ver-producto" onclick="window.open('https://wa.me/523319588421?text=Hola,%20estoy%20interesado%20en%20este%20producto,%20¿me%20pueden%20dar%20más%20información?', '_blank')" style="background: white; color: #333; border: 2px solid #333; padding: 20px 20px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 1; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-size: 0.9rem; text-align: center; white-space: nowrap; min-width: 220px; z-index: 10; position: relative; transform: translateX(-200px);">Estamos Listos Para Ayudarte</button>
           </div>
           
-          <!-- Slide 3 -->
-          <div class="carrusel-slide" style="min-width: 280px; margin: 0 10px; position: relative; transition: all 0.8s ease; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: auto; padding: 15px; box-sizing: border-box;">
-            <div style="width: 100%; min-height: 200px; display: flex; align-items: center; justify-content: center; background: transparent; padding: 10px;">
-              <img src="images/producto3.webp" alt="Producto 3" style="max-width: 130%; max-height: 390px; object-fit: contain; background: transparent; width: auto; height: auto; margin: 0 -15%; filter: drop-shadow(0 2px 6px rgba(0,0,0,100));">
-            </div>
-            <button class="ver-producto" onclick="window.open('https://wa.me/523319588421?text=Hola,%20estoy%20interesado%20en%20este%20producto,%20¿me%20pueden%20dar%20más%20información?', '_blank')" style="margin: 25px 0 -10px 0; background: white; color: #333; border: 2px solid #333; padding: 10px 5px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onmouseover="this.style.background='#BD3768'; this.style.color='white'; this.style.borderColor='#BD3768'; this.style.boxShadow='0 4px 15px rgba(189, 55, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='#333'; this.style.borderColor='#333'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)';">Estamos Listos Para Ayudarte</button>
+          <!-- Producto 3 -->
+          <div class="producto-item" style="flex: 0 0 33.333%; max-width: 33.333%; min-width: 300px; display: flex; flex-direction: column; align-items: center; background: transparent; padding: 10px; box-sizing: border-box; height: auto;">
+              <div class="imagen-container" style="width: 100%; height: 400px; display: flex; align-items: center; justify-content: center; background: transparent; padding: 20px; overflow: visible; border-radius: 10px; margin-bottom: 20px;">
+                  <img src="images/producto3.webp" alt="Producto 3" style="max-width: 100%; max-height: 100%; object-fit: contain; background: transparent; width: auto; height: auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2)); transition: transform 0.3s ease;">
+              </div>
+              <button class="ver-producto" onclick="window.open('https://wa.me/523319588421?text=Hola,%20estoy%20interesado%20en%20este%20producto,%20¿me%20pueden%20dar%20más%20información?', '_blank')" style="background: white; color: #333; border: 2px solid #333; padding: 20px 20px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 1; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-size: 0.9rem; text-align: center; white-space: nowrap; min-width: 220px; z-index: 10; position: relative; transform: translateX(-200px);">Estamos Listos Para Ayudarte</button>
           </div>
-          
-          <!-- Agrega más slides según sea necesario -->
-        </div>
-        
-        <button class="carrusel-btn next" aria-label="Siguiente" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(255,255,255,0.9); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #1a237e; transition: all 0.3s ease;">&#8594;</button>
       </div>
       
-      <style>
-        .carrusel-btn:hover {
-          background: #2D4766 !important;
-          color: white !important;
-          transform: translateY(-50%) scale(1.1) !important;
-        }
-        
-        .carrusel-slide {
-          position: relative;
-          cursor: pointer;
-          background: transparent !important;
-          box-shadow: none !important;
-          padding: 20px 0;
-        }
-        
-        .carrusel-slide {
-          transform: none !important;
-        }
-        
-        .ver-producto:hover {
-          background: #2D4766 !important;
-          color: white !important;
-          box-shadow: 0 4px 15px rgba(63, 81, 181, 0.3) !important;
-        }
-        
-        @media (max-width: 768px) {/*carrusel version movil de materiales garantizados*/
-          .productos .titulo-seccion {
-            flex-direction: column !important;
-            align-items: center !important;
-            text-align: center !important;
-            margin-bottom: 1.5rem !important;
-          }
+      <!-- Mobile: Carrusel automático -->
+      <div class="mobile-carousel" style="display: none; position: relative; max-width: 100%; margin: 0 auto; overflow: hidden;">
+          <div class="carousel-track" id="mobileCarousel" style="display: flex; transition: transform 0.5s ease-in-out; width: 300%;">
+              <!-- Slide 1 -->
+              <div class="mobile-slide" style="width: 33.333%; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; padding: 15px; box-sizing: border-box;">
+                  <div class="imagen-container-mobile" style="width: 100%; height: 280px; display: flex; align-items: center; justify-content: center; background: transparent; padding: 10px; overflow: hidden; border-radius: 10px; margin-bottom: 15px;">
+                      <img src="images/producto1.webp" alt="Producto 1" style="max-width: 100%; max-height: 100%; object-fit: contain; background: transparent; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));">
+                  </div>
+                  <button class="ver-producto-mobile" onclick="window.open('https://wa.me/523319588421?text=Hola,%20estoy%20interesado%20en%20este%20producto,%20¿me%20pueden%20dar%20más%20información?', '_blank')" style="background: white; color: #333; border: 2px solid #333; padding: 10px 15px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-size: 0.8rem; text-align: center; min-width: 180px;">Estamos Listos Para Ayudarte</button>
+              </div>
+              
+              <!-- Slide 2 -->
+              <div class="mobile-slide" style="width: 33.333%; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; padding: 15px; box-sizing: border-box;">
+                  <div class="imagen-container-mobile" style="width: 100%; height: 280px; display: flex; align-items: center; justify-content: center; background: transparent; padding: 10px; overflow: hidden; border-radius: 10px; margin-bottom: 15px;">
+                      <img src="images/producto2.webp" alt="Producto 2" style="max-width: 100%; max-height: 100%; object-fit: contain; background: transparent; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));">
+                  </div>
+                  <button class="ver-producto-mobile" onclick="window.open('https://wa.me/523319588421?text=Hola,%20estoy%20interesado%20en%20este%20producto,%20¿me%20pueden%20dar%20más%20información?', '_blank')" style="background: white; color: #333; border: 2px solid #333; padding: 10px 15px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-size: 0.8rem; text-align: center; min-width: 180px;">Estamos Listos Para Ayudarte</button>
+              </div>
+              
+              <!-- Slide 3 -->
+              <div class="mobile-slide" style="width: 33.333%; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; padding: 15px; box-sizing: border-box;">
+                  <div class="imagen-container-mobile" style="width: 100%; height: 280px; display: flex; align-items: center; justify-content: center; background: transparent; padding: 10px; overflow: hidden; border-radius: 10px; margin-bottom: 15px;">
+                      <img src="images/producto3.webp" alt="Producto 3" style="max-width: 100%; max-height: 100%; object-fit: contain; background: transparent; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));">
+                  </div>
+                  <button class="ver-producto-mobile" onclick="window.open('https://wa.me/523319588421?text=Hola,%20estoy%20interesado%20en%20este%20producto,%20¿me%20pueden%20dar%20más%20información?', '_blank')" style="background: white; color: #333; border: 2px solid #333; padding: 10px 15px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-size: 0.8rem; text-align: center; min-width: 180px;">Estamos Listos Para Ayudarte</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<style>
+  /* Hover effects para desktop */
+  .producto-item:hover .imagen-container img {
+      transform: scale(1.05);
+  }
+  
+  /* Ajuste de posición de botones en web */
+  @media (min-width: 1024px) {
+      .ver-producto {
+          transform: translateX(0);
+          margin-top: 10px;
+      }
+      .desktop-gallery {
+          justify-content: space-between;
+          padding: 20px 40px;
+      }
+  }
+  
+  .ver-producto:hover,
+  .ver-producto-mobile:hover {
+      background: #BD3768 !important;
+      color: white !important;
+      border-color: #BD3768 !important;
+      box-shadow: 0 4px 15px rgba(189, 55, 104, 0.3) !important;
+  }
+  
+  /* Estilos responsive */
+  @media (max-width: 768px) {
+      /* Ocultar galería desktop y mostrar carrusel móvil */
+      .desktop-gallery {
+          display: none !important;
+      }
+      
+      .mobile-carousel {
+          display: block !important;
+      }
+      
+      /* Ajustes del título para móvil */
+      .productos .titulo-seccion {
+          flex-direction: column !important;
+          align-items: center !important;
+          text-align: center !important;
+          margin-bottom: 1.5rem !important; 
+          gap: 0 !important;  
+      }
+      
+      .productos .titulo-seccion span {
+          margin-left: 0 !important;
+          margin-top: 5.5rem !important; 
+          font-size: 2.5rem !important;
+          line-height: .1 !important;  
+          padding: -50px !important;
+      }
+      
+      .productos .titulo-seccion span:first-child {
+          margin-bottom: 0 !important;
+      }
+      
+      .productos .titulo-seccion img {
+          width: 200px !important;
+          margin-top: 1rem !important;
+      }
+  }
+  
+  @media (max-width: 480px) {
+      .productos .titulo-seccion span {
+          font-size: 2rem !important;
+      }
+      
+      .imagen-container-mobile {
+          height: 240px !important;
+      }
+      
+      .ver-producto-mobile {
+          font-size: 0.75rem !important;
+          padding: 8px 12px !important;
+          min-width: 160px !important;
+      }
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileCarousel = document.getElementById('mobileCarousel');
+  let currentSlide = 0;
+  const totalSlides = 3;
+  const slideWidth = 100 / totalSlides; // 33.333%
+  
+  function moveToSlide(slideIndex) {
+      const translateX = -slideIndex * slideWidth;
+      mobileCarousel.style.transform = `translateX(${translateX}%)`;
+  }
+  
+  function nextSlide() {
+      currentSlide++;
+      if (currentSlide >= totalSlides) {
+          currentSlide = 0; // Volver al primer slide
+      }
+      moveToSlide(currentSlide);
+  }
+  
+  // Solo ejecutar el carrusel automático en móvil
+  function startAutoCarousel() {
+      if (window.innerWidth <= 768) {
+          setInterval(nextSlide, 3000); // Cambiar cada 3 segundos
+      }
+  }
+  
+  // Iniciar carrusel automático
+  startAutoCarousel();
+  
+  // Funcionalidad de swipe para móvil
+  let startX = 0;
+  let endX = 0;
+  
+  if (mobileCarousel) {
+      mobileCarousel.addEventListener('touchstart', function(e) {
+          startX = e.touches[0].clientX;
+      });
+      
+      mobileCarousel.addEventListener('touchend', function(e) {
+          endX = e.changedTouches[0].clientX;
+          handleSwipe();
+      });
+      
+      function handleSwipe() {
+          const diffX = startX - endX;
+          const minSwipeDistance = 50;
           
-          .productos .titulo-seccion span {
-            margin-left: -1rem !important;
-            margin-top: 5rem !important;
-            font-size: 2.5rem !important;
-            line-height: 1 !important;
-            padding: 0 !important;
+          if (Math.abs(diffX) > minSwipeDistance) {
+              if (diffX > 0) {
+                  // Swipe left - next slide
+                  nextSlide();
+              } else {
+                  // Swipe right - previous slide
+                  currentSlide--;
+                  if (currentSlide < 0) {
+                      currentSlide = totalSlides - 1;
+                  }
+                  moveToSlide(currentSlide);
+              }
           }
-          
-          .productos .titulo-seccion img {
-            width: 300px !important;
-            margin-top: 1rem !important;
-          }
-          
-          .carrusel-slide {
-            width: 350px !important;
-            height: 350px !important;
-            margin:   10px !important;
-            padding-bottom: 10px !important;
-            overflow: visible !important;
-          }
-          
-          .carrusel-slide img {
-            transform: scale(1.5);
-            transform-origin: center;
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;  
-          }
-          
-          .carrusel-btn {
-            display: none !important;
-          }
-          
-          .ver-producto {
-            opacity: .5 !important;
-            transform: translateX(-50%) !important;
-            font-size: .8rem !important;
-            padding: 10px 15px !important;
-          }
-        }
-      </style>
-    </div>
+      }
+  }
+});
+</script>
   </section>
 
   <!-- REVIEWS -->
