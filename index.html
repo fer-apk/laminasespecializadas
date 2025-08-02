@@ -4328,6 +4328,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         @media (max-width: 768px) {
+          /* Hide the old carousel on mobile */
+          .carrusel-galeria {
+            display: none !important;
+          }
+          
+          .carrusel-btn {
+            display: none !important;
+          }
+          
+          /* Ensure the new mobile carousel is visible */
+          .mobile-carousel-proyectos {
+            display: block !important;
+            margin: 2rem auto !important;
+          }
+          
           .carrusel-slide {
             min-width: 280px !important;
             height: 320px !important;
