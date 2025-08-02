@@ -1158,6 +1158,148 @@ header.hero * {
   min-height: 400px;
 }
 
+.mobile-content {
+  display: none;
+}
+
+/* Estilos para el carrusel móvil de proyectos */
+.mobile-carousel-proyectos {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 2rem auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.carousel-proyectos-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.carousel-proyectos-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-proyectos-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.carousel-proyectos-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.proyecto-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+  padding: 1.5rem 1rem;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transform: translateY(20px);
+}
+
+.carousel-proyectos-slide.active .proyecto-overlay {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+}
+
+.proyecto-overlay h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.proyecto-overlay p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.carousel-proyectos-prev,
+.carousel-proyectos-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+}
+
+.carousel-proyectos-prev {
+  left: 10px;
+}
+
+.carousel-proyectos-next {
+  right: 10px;
+}
+
+.carousel-proyectos-prev:hover,
+.carousel-proyectos-next:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-proyectos-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  z-index: 2;
+  padding: 0 10px;
+}
+
+.carousel-proyectos-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border: none;
+  padding: 0;
+}
+
+.carousel-proyectos-dots .dot.active {
+  background: #fff;
+}
+
+@media (min-width: 769px) {
+  .mobile-carousel-proyectos {
+    display: none;
+  }
+}
+
 .tab-content {
   display: none;
   grid-template-columns: 1fr 1.5fr;
@@ -1660,7 +1802,7 @@ body {
         <div style="color:#000000; font-weight:600; font-size:1rem; margin:0 15px 1.5rem; text-align:center; max-width: 100%;">
           <strong>Distribuimos paneles tipo sándwich, térmicos y estructurales para techo y muro.</strong>
         </div>
-        <a href="https://wa.me/523318088119" target="_blank" class="cta whatsapp-btn" style="display:inline-flex;align-items:center;background:#1a7a34;color:white;padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:600;font-size:1.21rem;box-shadow:0 4px 15px rgba(0,0,0,0.2);transition:all 0.3s ease;margin-bottom:1.2rem;border: 2px solid #145c28;">
+        <a href="https://wa.me/523319588421" target="_blank" class="cta whatsapp-btn" style="display:inline-flex;align-items:center;background:#1a7a34;color:white;padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:600;font-size:1.21rem;box-shadow:0 4px 15px rgba(0,0,0,0.2);transition:all 0.3s ease;margin-bottom:1.2rem;border: 2px solid #145c28;">
           <i class="fab fa-whatsapp" style="font-size:1.4rem;margin-right:10px;"></i>
           <span>COTIZA GRATIS</span>
         </a>
@@ -1694,8 +1836,8 @@ body {
   </div>
   
   <style>
-    /* Estilos para móvil */
-    @media (max-width: 768px) {
+    /* Estilos para móvil y tablet */
+    @media (max-width: 1024px) {
       .desktop-image {
         display: none !important;
       }
@@ -2393,7 +2535,28 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <div class="destacado-img">
-    <img src="images/proyecto10.webp" alt="Industria" />
+    <img src="images/proyecto10.webp" alt="Industria" class="desktop-img" />
+    <!-- Carrusel para móvil -->
+    <div class="mobile-carousel-empresa">
+      <div class="carousel-empresa-container">
+        <img src="images/proyecto10.webp" alt="Industria 1" class="carousel-empresa-slide active">
+        <img src="images/proyecto1.webp" alt="Industria 2" class="carousel-empresa-slide">
+        <img src="images/proyecto2.webp" alt="Industria 3" class="carousel-empresa-slide">
+        <img src="images/proyecto3.webp" alt="Industria 4" class="carousel-empresa-slide">
+        <img src="images/proyecto4.webp" alt="Industria 5" class="carousel-empresa-slide">
+        <img src="images/proyecto5.webp" alt="Industria 6" class="carousel-empresa-slide">
+      </div>
+      <button class="carousel-empresa-prev">❮</button>
+      <button class="carousel-empresa-next">❯</button>
+      <div class="carousel-empresa-dots">
+        <span class="dot active" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+        <span class="dot" data-slide="2"></span>
+        <span class="dot" data-slide="3"></span>
+        <span class="dot" data-slide="4"></span>
+        <span class="dot" data-slide="5"></span>
+      </div>
+    </div>
   </div>
 </div>
     <div class="destacado-stats">
@@ -2583,13 +2746,116 @@ document.addEventListener('DOMContentLoaded', function() {
   box-shadow: 0 2px 12px rgba(0,0,0,0.08);
   height: 260px;
   background: #f6f6f6;
+  position: relative;
 }
-.destacado-img img {
+.destacado-img .desktop-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 12px;
   display: block;
+}
+
+/* Estilos del carrusel móvil */
+.mobile-carousel-empresa {
+  display: none; /* Se mostrará solo en móviles */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.carousel-empresa-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-empresa-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.carousel-empresa-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.carousel-empresa-prev,
+.carousel-empresa-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+}
+
+.carousel-empresa-prev {
+  left: 10px;
+}
+
+.carousel-empresa-next {
+  right: 10px;
+}
+
+.carousel-empresa-prev:hover,
+.carousel-empresa-next:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-empresa-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  z-index: 2;
+}
+
+.carousel-empresa-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.carousel-empresa-dots .dot.active {
+  background: #fff;
+}
+
+/* Mostrar carrusel solo en móviles */
+@media (max-width: 768px) {
+  .mobile-carousel-empresa {
+    display: block;
+  }
+  .destacado-img .desktop-img {
+    display: none;
+  }
 }
 .destacado-stats {
   display: flex;
@@ -3302,6 +3568,157 @@ document.addEventListener('DOMContentLoaded', function() {
   // Iniciar carrusel automático
   startAutoCarousel();
   
+  // Inicializar carrusel de empresa líder en móvil
+  let empresaCarouselInterval;
+  
+  function initEmpresaCarousel() {
+    const track = document.querySelector('.carousel-empresa-track');
+    const slides = Array.from(document.querySelectorAll('.carousel-empresa-slide'));
+    const prevButton = document.querySelector('.carousel-empresa-prev');
+    const nextButton = document.querySelector('.carousel-empresa-next');
+    
+    // Limpiar intervalo anterior si existe
+    if (empresaCarouselInterval) {
+      clearInterval(empresaCarouselInterval);
+    }
+    
+    // Si no hay elementos del carrusel, salir
+    if (!track || slides.length === 0) return;
+    
+    let currentIndex = 0;
+    const slideCount = slides.length;
+    
+    // Asegurarse de que el track esté visible
+    track.style.display = 'flex';
+    track.style.width = `${(slideCount + 2) * 100}%`;
+    
+    // Clonar el primer y último slide para efecto infinito
+    const firstClone = slides[0].cloneNode(true);
+    const lastClone = slides[slideCount - 1].cloneNode(true);
+    
+    // Limpiar clones existentes
+    const existingClones = track.querySelectorAll('.cloned-slide');
+    existingClones.forEach(clone => clone.remove());
+    
+    // Agregar clase a los clones para identificarlos
+    firstClone.classList.add('cloned-slide');
+    lastClone.classList.add('cloned-slide');
+    
+    // Insertar clones
+    track.appendChild(firstClone);
+    track.insertBefore(lastClone, slides[0]);
+    
+    // Ir al primer slide real (índice 1 porque el 0 es el último clon)
+    track.style.transition = 'none';
+    track.style.transform = 'translateX(-100%)';
+    
+    // Función para ir a un slide específico
+    function goToSlide(index) {
+      currentIndex = index;
+      track.style.transition = 'transform 0.5s ease';
+      track.style.transform = `translateX(${-100 * (index + 1)}%)`;
+    }
+    
+    // Función para ir al siguiente slide
+    function nextSlide() {
+      if (currentIndex >= slideCount - 1) {
+        // Si es el último slide, ir al primero sin animación
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(0%)';
+        setTimeout(() => {
+          currentIndex = 0;
+          requestAnimationFrame(() => {
+            track.style.transition = 'transform 0.5s ease';
+            goToSlide(currentIndex);
+          });
+        }, 50);
+      } else {
+        goToSlide(currentIndex + 1);
+      }
+    }
+    
+    // Función para ir al slide anterior
+    function prevSlide() {
+      if (currentIndex <= 0) {
+        // Si es el primer slide, ir al último sin animación
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${-100 * (slideCount + 1)}%)`;
+        currentIndex = slideCount - 1;
+        setTimeout(() => {
+          requestAnimationFrame(() => {
+            track.style.transition = 'transform 0.5s ease';
+            goToSlide(currentIndex);
+          });
+        }, 50);
+      } else {
+        goToSlide(currentIndex - 1);
+      }
+    }
+    
+    // Manejar el final de la transición para el efecto infinito
+    function handleTransitionEnd() {
+      if (currentIndex >= slideCount) {
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(-100%)';
+        currentIndex = 0;
+      } else if (currentIndex < 0) {
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${-100 * slideCount}%)`;
+        currentIndex = slideCount - 1;
+      }
+    }
+    
+    // Event listeners para los botones
+    if (nextButton) {
+      nextButton.removeEventListener('click', nextSlide);
+      nextButton.addEventListener('click', nextSlide);
+    }
+    
+    if (prevButton) {
+      prevButton.removeEventListener('click', prevSlide);
+      prevButton.addEventListener('click', prevSlide);
+    }
+    
+    // Eliminar event listeners anteriores
+    track.removeEventListener('transitionend', handleTransitionEnd);
+    track.addEventListener('transitionend', handleTransitionEnd);
+    
+    // Auto-avance cada 5 segundos
+    empresaCarouselInterval = setInterval(nextSlide, 5000);
+    
+    // Pausar el auto-avance al hacer hover
+    const carouselContainer = document.querySelector('.mobile-carousel-empresa');
+    if (carouselContainer) {
+      carouselContainer.addEventListener('mouseenter', () => {
+        clearInterval(empresaCarouselInterval);
+      });
+      
+      carouselContainer.addEventListener('mouseleave', () => {
+        clearInterval(empresaCarouselInterval);
+        empresaCarouselInterval = setInterval(nextSlide, 5000);
+      });
+    }
+    
+    return {
+      next: nextSlide,
+      prev: prevSlide,
+      goTo: goToSlide
+    };
+  }
+  
+  // Inicializar el carrusel si estamos en móvil
+  if (window.innerWidth <= 768) {
+    initEmpresaCarousel();
+  }
+  
+  // Manejar cambio de tamaño de ventana
+  window.addEventListener('resize', function() {
+    if (window.innerWidth <= 768) {
+      // Pequeño retraso para asegurar que el DOM esté listo
+      setTimeout(initEmpresaCarousel, 100);
+    }
+  });
+  
   // Funcionalidad de swipe para móvil
   let startX = 0;
   let endX = 0;
@@ -3334,6 +3751,102 @@ document.addEventListener('DOMContentLoaded', function() {
               }
           }
       }
+  }
+  
+  // Función para inicializar el carrusel de la sección de empresa líder
+  function initEmpresaCarousel() {
+    const track = document.querySelector('.carousel-empresa-track');
+    const slides = Array.from(document.querySelectorAll('.carousel-empresa-slide'));
+    const prevButton = document.querySelector('.carousel-empresa-prev');
+    const nextButton = document.querySelector('.carousel-empresa-next');
+    
+    if (!track || slides.length === 0) return;
+    
+    let currentIndex = 0;
+    const slideCount = slides.length;
+    
+    // Clonar el primer y último slide para efecto infinito
+    const firstClone = slides[0].cloneNode(true);
+    const lastClone = slides[slideCount - 1].cloneNode(true);
+    
+    track.appendChild(firstClone);
+    track.insertBefore(lastClone, slides[0]);
+    
+    // Ajustar el ancho del track
+    track.style.width = `${(slideCount + 2) * 100}%`;
+    
+    // Ir al slide real (1) después de clonar
+    track.style.transform = 'translateX(-100%)';
+    
+    // Función para ir a un slide específico
+    function goToSlide(index) {
+      track.style.transition = 'transform 0.5s ease';
+      track.style.transform = `translateX(${-100 * (index + 1)}%)`;
+      currentIndex = index;
+    }
+    
+    // Función para ir al siguiente slide
+    function nextSlide() {
+      if (currentIndex >= slideCount - 1) {
+        // Si es el último slide, ir al primero sin animación
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(0%)';
+        setTimeout(() => {
+          currentIndex = 0;
+          goToSlide(0);
+        }, 50);
+      } else {
+        goToSlide(currentIndex + 1);
+      }
+    }
+    
+    // Función para ir al slide anterior
+    function prevSlide() {
+      if (currentIndex <= 0) {
+        // Si es el primer slide, ir al último sin animación
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${-100 * (slideCount + 1)}%)`;
+        setTimeout(() => {
+          currentIndex = slideCount - 1;
+          goToSlide(currentIndex);
+        }, 50);
+      } else {
+        goToSlide(currentIndex - 1);
+      }
+    }
+    
+    // Event listeners para los botones
+    if (nextButton) nextButton.addEventListener('click', nextSlide);
+    if (prevButton) prevButton.addEventListener('click', prevSlide);
+    
+    // Auto-avance cada 5 segundos
+    let slideInterval = setInterval(nextSlide, 5000);
+    
+    // Pausar el auto-avance al hacer hover
+    const carouselContainer = document.querySelector('.mobile-carousel-empresa');
+    if (carouselContainer) {
+      carouselContainer.addEventListener('mouseenter', () => {
+        clearInterval(slideInterval);
+      });
+      
+      carouselContainer.addEventListener('mouseleave', () => {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 5000);
+      });
+    }
+    
+    // Manejar el final de la transición para el efecto infinito
+    track.addEventListener('transitionend', () => {
+      if (currentIndex >= slideCount) {
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(-100%)';
+        currentIndex = 0;
+      } else if (currentIndex < 0) {
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${-100 * slideCount}%)`;
+        currentIndex = slideCount - 1;
+      }
+    });
   }
 });
 </script>
@@ -3430,6 +3943,67 @@ document.addEventListener('DOMContentLoaded', function() {
           <strong style="font-weight: 700; color: #1a1a1a;">Transformamos espacios con soluciones innovadoras en paneles y láminas.</strong> <br><span style="font-weight: 500; color: #2D4766;">Cada proyecto es una muestra de nuestro compromiso con la excelencia y la calidad en la construcción.</span>
         </p>
       </div>
+      
+      <!-- Carrusel móvil de proyectos -->
+      <div class="mobile-carousel-proyectos" style="position: relative; width: 100%; max-width: 500px; margin: 0 auto 2rem auto; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+        <div class="carousel-proyectos-container">
+          <div class="carousel-proyectos-slide active">
+            <img src="images/proyecto1.webp" alt="Proyecto Residencial" style="width: 100%; height: 300px; object-fit: cover;">
+            <div class="proyecto-overlay">
+              <h3>Proyecto Residencial</h3>
+              <p>Solución en paneles aislantes para vivienda</p>
+            </div>
+          </div>
+          <div class="carousel-proyectos-slide">
+            <img src="images/proyecto2.webp" alt="Proyecto Comercial" style="width: 100%; height: 300px; object-fit: cover;">
+            <div class="proyecto-overlay">
+              <h3>Proyecto Comercial</h3>
+              <p>Estructuras metálicas para locales comerciales</p>
+            </div>
+          </div>
+          <div class="carousel-proyectos-slide">
+            <img src="images/proyecto3.webp" alt="Proyecto Industrial" style="width: 100%; height: 300px; object-fit: cover;">
+            <div class="proyecto-overlay">
+              <h3>Proyecto Industrial</h3>
+              <p>Naves industriales con paneles aislantes</p>
+            </div>
+          </div>
+          <div class="carousel-proyectos-slide">
+            <img src="images/proyecto4.webp" alt="Techumbres" style="width: 100%; height: 300px; object-fit: cover;">
+            <div class="proyecto-overlay">
+              <h3>Techumbres</h3>
+              <p>Sistemas de techado con láminas térmicas</p>
+            </div>
+          </div>
+          <div class="carousel-proyectos-slide">
+            <img src="images/proyecto5.webp" alt="Fachadas" style="width: 100%; height: 300px; object-fit: cover;">
+            <div class="proyecto-overlay">
+              <h3>Fachadas</h3>
+              <p>Sistemas de fachada con paneles aislantes</p>
+            </div>
+          </div>
+          <div class="carousel-proyectos-slide">
+            <img src="images/proyecto6.webp" alt="Interiores" style="width: 100%; height: 300px; object-fit: cover;">
+            <div class="proyecto-overlay">
+              <h3>Interiores</h3>
+              <p>Aislamiento acústico y térmico para interiores</p>
+            </div>
+          </div>
+        </div>
+        
+        <button class="carousel-proyectos-prev">❮</button>
+        <button class="carousel-proyectos-next">❯</button>
+        
+        <div class="carousel-proyectos-dots">
+          <span class="dot active" data-slide="0"></span>
+          <span class="dot" data-slide="1"></span>
+          <span class="dot" data-slide="2"></span>
+          <span class="dot" data-slide="3"></span>
+          <span class="dot" data-slide="4"></span>
+          <span class="dot" data-slide="5"></span>
+        </div>
+      </div>
+      
       <!-- Botón de WhatsApp móvil -->
       <div style="text-align: center; margin: 2rem 0 3rem 0;">
         <a href="https://wa.me/523319588421" class="whatsapp-proyecto" target="_blank" style="display: inline-flex; align-items: center; background: #1a7a34; color: white; padding: 14px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); font-size: 1.1rem; border: 2px solid #166b2c;">
@@ -4316,6 +4890,165 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+</script>
+
+<!-- Script para el carrusel móvil -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Función para inicializar los carruseles en móviles
+  function initMobileCarousels() {
+    // Solo inicializar en móviles
+    if (window.innerWidth <= 768) {
+      // Inicializar carrusel de empresa líder
+      const carruselEmpresa = document.querySelector('.mobile-carousel-empresa');
+      if (carruselEmpresa && !carruselEmpresa.dataset.initialized) {
+        initCarousel(carruselEmpresa, 'empresa');
+        carruselEmpresa.dataset.initialized = 'true';
+      }
+      
+      // Inicializar carrusel de proyectos
+      const carruselProyectos = document.querySelector('.mobile-carousel-proyectos');
+      if (carruselProyectos && !carruselProyectos.dataset.initialized) {
+        initCarousel(carruselProyectos, 'proyectos');
+        carruselProyectos.dataset.initialized = 'true';
+      }
+    }
+  }
+  
+  // Inicializar carruseles al cargar la página
+  initMobileCarousels();
+  
+  // Manejar redimensionamiento de ventana
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      initMobileCarousels();
+    }, 250);
+  });
+  
+  // Función para inicializar cualquier carrusel
+  function initCarousel(container, type) {
+    const prefix = type === 'empresa' ? 'carousel-empresa' : 'carousel-proyectos';
+    const slides = container.querySelectorAll(`.${prefix}-slide`);
+    const dots = container.querySelectorAll(`.${prefix}-dots .dot`);
+    const prevBtn = container.querySelector(`.${prefix}-prev`);
+    const nextBtn = container.querySelector(`.${prefix}-next`);
+    
+    let currentSlide = 0;
+    let slideInterval;
+  
+    // Mostrar el slide actual
+    function showSlide(index) {
+      // Asegurarse de que el índice esté dentro de los límites
+      if (index >= slides.length) {
+        index = 0;
+      } else if (index < 0) {
+        index = slides.length - 1;
+      }
+      
+      // Ocultar todos los slides
+      slides.forEach(slide => slide.classList.remove('active'));
+      // Mostrar el slide actual
+      slides[index].classList.add('active');
+      
+      // Actualizar los dots
+      if (dots.length > 0) {
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+      }
+      
+      currentSlide = index;
+    }
+  
+    // Ir al siguiente slide
+    function nextSlide() {
+      const nextIndex = (currentSlide + 1) % slides.length;
+      showSlide(nextIndex);
+    }
+  
+    // Ir al slide anterior
+    function prevSlide() {
+      const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(prevIndex);
+    }
+  
+    // Iniciar el carrusel automático
+    function startAutoPlay() {
+      stopAutoPlay();
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+  
+    // Detener el carrusel automático
+    function stopAutoPlay() {
+      if (slideInterval) {
+        clearInterval(slideInterval);
+      }
+    }
+  
+    // Event listeners para los botones
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        startAutoPlay();
+      });
+    }
+    
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        startAutoPlay();
+      });
+    }
+    
+    // Event listeners para los dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showSlide(index);
+        startAutoPlay();
+      });
+    });
+    
+    // Pausar el carrusel al hacer hover
+    container.addEventListener('mouseenter', stopAutoPlay);
+    container.addEventListener('mouseleave', startAutoPlay);
+    
+    // Manejar eventos táctiles para deslizar
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    container.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoPlay();
+    }, { passive: true });
+    
+    container.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+      startAutoPlay();
+    }, { passive: true });
+    
+    function handleSwipe() {
+      const swipeThreshold = 50; // Mínimo de píxeles para considerar un deslizamiento
+      const difference = touchStartX - touchEndX;
+      
+      if (Math.abs(difference) > swipeThreshold) {
+        if (difference > 0) {
+          // Deslizamiento hacia la izquierda - siguiente slide
+          nextSlide();
+        } else {
+          // Deslizamiento hacia la derecha - slide anterior
+          prevSlide();
+        }
+      }
+    }
+    
+    // Iniciar el carrusel
+    showSlide(0);
+    startAutoPlay();
+  }
+});
 </script>
 </body>
 </html>
