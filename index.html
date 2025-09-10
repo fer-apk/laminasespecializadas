@@ -1641,6 +1641,18 @@ header.hero * {
   align-items: center;
   gap: 1.1rem;
 }
+.navbar-phone {
+  color: #FFFFFF;
+  text-decoration: underline;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+}
+.navbar-phone:hover,
+.navbar-phone:focus {
+  color: #EAEAEA;
+  outline: none;
+}
 .navbar-btn {
   background: none;
   border: none;
@@ -1692,6 +1704,7 @@ header.hero * {
     justify-content: center;
     gap: 0.6rem;
   }
+  .navbar-phone { display: none; }
   .navbar-img {
     height: 36px;
   }
@@ -1725,6 +1738,7 @@ body {
         </button>
       </div>
       <div class="navbar-links">
+        <a class="navbar-phone" href="tel:3319588421" aria-label="Llamar al 33 1958 8421">33 1958 8421</a>
         <button class="navbar-btn" onclick="window.open('https://panelylamina.com/catalogo','_blank')">Catálogo</button>
         <button class="navbar-btn whatsapp" onclick="window.open('https://wa.me/523319588421','_blank')">Cotizar</button>
       </div>
